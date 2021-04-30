@@ -1,0 +1,1 @@
+bbregister --s sub001 --mov /{path to b0 image}/lowb.nii.gz --reg /{path to where you will save the matrix file}/lowb2orig.dat --dti --init-fsl
