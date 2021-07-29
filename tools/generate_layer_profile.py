@@ -50,7 +50,7 @@ def generate_layer_profile(path, roi_name):
         var     = np.var(file)
 
         desc = file_path.split('/')[-1]
-        id,roi,layer,_ = desc.split('.')
+        sess,id,roi,layer,_ = desc.split('.')
         try:
             l = int(layer.strip('L'))
         except:

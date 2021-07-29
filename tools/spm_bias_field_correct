@@ -1,0 +1,87 @@
+#!/bin/bash
+
+while getopts i: flag
+do
+    case "${flag}" in
+        i) i=${OPTARG};;
+    esac
+done
+
+
+# get the base directory from the input file so that we can
+# create a working directory in the same folder
+dir_name="$(dirname ${i})"
+base_name="$(basename ${i} .nii)"
+
+working_dir=${dir_name}'/'${base_name}'_working_bias'
+working_file=${working_dir}'/uncorr.nii'
+curr_dir=$(pwd)
+out="${dir_name}/${base_name}.bias.nii"
+
+echo "spm_dir (path file):  ${spm_dir}"
+echo "input vol:            ${i}"
+echo "dir_name:             ${dir_name}"
+echo "base_name:            ${base_name}"
+echo "working dir:          ${working_dir}"
+echo "saving file as:       ${out}"
+echo "creating working dir"
+
+# create working dir
+if [ -d "${working_dir}" ]
+then
+  echo "Directory /path/to/dir exists."
+  echo "rm -rf directory"
+  rm -rf ${working_dir}
+fi
+
+mkdir ${working_dir}
+
+#copy input into working dir
+cp ${i} ${working_file}
+cp "${tools_dir}/Bias_field_script_job.m" "${working_dir}/Bias_field_script_job.m"
+
+# rename file for matlab script
+
+# cd into directory to run matlab script
+# matlab script
+cd ${working_dir}
+
+
+
+#cp Bias_field_script_job.m ./Bias_field_script_job.m
+matlab -nodesktop -nosplash -r "cd ${working_dir};\
+ addpath(genpath('/home/richard/matlab_toolbox')); \
+ run('${working_dir}/Bias_field_script_job.m')"
+
+
+
+#
+#matlab -nodesktop -nosplash -r "addpath(genpath('${spm_path}')); run('\
+#matlabbatch{1}.spm.spatial.preproc.channel.vols = {'${i}'};\
+#matlabbatch{1}.spm.spatial.preproc.channel.biasreg = 0.001;\
+#matlabbatch{1}.spm.spatial.preproc.channel.biasfwhm = 20;\
+#matlabbatch{1}.spm.spatial.preproc.channel.write = [1 1];\
+#matlabbatch{1}.spm.spatial.preproc.warp.mrf = 1;\
+#matlabbatch{1}.spm.spatial.preproc.warp.cleanup = 1;\
+#matlabbatch{1}.spm.spatial.preproc.warp.reg = [0 0.001 0.5 0.05 0.2];\
+#matlabbatch{1}.spm.spatial.preproc.warp.affreg = 'mni';\
+#matlabbatch{1}.spm.spatial.preproc.warp.fwhm = 0;\
+#matlabbatch{1}.spm.spatial.preproc.warp.samp = 3;\
+#matlabbatch{1}.spm.spatial.preproc.warp.write = [0 0];\
+#spm('defaults','FMRI');\
+#spm_jobman('initcfg');\
+#spm_jobman('run',matlabbatch);\
+#exit\
+#')"
+
+
+# matlabbatch{1}.spm.spatial.preproc.channel.vols = {'./uncorr.nii,1'};
+
+# changing data from to short from long
+3dcalc -a muncorr.nii -prefix muncorr.nii -overwrite -expr 'a' -datum short
+
+#rm uncorr.nii
+#mv muncorr.nii ${i_path}/muncorr.nii
+echo "copying ${working_dir}/muncorr.nii to ${out}"
+cp muncorr.nii ${out}
+# rm -rf ${working_dir}

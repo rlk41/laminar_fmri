@@ -1,0 +1,66 @@
+#!/bin/bash
+
+# https://stackoverflow.com/questions/38459626/pearson-correlation-between-two-columns
+
+#FILES=/path/to/files/
+FILES=$1
+echo "$FILES"
+
+function add {
+  echo $1 + $2 | bc
+}
+function sub {
+  echo $1 - $2 | bc
+}
+function mult {
+  echo $1*$2 | bc
+}
+function div {
+  echo $1 / $2 | bc -l
+}
+function sqrt {
+  echo "sqrt ($1)" | bc -l
+}
+
+X=0
+X2=0
+Y=0
+Y2=0
+XY=0
+
+r=0
+R=0
+N=0
+
+for f in $FILES/*; do
+  echo "$f"
+  N=$((N+1))
+  n=0
+  while read l; do
+    echo "$l"
+    n=$((n+1))
+    read -r -a rows <<< $l
+    x=${rows[1]}
+    y=${rows[3]}
+    X=$(add $X $x)
+    X2=$(add $X2 $(mult $x $x))
+    Y=$(add $Y $y)
+    Y2=$(add $Y2 $(mult $y $y))
+    XY=$(add $XY $(mult $x $y))
+  done < $f;
+  r=$(add $r $XY)
+  r=$(sub $r $(div $(mult $X $Y) $n))
+  d1=$(sub $X2 $(div $(mult $X $X) $n))
+  d2=$(sub $Y2 $(div $(mult $Y $Y) $n))
+  r=$(div $r $(sqrt $(mult $d1 $d2)))
+  R=$(add $R $r)
+  X=0
+  X2=0
+  Y=0
+  Y2=0
+  XY=0
+  r=0
+  n=0
+done
+
+echo Mean=$(div $R $N)

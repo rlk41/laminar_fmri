@@ -1,118 +1,97 @@
+#!/usr/bin/env python
+
 import os
 import numpy as np
 import nibabel as nib
-from glob import glob
 import time
-import pandas as pd
 import argparse
+import pandas as pd
 
-# import numba as nb
-# import numba.cuda
-# import cupy, time
-# import pandas as pd
-# from multiprocessing import Pool
-#
-#
-# def parallelize(df_list, func, n_cores=4):
-#     '''
-#     func accepts a list of dfs
-#     :param df_list:
-#     :param func:
-#     :param n_cores:
-#     :return:
-#     '''
-#     '''
-#     async_result = pool.map_async(process_single_df, listOfDfs)
-#     allDfs = async_result.get()
-#     '''
-#     pool = Pool(n_cores)
-#     df = pool.map(func, df_list)
-#     pool.close()
-#     pool.join()
-#
-#     if type(df) == type(pd.DataFrame()):
-#         result = {}
-#         for d in df:
-#             result.update(d)
-#         return result
-#     else:
-#         return df
-#     return
+def generate_cmds(epi_file, layers_file, parc_file, LUT_file, save_path, layers, cmd_path):
 
-def main(roi_name, id_roi, id_layer):
-    file_dir='/media/richard/bfb1e328-6d97-4280-8331-5daeb988f70a/bandettini/getting-layers-in-epi-space'
-    # get layers file
-    layers_path     = os.path.join(file_dir, 'leaky_layers_n3.nii')
-    layers          = nib.load(layers_path)
+    lut = pd.read_table(LUT_file, sep=' ', header=None, names=['ID', 'ROI', 'R', 'G', 'B', 'T'])
+
+    with open(cmd_path,'w') as w:
+
+        for i in range(lut.shape[0]):
+            id = lut['ID'].iloc[i]
+            roi = lut['ROI'].iloc[i]
+
+            for i_layer in range(1,layers+1):
+                w.writelines('extract_ts.py --extract --roi_name {} --id_roi {} --id_layer {} --epi_file {}'
+                             ' --layers_file {} --parc_file {} --save_path {} \n'
+                             .format(roi, id, i_layer, epi_file, layers_file, parc_file, save_path))
+
+def main(roi_name, id_roi, id_layer, epi_file, layers_file, parc_file, save_path):
+
+
+    layers          = nib.load(layers_file)
     layers_data     = layers.get_fdata()
 
-    # get parcellation file
-    parc_file='/media/richard/bfb1e328-6d97-4280-8331-5daeb988f70a/bandettini/subjects/warped_MP2RAGE/multiAtlasTT/hcp-mmp-b/scaled_hcp-mmp-b.nii.gz'
     parc          = nib.load(parc_file)
     parc_data     = parc.get_fdata()
 
-    LUT_file = '/media/richard/bfb1e328-6d97-4280-8331-5daeb988f70a/bandettini/subjects/warped_MP2RAGE/multiAtlasTT/hcp-mmp-b/LUT_hcp-mmp-b_v2.txt'
-    lut = pd.read_table(LUT_file, sep=' ', header=None, names=['ID', 'ROI', 'R', 'G', 'B', 'T'])
+    p = parc_data   == id_roi
+    l = layers_data == id_layer
 
-    epi_dir='/mnt/9c288662-e3a3-4d3f-b859-eb0521c7da77/scaled_runs'
-    epi_path = os.path.join(file_dir, 'scaled_EPI.nii')
-    epi_runs = glob(os.path.join(epi_dir,'scaled*'))
-    epi_run     = epi_runs[1]
-    epi         = nib.load(epi_run)
+    epi         = nib.load(epi_file)
     e           = np.asarray(epi.dataobj)
-
-    unq_layers = np.unique(layers_data)
 
     start = time.time()
 
-    p = parc_data   == id_roi
-    l = layers_data == id_layer
     ts = e[p*l]
 
-    save_path='/mnt/9c288662-e3a3-4d3f-b859-eb0521c7da77/ts_numpy_extract_n3'
-    col         = "{}.{}.L{}".format(id_roi,roi_name,id_layer)
+    base_epi = epi_file.split('/')[-1].rstrip('.nii')
+
+    if not os.path.exists(save_path):
+        os.makedirs(save_path)
+
+    col = "{}.{}.{}.L{}".format(base_epi,id_roi,roi_name,id_layer)
     np.save('{}/{}'.format(save_path,col),ts)
+    np.savetxt('{}/{}'.format(save_path,col),ts)
 
     end = time.time()
 
     print("DONE: {} - {}".format(col, end - start))
 
-    #return
-
-
-
-    # proc_list = []
-    # for i in range(lut.shape[0]):
-    #     id = lut['ID'].iloc[i]
-    #     roi = lut['ROI'].iloc[i]
-    #
-    #     for i_layer in range(1,len_layers):
-    #         proc_list.append({'roi_name':roi,
-    #                           'id_roi':id,
-    #                           'id_layer':i_layer,
-    #                           'e':e,
-    #                           'parc_data':parc_data,
-    #                           'layers_data':layers_data})
-    #
 
 if __name__ == "__main__":
-
-
     parser = argparse.ArgumentParser(description='extract_ts')
+    parser.add_argument('--build_cmds',action='store_true')
+    parser.add_argument('--layers',type=int)
+    parser.add_argument('--cmd_path',type=str)
+
+    parser.add_argument('--extract',action='store_true')
     parser.add_argument('--roi_name', type=str)
     parser.add_argument('--id_roi', type=int)
     parser.add_argument('--id_layer', type=int)
+    parser.add_argument('--epi_file', type=str)
+    parser.add_argument('--layers_file', type=str)
+    parser.add_argument('--parc_file', type=str)
+    parser.add_argument('--save_path', type=str)
 
+    parser.add_argument('--LUT_file',type=str)
     args = parser.parse_args()
 
-    # roi_name = 'L_V1'
-    # id_roi = 1001
-    # id_layer = 1
+    if args.build_cmds == True:
+        print("Generate CMDs: {} {} {}".format(args.layers, args.LUT_file, args.cmd_path))
+        generate_cmds(args.epi_file, args.layers_file, args.parc_file, args.LUT_file,
+                      args.save_path, args.layers, args.cmd_path)
 
-    #print(args.accumulate(args.integers))
+        # EXAMPLE COMMAND
+        # extract_ts.py --build_cmds --epi_file $EPI_scaled --layers_file $warp_leakylayers10_scaled --parc_file $warp_hcp_scaled \
+        # --LUT_file $LUT_hcp --save_path $ROIs_hcpl10_scaled_ts --layers 10 --cmd_path $ROIs_hcpl10_scaled_ts_cmds
 
-    print("RUNNING: {} {} {}".format(args.roi_name, args.id_roi, args.id_layer))
 
-    main(args.roi_name, args.id_roi, args.id_layer)
+        print("run with 'parallel --jobs 20 < {}'".format(args.cmd_path))
 
-    # ./extract_ts.py --roi_name 'L_V1' --id_roi 1001 --id_layer 1
+    elif args.extract == True:
+        print("RUNNING: {} {} {}".format(args.roi_name, args.id_roi, args.id_layer))
+        main(args.roi_name, args.id_roi, args.id_layer, args.epi_file, args.layers_file, args.parc_file, args.save_path)
+
+        # EXAMPLE COMMAND
+        #extract_ts.py --extract --roi_name R_p24 --id_roi 2180 --id_layer 10 \
+        # --epi_file /mnt/9c288662-e3a3-4d3f-b859-eb0521c7da77/bandettini_data/scaled_runs/scaled_sub-01_ses-06_task-movie_run-05_VASO.nii \
+        # --layers_file ${layer4EPI}/warped_leaky_layers_n10.scaled.nii \
+        # --parc_file ${layer4EPI}/warped_hcp-mmp-b.scaled.nii \
+        # --save_path ${layer4EPI}/ROIs_hcpl10_scaled_ts
