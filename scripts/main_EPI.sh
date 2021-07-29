@@ -47,11 +47,15 @@ mkdir ${ANTs_dir}
 # if the automatic looks good, save as "initial_matrix.txt" (overwrite the backup)
 
 
-echo "RUNNING: run_ANTS this will calculate the xfm from ANAT to EPI_mean"
+echo "RUNNING: run_ANTS this will calculate the xfm from ANAT to EPI_mean and"
+echo "and apply the xfm producing warped_MP2RAGE.nii"
+echo "'warp_ANTS_resampleNN.sh <input_nii> <master_file>' will "
+echo "apply this xfm using nearestneighbor so only use with parcs"
+
 echo ${EPI_bias}
 echo ${ANAT_bias}
 # REQUIRES: initial_matrix.txt (in working_ANTs), EPI_bias, ANAT_bias
-# todo: i need to include these in git
+# todo: i need to include initial_matrix.txt in git
 run_ANTs -e ${EPI_bias} -a ${ANAT_bias}
 
 
@@ -70,75 +74,23 @@ cp $hcp_atlas .
 cp "$recon_dir/mri/ThalamicNuclei.v12.T1.mgz" .
 
 
-#warp_ANTS_resampleNN.sh equi_distance_layers_n3.nii $EPI_bias
-#warp_ANTS_resampleNN.sh equi_volume_layers_n3.nii $EPI_bias
-#
-##warp_ANTS_resampleNN.sh equi_distance_layers_n5.nii $EPI_bias
-##warp_ANTS_resampleNN.sh equi_volume_layers_n5.nii $EPI_bias
-##
-##warp_ANTS_resampleNN.sh equi_distance_layers_n7.nii $EPI_bias
-##warp_ANTS_resampleNN.sh equi_volume_layers_n7.nii $EPI_bias
-#
-#warp_ANTS_resampleNN.sh equi_distance_layers_n10.nii $EPI_bias
-#warp_ANTS_resampleNN.sh equi_volume_layers_n10.nii $EPI_bias
-#
 
 
 # TODO: !!!
 # FOR EACH SESSION WE WANT TO TRANSFORM THE ANATOMICAL PARECELATIONS/LAYERS/ATLASES TO EPI SESSION SPACE
 
-## HCP-MMP scaled - don't really need
-#f="$layer4EPI/hcp-mmp-b.nii.gz"
-#f_base=$(basename $f .nii.gz)
-#f_out="warped_$f_base.nii"
-#antsApplyTransforms -d 3 -i $f -o $f_out -r $EPI_bias -t $ANTs_reg_1warp -t $ANTs_reg_0GenAffine -n NearestNeighbor
-#3dcalc -a $f_out -datum short -expr 'a' -prefix $f_out -overwrite
-#3dresample -master $EPI_scaled -rmode NN -overwrite -prefix $warp_hcp_scaled  -input $warp_hcp
-
 # LAYERS 3
-#f="$layer4EPI/leaky_layers_n3.nii"
-#f_base=$(basename $f .nii)
-#f_out="warped_$f_base.nii"
-#antsApplyTransforms -d 3 -i $f -o $f_out -r $EPI_bias -t $ANTs_reg_1warp -t $ANTs_reg_0GenAffine -n NearestNeighbor
-#3dcalc -a $f_out -datum short -expr 'a' -prefix $f_out -overwrite
-#3dresample -master $EPI_bias -rmode NN -overwrite -prefix $warp_leakylayers3  -input $warp_leakylayers3
 warp_ANTS_resampleNN.sh $leaky_layers_n3 $EPI_bias
 
-## layers 10 - don't really need
-#f="$layer4EPI/leaky_layers_n10.nii"
-#f_base=$(basename $f .nii)
-#f_out="warped_$f_base.nii"
-#antsApplyTransforms -d 3 -i $f -o $f_out -r $EPI_bias -t $ANTs_reg_1warp -t $ANTs_reg_0GenAffine -n NearestNeighbor
-#3dcalc -a $f_out -datum short -expr 'a' -prefix $f_out -overwrite
-#3dresample -master $EPI_bias -rmode NN -overwrite -prefix $warp_leakylayers10  -input $warp_leakylayers10
-#3dresample -master $EPI_scaled -rmode NN -overwrite -prefix $warp_leakylayers10_scaled  -input $warp_leakylayers10
-
-
-
 # RIM
-#f="$layer4EPI/rim.nii"
-#f_base=$(basename $f .nii)
-#f_out="$layer4EPI/warped_$f_base.nii"
-#antsApplyTransforms -d 3 -i $f -o $f_out -r $EPI_bias -t $ANTs_reg_1warp -t $ANTs_reg_0GenAffine -n NearestNeighbor
-#3dcalc -a $f_out -datum short -expr 'a' -prefix $f_out -overwrite
-#3dresample -master $EPI_bias -rmode NN -overwrite -prefix $f_out  -input $f_out
 warp_ANTS_resampleNN.sh $rim $EPI_bias
 
 # columns_ev_1000
-#antsApplyTransforms -d 3 -i $columns_ev_1000 -o $warp_columns_ev_1000 -r $EPI_bias -t $ANTs_reg_1warp -t $ANTs_reg_0GenAffine -n NearestNeighbor
-#3dcalc -a $warp_columns_ev_1000 -datum short -expr 'a' -prefix $warp_columns_ev_1000 -overwrite
-#3dresample -master $EPI_scaled -rmode NN -overwrite -prefix $warp_columns_ev_1000_scaled  -input $warp_columns_ev_1000
 warp_ANTS_resampleNN.sh $columns_ev_1000 $EPI_bias
-
 
 #todo: the columns are a lot thinner fix
 
 # THALAMIC NUCLEI
-#f="$layer4EPI/ThalamicNuclei.v12.T1.mgz"
-#f_base=$(basename $f .mgz)
-#f_out="warped_$f_base.nii"
-#antsApplyTransforms -d 3 -i $f -o $f_out -r $EPI_bias -t $ANTs_reg_1warp -t $ANTs_reg_0GenAffine -n NearestNeighbor
-#3dcalc -a $f_out -datum short -expr 'a' -prefix $f_out -overwrite
 warp_ANTS_resampleNN.sh "$layer4EPI/ThalamicNuclei.v12.T1.mgz" $EPI_bias
 
 
@@ -155,24 +107,11 @@ unpack_parc.sh -r $warp_parc_thalamic -m $LUT_thalamic -o $rois_thalamic
 
 unpack_parc.sh -r $warp_leakylayers3 -m $LUT_leakylayers3 -o $rois_leakylayers3
 
-# unpack_parc.sh hcp
-# unpack_parc.sh c1k
 
 #todo: build_intersecting_rois.sh - change this to use roi files not parc file
-# build intersecting ROIs (layer*ROI)
 build_layerxROIs -f $warp_leakylayers3 -l 3 -r $warp_columns -m $LUT_columns -j 60 -o $rois_c1kl3 -c $cmds_buildROIs_c1kl3
 
 build_layerxROIs -f $warp_leakylayers3 -l 3 -r $warp_hcp -m $LUT_hcp -j 60 -o $rois_hcpl3 -c $cmds_buildROIs_hcpl3
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -203,31 +142,18 @@ extract_single_timeseries.sh -r $rois_thalamic -e $EPI_detrend -j 60 -o $timeser
 #1dplot $timeseries_hcpl3/sub-01_ses-06_task-movie_run-05_VASO.N4bias.detrend.1004.L_V2.* &
 #1dplot $timeseries_hcpl3/sub-01_ses-06_task-movie_run-05_VASO.N4bias.detrend.1001.L_V1.* &
 
-#fslmeants
-#${tools_dir}/extract_single_timeseries.sh -r $rois_hcpl3 -e $EPI_detrend -j 60 -o $timeseries_hcpl3 -c $cmds_extract_hcpl3
-
-
-
+###############################################
 # todo: cortical ribbon smoothing
-
-##############################################################################
-## Doesn't really work well
-#corrs_3dfim="$layer4EPI/corrs_3dfim"
-#cmds_corr_3dfim="$layer4EPI/cmds/cmd.corr.3dfim.txt"
-#
-#rm -rf $corrs_3dfim & mkdir $corrs_3dfim
-#
-#for f in $timeseries_hcpl3/*
-#do
-#  echo "3dfim+ -bucket ${corrs_3dfim}/$(basename $f .1D).corr -out Correlation -ideal_file $f -input $EPI_detrend" > $cmds_corr_3dfim
-#done
-#
-#parallel --jobs 30 < $cmds_corr_3dfim
-#######################################################################################
+###############################################
 
 
 
+
+
+
+###############################################
 # BUILDING MATRICES -- TWO APPROACHES
+###############################################
 # BASH
 build_matrix.sh -t $timeseries_hcpl3 -t $timeseries_thalamic -o $matrix_hcpl3_thalamic
 
