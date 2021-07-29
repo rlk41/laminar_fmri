@@ -5,7 +5,7 @@
 
 ## ./paths 
 * source this file for variables 
-* need to set **spm_dir**, **ds_dir**, **EPI_base** (ideally loop main_EPI.sh with main_EPI_looper.sh setting new $EPI each loop). 
+* need to set **$spm_dir**, **$ds_dir (data_dir)**, **$EPI** (ideally loop main_EPI.sh with main_EPI_looper.sh setting new $EPI each loop). 
 
 
 ## ./scripts 
