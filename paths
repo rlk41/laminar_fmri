@@ -6,22 +6,19 @@
 export spm_path='/home/richard/matlab_toolbox'
 export ds_dir='/media/richard/bfb1e328-6d97-4280-8331-5daeb988f70a/bandettini/ds003216-download'
 
-## set EPI_base variable
-## if running through loop
-#if [ "$looper" = true ] ;
-#then
-#  export EPI_base=$(basename $EPI .nii)
-#
-#  echo "using looper EPI_base"
-#  echo $EPI_base
-#else
-#  export EPI_base="sub-01_ses-06_task-movie_run-05_VASO"
-#
-#  echo "using test EPI_base"
-#  echo $EPI_base
-#fi
-#
-#
+# set EPI_base variable
+# if running through loop
+if [ -z "$EPI" ] ;
+then
+  export EPI="${ds_dir}/derivatives/sub-01/VASO_func/sub-01_ses-06_task-movie_run-05_VASO.nii"
+  echo "                         "
+  echo "EPI not set using: ${EPI}"
+else
+  echo "                        "
+  echo "EPI set using: ${EPI}"
+fi
+
+
 ############################################################
 
 # $EPI is inherited from main_EPI.sh or main_EPI_looper.sh - nto sure it thats best
@@ -57,6 +54,8 @@ echo "project_dir: ${project_dir}"
 echo "spm_path:    ${spm_path}"
 echo "tools_dir:   ${tools_dir}"
 echo "cmds_dir:    ${cmds_dir}"
+echo "EPI:         ${EPI}"
+echo "EPI_base     ${EPI_base}"
 echo "----------------------------------"
 echo "                                                                                "
 echo "                                                                                "
