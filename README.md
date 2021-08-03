@@ -36,10 +36,12 @@ once you have the matrix/dataframe of timeseries (build_matrix.sh or build_dataf
 
 ## TODO
 * statistics - non-parametric across all r-values - included in ploting mech
-* graph - almost in analysis.hcp.l3.cluster.sh but too many edges to plot
-* plot clusters on brain (vol,surf) 
-* partial correlations - DensPars package - couldn't get to work need more data ~110 timepoints now
+** or just bonferoni correction? 
+* Visualizing clusters
+** graph - almost in analysis.hcp.l3.cluster.sh but too many edges to plot
+** plot clusters on brain (vol,surf) 
+* partial correlations - DensPars package - couldn't get to work need more data (?) ~110 timepoints now
 * nordicICA
 * fix columns 
-* look into converting to c++?
+* look` into converting to c++?
 
