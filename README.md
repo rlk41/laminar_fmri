@@ -10,9 +10,9 @@
 
 ## ./scripts 
 * **main.sh** - topmost - runs **main_ANAT.sh** (once) then **main_EPI_looper.sh** runs **main_EPI.sh** (foreach EPI)
-* **main_ANAT.sh** - preprocess the MP2RAGE, builds rim, columns, rois, 
-* **main_EPI_looper.sh**
-** **main_EPI.s**h - for each EPI, preprocess EPI, xfm rim, col, rois to EPI space, and extract timeseries
+  * **main_ANAT.sh** - preprocess the MP2RAGE, builds rim, columns, rois, 
+  * **main_EPI_looper.sh**
+    * **main_EPI.s** - for each EPI, preprocess EPI, xfm rim, col, rois to EPI space, and extract timeseries
 
 
 
