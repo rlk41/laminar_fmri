@@ -20,6 +20,21 @@ base_name="$(basename ${EPI})"
 #working_file=${working_dir}'/uncorr.nii'
 curr_dir="$(pwd)"
 
+
+# if ANTs_dir not set create local dir
+if [ -z ${ANTs_dir+x} ]; then
+    echo  "creating ANTs dir locally";
+    ANTs_dir="${curr_dir}/ANTs_dir";
+fi
+
+
+# if ANTs_dir doesn't exist create
+if [ ! -d $ANTs_dir ]; then
+  mkdir $ANTs_dir;
+fi
+
+
+
 #echo "spm_dir (path file):  ${spm_dir}"
 echo "EPI_mean:             ${EPI}"
 echo "ANAT:                 ${ANAT}"
@@ -30,8 +45,6 @@ echo "working dir:          ${ANTs_dir}"
 
 echo "creating working dir"
 
-# create working dir
-#mkdir ${ANTs_dir}
 
 #copy input into working dir
 cp ${EPI} "${ANTs_dir}/EPI.nii"
