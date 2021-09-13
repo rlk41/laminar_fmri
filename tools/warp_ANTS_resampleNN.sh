@@ -1,14 +1,22 @@
 #1/bin/bash
 
+
+
+# USAGE:
+# warp_ANTs_resampleNN.sh wm.seg.nii.gz $EPI_bias
+#
+
 #f="$layer4EPI/hcp-mmp-b.nii.gz"
 f=$1
 resample_master=$2
 
+dir=$(dirname $f)
+
 f_base=$(basename $f .nii)
-f_out="warped_${f_base}.nii"
+f_out="${dir}/warped_${f_base}.nii"
 
 rs_base=$(basename $resample_master .nii)
-f_out_rs="warped_${f_base}.resample2${rs_base}.nii"
+f_out_rs="${dir}/warped_${f_base}.resample2${rs_base}.nii"
 
 echo "Applying ANTS xfm ${ANTs_reg_1warp}"
 echo "converting to short to save space "

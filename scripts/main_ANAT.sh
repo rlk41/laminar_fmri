@@ -193,9 +193,17 @@ mv equi_volume_layers.nii equi_volume_layers_n10.nii
 # use debug to get _columns.nii file
 # this also produces the rim_midGM file
 
+# use -incl_borders option to include borders!
+
 LN2_LAYERS -rim rim.nii -equivol -iter_smooth 50 -debug
 generate_columns.sh -t "equivol" -n 1000
+generate_columns.sh -t "equivol" -n 1000 -b
+
+
 generate_columns.sh -t "equidist" -n 1000
+
+generate_columns.sh -t "equivol" -n 10000
+generate_columns.sh -t "equidist" -n 10000
 
 
 

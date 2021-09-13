@@ -101,29 +101,43 @@ recon-all -all -hires \
 mv "${SUBJECTS_DIR}/${EPI_base}/mri/wm.mgz" "${SUBJECTS_DIR}/${EPI_base}/mri/wm.backup.mgz"
 cp ${seg_wm_2EPI_mgz} "${SUBJECTS_DIR}/${EPI_base}/mri/wm.mgz"
 
-#recon-all -autorecon-wm -hires \
-#  -s $subjid \
-#  -parallel -openmp 40
+# deosnt work some error 
+recon-all -autorecon2-wm \
+-hires \
+ -s $subjid \
+ -parallel -openmp 40
 
 # INCLUDE NEW BRAINMASK AND REGENERATE
 mv "${SUBJECTS_DIR}/${EPI_base}/mri/brainmask.mgz" "${SUBJECTS_DIR}/${EPI_base}/mri/brainmask.backup.mgz"
 cp ${seg_brain_2EPI_mgz} "${SUBJECTS_DIR}/${EPI_base}/mri/brainmask.mgz"
+cp "${SUBJECTS_DIR}/${EPI_base}/mri/brainmask.mgz" "${SUBJECTS_DIR}/${EPI_base}/mri/brain.mgz"
 
-#recon-all -autorecon-pial -hires \
+# recon-all -autorecon2-wm -autorecon-pial \
+# -hires \
 #  -s $subjid \
 #  -parallel -openmp 40
+
+ freeview brain.mgz brainmask.mgz wm.mgz aseg.mgz \
+ ../surf/lh.white ../surf/lh.smoothwm ../surf/lh.pial \
+ ../surf/rh.white ../surf/rh.smoothwm ../surf/rh.pial 
+
+
+
+recon-all -autorecon-pial -hires \
+ -s $subjid \
+ -parallel -openmp 40
 
 
 # TODO: just rerunning autorecon2 - wasn't able to get autorecon2-wm to run
 # double free detected in tchache 2??
 
-recon-all -autorecon2 -hires \
-  -s $subjid \
-  -parallel -openmp 40
+# recon-all -autorecon2 -autorecon3 -hires \
+#   -s $subjid \
+#   -parallel -openmp 40
 
-recon-all -autorecon3 -hires \
-  -s $subjid \
-  -parallel -openmp 40
+# recon-all -autorecon3 -hires \
+#   -s $subjid \
+#   -parallel -openmp 40
 
 <<comment
 
@@ -135,6 +149,28 @@ freeview -v mri/T1.mgz \
 
 comment
 
+
+SUMA_Make_Spec_FS -sid SubjectName -GIFTI
+#SUMA_Make_Spec_FS -sid SubjectName -NIFTI
+
+'''
+afni -niml &
+suma -spec ../SUMA/SubjectName_both.spec -sv ../SubjectName_SurfVol_Alnd_Exp+orig
+
+afni -niml &
+suma -spec ../SUMA/SubjectName_both.spec -sv ../SubjectName_SurfVol_Alnd_Exp+orig
+
+
+
+Once SUMA is loaded, press the t key and you will be presented with a nice overlay 
+in AFNI that will allow you to click around in either AFNI or SUMA and see how the 
+cortical surface corresponds to the volume in AFNI.  Check to make sure nothing 
+looks too far out of whack (technical term).
+
+# Peter Molfese flat maps
+https://afni.nimh.nih.gov/afni/community/board/read.php?1,158211,158226#msg-158226
+
+'''
 
 hemis=('lh' 'rh')
 projfracs=$(seq 0 .1 1 )
@@ -155,4 +191,4 @@ for hemi in ${hemis[@]}; do
   done
 done
 
-
+# read the surfaces in for analysis
