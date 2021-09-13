@@ -1,11 +1,12 @@
 #!/bin/bash
 
 
-while getopts ":t:n:" flag
+while getopts ":t:n:b" flag
 do
     case "${flag}" in
         t) col_type=${OPTARG};;
         n) col_num=${OPTARG};;
+        b) borders='true';;
     esac
 done
 
@@ -21,7 +22,17 @@ echo "acceptable column_types={equivol, equidist} "
 
 curr_dir=`pwd`
 
-col_dir="${layer4EPI}/columns_${col_type}_${col_num}"
+
+if [ -z $borders ]
+then
+  col_dir="${layer4EPI}/columns_${col_type}_${col_num}"
+  echo "borders unset"
+else 
+
+  col_dir="${layer4EPI}/columns_${col_type}_${col_num}_borders"
+  echo "borders set" 
+fi 
+
 echo 'col_dir: ' ${col_dir}
 mkdir ${col_dir}
 
@@ -37,9 +48,18 @@ for c in `seq 1 $((col_num))`; do
   echo "$c $c" >> $LUT_col
 done
 
-
+#echo "including borders!!"
 # generate columns
-LN2_COLUMNS -rim rim.nii -midgm rim_midGM_${col_type}.nii -nr_columns ${col_num}
+if [ -z $borders ]
+then
+  echo "running LN2_COLUMNS"
+  LN2_COLUMNS -rim rim.nii -midgm rim_midGM_${col_type}.nii -nr_columns ${col_num}
+else
+  echo "running LN2_COLUMNS -incl_borders"
+  LN2_COLUMNS -rim rim.nii -midgm rim_midGM_${col_type}.nii -nr_columns ${col_num} -incl_borders
+fi 
+
+
 
 cd $curr_dir
 

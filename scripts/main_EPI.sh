@@ -88,6 +88,10 @@ warp_ANTS_resampleNN.sh $rim $EPI_bias
 # columns_ev_1000
 warp_ANTS_resampleNN.sh $columns_ev_1000 $EPI_bias
 
+# columns_ev_10000
+warp_ANTS_resampleNN.sh $columns_ev_10000 $EPI_bias
+
+
 #todo: the columns are a lot thinner fix
 
 # THALAMIC NUCLEI
