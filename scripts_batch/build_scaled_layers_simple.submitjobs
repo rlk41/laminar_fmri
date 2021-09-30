@@ -1,0 +1,17 @@
+#!/bin/bash 
+set -e 
+
+
+source /home/kleinrl/projects/laminar_fmri/paths_biowulf 
+job_name='LN_LAYERS_simple'
+log="/home/kleinrl/projects/laminar_fmri/logs/${job_name}.log"
+
+module load gcc
+
+sbatch --mem=40g --cpus-per-task=2 \
+--partition=norm \
+--mail-type=TIME_LIMIT_90,END \
+--output=$log \
+--time 48:00:00 \
+--job-name=$job_name \
+"${scripts_batch_dir}/build_scaled_layers_simple.job"

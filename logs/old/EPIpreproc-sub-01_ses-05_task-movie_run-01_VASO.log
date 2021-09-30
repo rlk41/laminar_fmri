@@ -1,0 +1,2651 @@
+[-] Unloading Matlab  2021a  on cn1041 
+[+] Loading Matlab  2021a  on cn1041 
+[-] Unloading matlab-spm, version 12.7219...
+[+] Loading matlab-spm, version 12.7219...
+[-] Unloading gcc  7.3.0  ... 
+[-] Unloading ANTs  2.3.2 
+[+] Loading gcc  7.3.0  ... 
+[+] Loading ANTs  2.3.2 
+[-] Unloading AFNI current-openmp  ... 
+[+] Loading AFNI current-openmp  ... 
+AFNI/current-openmp last updated  2021-09-17
+
+[-] Unloading freesurfer  7.1.1 on cn1041 
+[+] Loading freesurfer  7.1.1  on cn1041 
+[-] Unloading FSL 6.0.4  ... 
+[+] Loading FSL 6.0.4  ... 
+[-] Unloading python 3.7  ... 
+[+] Loading python 3.7  ... 
+                        
+EPI set using: /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-05_task-movie_run-01_VASO.nii
+                                                         
+----------------------------------
+YOU NEED TO SUPPLY: 
+               spm_path - location of spm files ('matlab_toolbox')
+               ds_dir - location of data ('ds003216-download')
+               EPI_base - currently working with 
+                         'sub-01_ses-06_task-movie_run-05_VASO' 
+                         main_anat.sh for processing MP2RAGE, then loop 
+                         main_EPI.sh for each EPI
+----------------------------------
+project_dir: /home/kleinrl/projects/laminar_fmri
+spm_path:    
+tools_dir:   /home/kleinrl/projects/laminar_fmri/tools
+cmds_dir:    /home/kleinrl/projects/laminar_fmri/cmds
+EPI:         /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-05_task-movie_run-01_VASO.nii
+EPI_base     sub-01_ses-05_task-movie_run-01_VASO
+----------------------------------
+                                                                                
+                                                                                
+RUNNING: run_ANTS this will calculate the xfm from ANAT to EPI_mean and
+and apply the xfm producing warped_MP2RAGE.nii
+'warp_ANTS_resampleNN.sh <input_nii> <master_file>' will 
+apply this xfm using nearestneighbor so only use with parcs
+/data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-05_task-movie_run-01_VASO_working_bias/muncorr.nii
+/data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w.bias.nii
+EPI_mean:             /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-05_task-movie_run-01_VASO_working_bias/muncorr.nii
+ANAT:                 /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w.bias.nii
+dir_name:             /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-05_task-movie_run-01_VASO_working_bias
+base_name:            muncorr.nii
+working dir:          /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-05_task-movie_run-01_VASO_working_ANTs
+creating working dir
+I expect 2 files. the T1_weighted EPI.nii and a MP2RAGE_orig.nii (renzo)
+we are using the T1_weighted EPI_bias corrected and MP2RAGE bias corrected
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ Output dataset ./MP2RAGE.nii
+*****************************************
+************* starting with ANTS ********
+*****************************************
+All_Command_lines_OK
+Using double precision for computations.
+  number of levels = 4
+  number of levels = 4
+  number of levels = 5
+  fixed image: EPI.nii
+  moving image: MP2RAGE.nii
+  fixed image: EPI.nii
+  moving image: MP2RAGE.nii
+  fixed image: EPI.nii
+  moving image: MP2RAGE.nii
+Dimension = 3
+Number of stages = 3
+Use Histogram Matching false
+Winsorize image intensities true
+Lower quantile = 0.005
+Upper quantile = 0.995
+Stage 1 State
+   Image metric = Mattes
+     Fixed image = Image (0x2decd30)
+  RTTI typeinfo:   itk::Image<double, 3u>
+  Reference Count: 2
+  Modified Time: 789
+  Debug: Off
+  Object Name: 
+  Observers: 
+    none
+  Source: (none)
+  Source output name: (none)
+  Release Data: Off
+  Data Released: False
+  Global Release Data: Off
+  PipelineMTime: 0
+  UpdateMTime: 572
+  RealTimeStamp: 0 seconds 
+  LargestPossibleRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [162, 216, 120]
+  BufferedRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [162, 216, 120]
+  RequestedRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [162, 216, 120]
+  Spacing: [0.802469, 0.802469, 0.8]
+  Origin: [-64.0361, 62.2044, -29.4552]
+  Direction: 
+1 0 0
+0 -1 0
+0 0 1
+
+  IndexToPointMatrix: 
+0.802469 0 0
+0 -0.802469 0
+0 0 0.8
+
+  PointToIndexMatrix: 
+1.24615 0 0
+0 -1.24615 0
+0 0 1.25
+
+  Inverse Direction: 
+1 0 0
+0 -1 0
+0 0 1
+
+  PixelContainer: 
+    ImportImageContainer (0x2decff0)
+      RTTI typeinfo:   itk::ImportImageContainer<unsigned long, double>
+      Reference Count: 1
+      Modified Time: 569
+      Debug: Off
+      Object Name: 
+      Observers: 
+        none
+      Pointer: 0x2aaab4fad010
+      Container manages memory: true
+      Size: 4199040
+      Capacity: 4199040
+
+     Moving image = Image (0x2df3360)
+  RTTI typeinfo:   itk::Image<double, 3u>
+  Reference Count: 2
+  Modified Time: 790
+  Debug: Off
+  Object Name: 
+  Observers: 
+    none
+  Source: (none)
+  Source output name: (none)
+  Release Data: Off
+  Data Released: False
+  Global Release Data: Off
+  PipelineMTime: 0
+  UpdateMTime: 787
+  RealTimeStamp: 0 seconds 
+  LargestPossibleRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [320, 320, 240]
+  BufferedRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [320, 320, 240]
+  RequestedRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [320, 320, 240]
+  Spacing: [0.65, 0.65, 0.65]
+  Origin: [77.6828, -138.321, -102.731]
+  Direction: 
+-0 0 -1
+1 -0 0
+0 1 -0
+
+  IndexToPointMatrix: 
+0 0 -0.65
+0.65 0 0
+0 0.65 0
+
+  PointToIndexMatrix: 
+0 1.53846 0
+0 0 1.53846
+-1.53846 0 0
+
+  Inverse Direction: 
+0 1 0
+0 0 1
+-1 0 0
+
+  PixelContainer: 
+    ImportImageContainer (0x2ddf010)
+      RTTI typeinfo:   itk::ImportImageContainer<unsigned long, double>
+      Reference Count: 1
+      Modified Time: 784
+      Debug: Off
+      Object Name: 
+      Observers: 
+        none
+      Pointer: 0x2aaab6fb7010
+      Container manages memory: true
+      Size: 24576000
+      Capacity: 24576000
+
+     Weighting = 1
+     Sampling strategy = regular
+     Number of bins = 32
+     Radius = 4
+     Sampling percentage  = 0.25
+   Transform = Rigid
+     Gradient step = 0.1
+     Update field sigma (voxel space) = 0
+     Total field sigma (voxel space) = 0
+     Update field time sigma = 0
+     Total field time sigma  = 0
+     Number of time indices = 0
+     Number of time point samples = 0
+Stage 2 State
+   Image metric = Mattes
+     Fixed image = Image (0x2df1970)
+  RTTI typeinfo:   itk::Image<double, 3u>
+  Reference Count: 2
+  Modified Time: 1221
+  Debug: Off
+  Object Name: 
+  Observers: 
+    none
+  Source: (none)
+  Source output name: (none)
+  Release Data: Off
+  Data Released: False
+  Global Release Data: Off
+  PipelineMTime: 0
+  UpdateMTime: 1004
+  RealTimeStamp: 0 seconds 
+  LargestPossibleRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [162, 216, 120]
+  BufferedRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [162, 216, 120]
+  RequestedRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [162, 216, 120]
+  Spacing: [0.802469, 0.802469, 0.8]
+  Origin: [-64.0361, 62.2044, -29.4552]
+  Direction: 
+1 0 0
+0 -1 0
+0 0 1
+
+  IndexToPointMatrix: 
+0.802469 0 0
+0 -0.802469 0
+0 0 0.8
+
+  PointToIndexMatrix: 
+1.24615 0 0
+0 -1.24615 0
+0 0 1.25
+
+  Inverse Direction: 
+1 0 0
+0 -1 0
+0 0 1
+
+  PixelContainer: 
+    ImportImageContainer (0x2df1c60)
+      RTTI typeinfo:   itk::ImportImageContainer<unsigned long, double>
+      Reference Count: 1
+      Modified Time: 1001
+      Debug: Off
+      Object Name: 
+      Observers: 
+        none
+      Pointer: 0x2aaac2b38010
+      Container manages memory: true
+      Size: 4199040
+      Capacity: 4199040
+
+     Moving image = Image (0x2dfa080)
+  RTTI typeinfo:   itk::Image<double, 3u>
+  Reference Count: 2
+  Modified Time: 1222
+  Debug: Off
+  Object Name: 
+  Observers: 
+    none
+  Source: (none)
+  Source output name: (none)
+  Release Data: Off
+  Data Released: False
+  Global Release Data: Off
+  PipelineMTime: 0
+  UpdateMTime: 1219
+  RealTimeStamp: 0 seconds 
+  LargestPossibleRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [320, 320, 240]
+  BufferedRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [320, 320, 240]
+  RequestedRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [320, 320, 240]
+  Spacing: [0.65, 0.65, 0.65]
+  Origin: [77.6828, -138.321, -102.731]
+  Direction: 
+-0 0 -1
+1 -0 0
+0 1 -0
+
+  IndexToPointMatrix: 
+0 0 -0.65
+0.65 0 0
+0 0.65 0
+
+  PointToIndexMatrix: 
+0 1.53846 0
+0 0 1.53846
+-1.53846 0 0
+
+  Inverse Direction: 
+0 1 0
+0 0 1
+-1 0 0
+
+  PixelContainer: 
+    ImportImageContainer (0x2dfa370)
+      RTTI typeinfo:   itk::ImportImageContainer<unsigned long, double>
+      Reference Count: 1
+      Modified Time: 1216
+      Debug: Off
+      Object Name: 
+      Observers: 
+        none
+      Pointer: 0x2aaac4b42010
+      Container manages memory: true
+      Size: 24576000
+      Capacity: 24576000
+
+     Weighting = 1
+     Sampling strategy = regular
+     Number of bins = 32
+     Radius = 4
+     Sampling percentage  = 0.25
+   Transform = Affine
+     Gradient step = 0.1
+     Update field sigma (voxel space) = 0
+     Total field sigma (voxel space) = 0
+     Update field time sigma = 0
+     Total field time sigma  = 0
+     Number of time indices = 0
+     Number of time point samples = 0
+Stage 3 State
+   Image metric = Mattes
+     Fixed image = Image (0x2df6b90)
+  RTTI typeinfo:   itk::Image<double, 3u>
+  Reference Count: 2
+  Modified Time: 1653
+  Debug: Off
+  Object Name: 
+  Observers: 
+    none
+  Source: (none)
+  Source output name: (none)
+  Release Data: Off
+  Data Released: False
+  Global Release Data: Off
+  PipelineMTime: 0
+  UpdateMTime: 1436
+  RealTimeStamp: 0 seconds 
+  LargestPossibleRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [162, 216, 120]
+  BufferedRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [162, 216, 120]
+  RequestedRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [162, 216, 120]
+  Spacing: [0.802469, 0.802469, 0.8]
+  Origin: [-64.0361, 62.2044, -29.4552]
+  Direction: 
+1 0 0
+0 -1 0
+0 0 1
+
+  IndexToPointMatrix: 
+0.802469 0 0
+0 -0.802469 0
+0 0 0.8
+
+  PointToIndexMatrix: 
+1.24615 0 0
+0 -1.24615 0
+0 0 1.25
+
+  Inverse Direction: 
+1 0 0
+0 -1 0
+0 0 1
+
+  PixelContainer: 
+    ImportImageContainer (0x2df6e80)
+      RTTI typeinfo:   itk::ImportImageContainer<unsigned long, double>
+      Reference Count: 1
+      Modified Time: 1433
+      Debug: Off
+      Object Name: 
+      Observers: 
+        none
+      Pointer: 0x2aaad06c3010
+      Container manages memory: true
+      Size: 4199040
+      Capacity: 4199040
+
+     Moving image = Image (0x2df6ef0)
+  RTTI typeinfo:   itk::Image<double, 3u>
+  Reference Count: 2
+  Modified Time: 1654
+  Debug: Off
+  Object Name: 
+  Observers: 
+    none
+  Source: (none)
+  Source output name: (none)
+  Release Data: Off
+  Data Released: False
+  Global Release Data: Off
+  PipelineMTime: 0
+  UpdateMTime: 1651
+  RealTimeStamp: 0 seconds 
+  LargestPossibleRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [320, 320, 240]
+  BufferedRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [320, 320, 240]
+  RequestedRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [320, 320, 240]
+  Spacing: [0.65, 0.65, 0.65]
+  Origin: [77.6828, -138.321, -102.731]
+  Direction: 
+-0 0 -1
+1 -0 0
+0 1 -0
+
+  IndexToPointMatrix: 
+0 0 -0.65
+0.65 0 0
+0 0.65 0
+
+  PointToIndexMatrix: 
+0 1.53846 0
+0 0 1.53846
+-1.53846 0 0
+
+  Inverse Direction: 
+0 1 0
+0 0 1
+-1 0 0
+
+  PixelContainer: 
+    ImportImageContainer (0x2df71b0)
+      RTTI typeinfo:   itk::ImportImageContainer<unsigned long, double>
+      Reference Count: 1
+      Modified Time: 1648
+      Debug: Off
+      Object Name: 
+      Observers: 
+        none
+      Pointer: 0x2aaad26cd010
+      Container manages memory: true
+      Size: 24576000
+      Capacity: 24576000
+
+     Weighting = 1
+     Sampling strategy = none
+     Number of bins = 4
+     Radius = 4
+     Sampling percentage  = 1
+   Transform = SyN
+     Gradient step = 0.1
+     Update field sigma (voxel space) = 3
+     Total field sigma (voxel space) = 0
+     Update field time sigma = 0
+     Total field time sigma  = 0
+     Number of time indices = 0
+     Number of time point samples = 0
+Registration using 3 total stages.
+
+Stage 0
+  iterations = 1000x500x250x100
+  convergence threshold = 1e-06
+  convergence window size = 10
+  number of levels = 4
+  using the Mattes MI metric (number of bins = 32, weight = 1)
+  preprocessing:  winsorizing the image intensities
+  Shrink factors (level 1 out of 4): [12, 12, 12]
+  Shrink factors (level 2 out of 4): [8, 8, 8]
+  Shrink factors (level 3 out of 4): [4, 4, 4]
+  Shrink factors (level 4 out of 4): [2, 2, 2]
+  smoothing sigmas per level: [4, 3, 2, 1]
+  regular sampling (percentage = 0.25)
+
+*** Running Euler3DTransform registration ***
+
+DIAGNOSTIC,Iteration,metricValue,convergenceValue,ITERATION_TIME_INDEX,SINCE_LAST
+ 2DIAGNOSTIC,     1, -3.037884122378e-01, 1.797693134862e+308, 7.7856e-01, 7.7856e-01, 
+ 2DIAGNOSTIC,     2, -3.049069964457e-01, 1.797693134862e+308, 7.8327e-01, 4.7071e-03, 
+ 2DIAGNOSTIC,     3, -3.075920438085e-01, 1.797693134862e+308, 7.8759e-01, 4.3261e-03, 
+ 2DIAGNOSTIC,     4, -3.121070573246e-01, 1.797693134862e+308, 7.9268e-01, 5.0900e-03, 
+ 2DIAGNOSTIC,     5, -3.140276766525e-01, 1.797693134862e+308, 7.9820e-01, 5.5201e-03, 
+ 2DIAGNOSTIC,     6, -3.148104806129e-01, 1.797693134862e+308, 8.0436e-01, 6.1550e-03, 
+ 2DIAGNOSTIC,     7, -3.153272993761e-01, 1.797693134862e+308, 8.0882e-01, 4.4570e-03, 
+ 2DIAGNOSTIC,     8, -3.159744849869e-01, 1.797693134862e+308, 8.1318e-01, 4.3669e-03, 
+ 2DIAGNOSTIC,     9, -3.169960130447e-01, 1.797693134862e+308, 8.1913e-01, 5.9500e-03, 
+ 2DIAGNOSTIC,    10, -3.180262353950e-01, 2.943697905837e-03, 8.2480e-01, 5.6639e-03, 
+ 2DIAGNOSTIC,    11, -3.181149467991e-01, 2.211895116797e-03, 8.3113e-01, 6.3291e-03, 
+ 2DIAGNOSTIC,    12, -3.181263548388e-01, 1.493154817184e-03, 8.3573e-01, 4.6048e-03, 
+ 2DIAGNOSTIC,    13, -3.181634899152e-01, 9.353883356210e-04, 8.4127e-01, 5.5449e-03, 
+ 2DIAGNOSTIC,    14, -3.181774695500e-01, 6.626127751694e-04, 8.5114e-01, 9.8691e-03, 
+ 2DIAGNOSTIC,    15, -3.181780822864e-01, 4.806263376630e-04, 8.5577e-01, 4.6260e-03, 
+ 2DIAGNOSTIC,    16, -3.181815992498e-01, 3.224973638469e-04, 8.6055e-01, 4.7810e-03, 
+ 2DIAGNOSTIC,    17, -3.181850830713e-01, 1.818599244998e-04, 8.6536e-01, 4.8060e-03, 
+ 2DIAGNOSTIC,    18, -3.181865485463e-01, 7.210268446436e-05, 8.7018e-01, 4.8189e-03, 
+ 2DIAGNOSTIC,    19, -3.181872802911e-01, 1.466842845866e-05, 8.7472e-01, 4.5481e-03, 
+ 2DIAGNOSTIC,    20, -3.181884186515e-01, 8.232155968263e-06, 8.7957e-01, 4.8509e-03, 
+ 2DIAGNOSTIC,    21, -3.181975173278e-01, 6.005954001215e-06, 8.8419e-01, 4.6129e-03, 
+ 2DIAGNOSTIC,    22, -3.182093278482e-01, 4.467459662059e-06, 8.8888e-01, 4.6961e-03, 
+ 2DIAGNOSTIC,    23, -3.182206220127e-01, 4.655314512943e-06, 8.9838e-01, 9.4929e-03, 
+ 2DIAGNOSTIC,    24, -3.182212991341e-01, 5.072511473588e-06, 9.0402e-01, 5.6410e-03, 
+ 2DIAGNOSTIC,    25, -3.182213475203e-01, 5.136940463508e-06, 9.0877e-01, 4.7522e-03, 
+ 2DIAGNOSTIC,    26, -3.182214859631e-01, 4.957551537593e-06, 9.1351e-01, 4.7359e-03, 
+ 2DIAGNOSTIC,    27, -3.182216167553e-01, 4.551715912557e-06, 9.3240e-01, 1.8893e-02, 
+ 2DIAGNOSTIC,    28, -3.182216167525e-01, 3.901635392066e-06, 9.5204e-01, 1.9639e-02, 
+ 2DIAGNOSTIC,    29, -3.182216167525e-01, 3.065752926600e-06, 9.5753e-01, 5.4951e-03, 
+ 2DIAGNOSTIC,    30, -3.182216167525e-01, 2.136505064129e-06, 9.6344e-01, 5.9061e-03, 
+ 2DIAGNOSTIC,    31, -3.182216167525e-01, 1.424428883276e-06, 9.6913e-01, 5.6860e-03, 
+ 2DIAGNOSTIC,    32, -3.182216167525e-01, 1.042611286417e-06, 9.7629e-01, 7.1671e-03, 
+DIAGNOSTIC,Iteration,metricValue,convergenceValue,ITERATION_TIME_INDEX,SINCE_LAST
+ 2DIAGNOSTIC,     1, -2.775981636853e-01, 1.797693134862e+308, 1.7611e+00, 7.8482e-01, 
+ 2DIAGNOSTIC,     2, -2.184174676958e-01, 1.797693134862e+308, 1.7668e+00, 5.7201e-03, 
+ 2DIAGNOSTIC,     3, -2.208271685554e-01, 1.797693134862e+308, 1.7723e+00, 5.4641e-03, 
+ 2DIAGNOSTIC,     4, -2.240163862211e-01, 1.797693134862e+308, 1.7776e+00, 5.2700e-03, 
+ 2DIAGNOSTIC,     5, -2.251017143132e-01, 1.797693134862e+308, 1.7832e+00, 5.6322e-03, 
+ 2DIAGNOSTIC,     6, -2.260220846336e-01, 1.797693134862e+308, 1.7884e+00, 5.1649e-03, 
+ 2DIAGNOSTIC,     7, -2.271666886757e-01, 1.797693134862e+308, 1.7936e+00, 5.2071e-03, 
+ 2DIAGNOSTIC,     8, -2.296258428295e-01, 1.797693134862e+308, 1.7993e+00, 5.7111e-03, 
+ 2DIAGNOSTIC,     9, -2.496476873970e-01, 1.797693134862e+308, 1.8078e+00, 8.4980e-03, 
+ 2DIAGNOSTIC,    10, -2.664833229670e-01, 2.883249895556e-03, 1.8138e+00, 6.0532e-03, 
+ 2DIAGNOSTIC,    11, -2.792158121424e-01, 1.300673751032e-02, 1.8209e+00, 7.0801e-03, 
+ 2DIAGNOSTIC,    12, -2.821345328142e-01, 1.457316874951e-02, 1.8278e+00, 6.8688e-03, 
+ 2DIAGNOSTIC,    13, -2.946079334134e-01, 1.583517749511e-02, 1.8376e+00, 9.8178e-03, 
+ 2DIAGNOSTIC,    14, -2.954154085388e-01, 1.574379432820e-02, 1.8434e+00, 5.8360e-03, 
+ 2DIAGNOSTIC,    15, -2.963407191851e-01, 1.437732469627e-02, 1.8491e+00, 5.6961e-03, 
+ 2DIAGNOSTIC,    16, -3.006811938599e-01, 1.226947449168e-02, 1.8559e+00, 6.7902e-03, 
+ 2DIAGNOSTIC,    17, -3.011415017646e-01, 9.445951454113e-03, 1.8625e+00, 6.5799e-03, 
+ 2DIAGNOSTIC,    18, -3.012190926435e-01, 6.250972195586e-03, 1.8690e+00, 6.5100e-03, 
+ 2DIAGNOSTIC,    19, -3.012213248652e-01, 3.984099606605e-03, 1.8810e+00, 1.1957e-02, 
+ 2DIAGNOSTIC,    20, -3.012213275592e-01, 2.498111801752e-03, 1.8904e+00, 9.3820e-03, 
+ 2DIAGNOSTIC,    21, -3.012213275973e-01, 1.584461453835e-03, 1.9011e+00, 1.0729e-02, 
+ 2DIAGNOSTIC,    22, -3.012213275979e-01, 7.397989416337e-04, 1.9102e+00, 9.1481e-03, 
+ 2DIAGNOSTIC,    23, -3.012213275979e-01, 4.805457525097e-04, 1.9218e+00, 1.1549e-02, 
+ 2DIAGNOSTIC,    24, -3.012213275979e-01, 2.371650234900e-04, 1.9288e+00, 6.9981e-03, 
+ 2DIAGNOSTIC,    25, -3.012213275979e-01, 2.686866694104e-05, 1.9381e+00, 9.3369e-03, 
+ 2DIAGNOSTIC,    26, -3.012213275979e-01, 4.606676748821e-06, 1.9449e+00, 6.7689e-03, 
+ 2DIAGNOSTIC,    27, -3.012213275979e-01, 1.375816090221e-06, 1.9517e+00, 6.8040e-03, 
+ 2DIAGNOSTIC,    28, -3.012213275979e-01, 1.240006127938e-06, 1.9583e+00, 6.6419e-03, 
+ 2DIAGNOSTIC,    29, -3.012213275979e-01, 1.193389239464e-06, 1.9675e+00, 9.1920e-03, 
+ 2DIAGNOSTIC,    30, -3.012213275979e-01, 1.150235397200e-06, 1.9740e+00, 6.4440e-03, 
+ 2DIAGNOSTIC,    31, -3.012213275979e-01, 1.110094750859e-06, 1.9847e+00, 1.0743e-02, 
+ 2DIAGNOSTIC,    32, -3.012213275979e-01, 1.072661284282e-06, 1.9913e+00, 6.5711e-03, 
+ 2DIAGNOSTIC,    33, -3.012213275979e-01, 1.037670049289e-06, 1.9980e+00, 6.7430e-03, 
+ 2DIAGNOSTIC,    34, -3.012213275979e-01, 1.004889591594e-06, 2.0068e+00, 8.7550e-03, 
+DIAGNOSTIC,Iteration,metricValue,convergenceValue,ITERATION_TIME_INDEX,SINCE_LAST
+ 2DIAGNOSTIC,     1, -1.612226487173e-01, 1.797693134862e+308, 2.8170e+00, 8.1026e-01, 
+ 2DIAGNOSTIC,     2, -1.529245014688e-01, 1.797693134862e+308, 2.8378e+00, 2.0803e-02, 
+ 2DIAGNOSTIC,     3, -1.534388983244e-01, 1.797693134862e+308, 2.8571e+00, 1.9266e-02, 
+ 2DIAGNOSTIC,     4, -1.535871417237e-01, 1.797693134862e+308, 2.8757e+00, 1.8625e-02, 
+ 2DIAGNOSTIC,     5, -1.537965830048e-01, 1.797693134862e+308, 2.8956e+00, 1.9885e-02, 
+ 2DIAGNOSTIC,     6, -1.542354459520e-01, 1.797693134862e+308, 2.9175e+00, 2.1928e-02, 
+ 2DIAGNOSTIC,     7, -1.544016042938e-01, 1.797693134862e+308, 2.9353e+00, 1.7732e-02, 
+ 2DIAGNOSTIC,     8, -1.553943239114e-01, 1.797693134862e+308, 2.9630e+00, 2.7727e-02, 
+ 2DIAGNOSTIC,     9, -1.567922175361e-01, 1.797693134862e+308, 2.9848e+00, 2.1843e-02, 
+ 2DIAGNOSTIC,    10, -1.578970431359e-01, 3.468419000542e-04, 3.0033e+00, 1.8408e-02, 
+ 2DIAGNOSTIC,    11, -1.581107314322e-01, 2.012597309510e-03, 3.0296e+00, 2.6320e-02, 
+ 2DIAGNOSTIC,    12, -1.581892494438e-01, 1.969164823734e-03, 3.0484e+00, 1.8801e-02, 
+ 2DIAGNOSTIC,    13, -1.582363997211e-01, 1.833964446293e-03, 3.0709e+00, 2.2541e-02, 
+ 2DIAGNOSTIC,    14, -1.584079942676e-01, 1.590169004490e-03, 3.0969e+00, 2.5948e-02, 
+ 2DIAGNOSTIC,    15, -1.584361335804e-01, 1.260579400401e-03, 3.1185e+00, 2.1635e-02, 
+ 2DIAGNOSTIC,    16, -1.584376437723e-01, 9.101180380469e-04, 3.1387e+00, 2.0157e-02, 
+ 2DIAGNOSTIC,    17, -1.584385670438e-01, 5.364422698078e-04, 3.1574e+00, 1.8704e-02, 
+ 2DIAGNOSTIC,    18, -1.584415881441e-01, 2.532646703376e-04, 3.1819e+00, 2.4584e-02, 
+ 2DIAGNOSTIC,    19, -1.584418452278e-01, 1.073555820891e-04, 3.2014e+00, 1.9430e-02, 
+ 2DIAGNOSTIC,    20, -1.584425304329e-01, 6.602290251279e-05, 3.2222e+00, 2.0829e-02, 
+ 2DIAGNOSTIC,    21, -1.584425852406e-01, 4.118622059088e-05, 3.2399e+00, 1.7650e-02, 
+ 2DIAGNOSTIC,    22, -1.584433235425e-01, 2.154315304441e-05, 3.2593e+00, 1.9412e-02, 
+ 2DIAGNOSTIC,    23, -1.584486044046e-01, 5.505954240967e-06, 3.2823e+00, 2.3033e-02, 
+ 2DIAGNOSTIC,    24, -1.584498781677e-01, 3.389322375189e-06, 3.2999e+00, 1.7619e-02, 
+ 2DIAGNOSTIC,    25, -1.585252564056e-01, 8.740583115556e-06, 3.3230e+00, 2.3075e-02, 
+ 2DIAGNOSTIC,    26, -1.586204794713e-01, 1.955766173808e-05, 3.3408e+00, 1.7815e-02, 
+ 2DIAGNOSTIC,    27, -1.587696200415e-01, 3.775513418303e-05, 3.3656e+00, 2.4809e-02, 
+ 2DIAGNOSTIC,    28, -1.588472847720e-01, 5.626889480700e-05, 3.3854e+00, 1.9783e-02, 
+ 2DIAGNOSTIC,    29, -1.589228846205e-01, 7.306107687970e-05, 3.4025e+00, 1.7054e-02, 
+ 2DIAGNOSTIC,    30, -1.589274986467e-01, 8.222038862614e-05, 3.4185e+00, 1.6030e-02, 
+ 2DIAGNOSTIC,    31, -1.589304875197e-01, 8.326116316729e-05, 3.4357e+00, 1.7219e-02, 
+ 2DIAGNOSTIC,    32, -1.589328426114e-01, 7.657221580926e-05, 3.4627e+00, 2.7020e-02, 
+ 2DIAGNOSTIC,    33, -1.589332539335e-01, 6.345440889725e-05, 3.4798e+00, 1.7069e-02, 
+ 2DIAGNOSTIC,    34, -1.589336068750e-01, 4.526509952180e-05, 3.4971e+00, 1.7351e-02, 
+ 2DIAGNOSTIC,    35, -1.589339087669e-01, 2.781048611451e-05, 3.5148e+00, 1.7661e-02, 
+ 2DIAGNOSTIC,    36, -1.589341555282e-01, 1.344620593289e-05, 3.5340e+00, 1.9236e-02, 
+ 2DIAGNOSTIC,    37, -1.589345154134e-01, 5.887073443834e-06, 3.5693e+00, 3.5276e-02, 
+ 2DIAGNOSTIC,    38, -1.589345171202e-01, 1.833796364432e-06, 3.5986e+00, 2.9315e-02, 
+ 2DIAGNOSTIC,    39, -1.589345173066e-01, 1.384206298371e-06, 3.6541e+00, 5.5480e-02, 
+ 2DIAGNOSTIC,    40, -1.589345173065e-01, 1.108978050474e-06, 3.6878e+00, 3.3672e-02, 
+DIAGNOSTIC,Iteration,metricValue,convergenceValue,ITERATION_TIME_INDEX,SINCE_LAST
+ 2DIAGNOSTIC,     1, -6.863972859014e-02, 1.797693134862e+308, 4.7464e+00, 1.0587e+00, 
+ 2DIAGNOSTIC,     2, -6.900939858694e-02, 1.797693134862e+308, 4.8933e+00, 1.4684e-01, 
+ 2DIAGNOSTIC,     3, -6.961387877732e-02, 1.797693134862e+308, 5.0365e+00, 1.4321e-01, 
+ 2DIAGNOSTIC,     4, -7.012508624672e-02, 1.797693134862e+308, 5.1823e+00, 1.4580e-01, 
+ 2DIAGNOSTIC,     5, -7.107749808333e-02, 1.797693134862e+308, 5.3226e+00, 1.4035e-01, 
+ 2DIAGNOSTIC,     6, -7.175280496046e-02, 1.797693134862e+308, 5.4828e+00, 1.6012e-01, 
+ 2DIAGNOSTIC,     7, -7.191917523397e-02, 1.797693134862e+308, 5.6273e+00, 1.4455e-01, 
+ 2DIAGNOSTIC,     8, -7.196784033106e-02, 1.797693134862e+308, 5.8889e+00, 2.6159e-01, 
+ 2DIAGNOSTIC,     9, -7.197086998592e-02, 1.797693134862e+308, 6.0317e+00, 1.4283e-01, 
+ 2DIAGNOSTIC,    10, -7.197725737096e-02, 3.425720931912e-03, 6.1696e+00, 1.3787e-01, 
+ 2DIAGNOSTIC,    11, -7.198062033414e-02, 2.471426926524e-03, 6.3107e+00, 1.4108e-01, 
+ 2DIAGNOSTIC,    12, -7.198526337408e-02, 1.581792222941e-03, 6.4567e+00, 1.4604e-01, 
+ 2DIAGNOSTIC,    13, -7.199482928542e-02, 8.791741525450e-04, 6.6000e+00, 1.4329e-01, 
+ 2DIAGNOSTIC,    14, -7.200501873956e-02, 3.425355073072e-04, 6.7815e+00, 1.8153e-01, 
+ 2DIAGNOSTIC,    15, -7.201174840762e-02, 9.798387776898e-05, 7.0289e+00, 2.4732e-01, 
+ 2DIAGNOSTIC,    16, -7.201185303483e-02, 4.288934377512e-05, 7.2323e+00, 2.0344e-01, 
+ 2DIAGNOSTIC,    17, -7.201185565846e-02, 2.932573748392e-05, 7.4545e+00, 2.2219e-01, 
+ 2DIAGNOSTIC,    18, -7.201185595064e-02, 2.550815606640e-05, 7.6764e+00, 2.2193e-01, 
+ 2DIAGNOSTIC,    19, -7.201185595805e-02, 2.047110041573e-05, 7.8968e+00, 2.2034e-01, 
+ 2DIAGNOSTIC,    20, -7.201185595837e-02, 1.546141757922e-05, 8.1203e+00, 2.2347e-01, 
+ 2DIAGNOSTIC,    21, -7.201185595838e-02, 1.030244727925e-05, 8.3812e+00, 2.6096e-01, 
+ 2DIAGNOSTIC,    22, -7.201185595838e-02, 5.628804196238e-06, 8.5412e+00, 1.6003e-01, 
+ 2DIAGNOSTIC,    23, -7.201185595838e-02, 2.591787775376e-06, 8.7268e+00, 1.8551e-01, 
+ 2DIAGNOSTIC,    24, -7.201185595838e-02, 1.353064690075e-06, 8.8877e+00, 1.6095e-01, 
+ 2DIAGNOSTIC,    25, -7.201185595838e-02, 1.281547456336e-06, 9.0474e+00, 1.5970e-01, 
+ 2DIAGNOSTIC,    26, -7.201185595838e-02, 1.231494631652e-06, 9.2320e+00, 1.8463e-01, 
+ 2DIAGNOSTIC,    27, -7.201185595838e-02, 1.185553017119e-06, 9.4106e+00, 1.7857e-01, 
+ 2DIAGNOSTIC,    28, -7.201185595838e-02, 1.142954128452e-06, 9.5911e+00, 1.8055e-01, 
+ 2DIAGNOSTIC,    29, -7.201185595838e-02, 1.103311290739e-06, 9.7574e+00, 1.6621e-01, 
+ 2DIAGNOSTIC,    30, -7.201185595838e-02, 1.066326294472e-06, 9.9163e+00, 1.5890e-01, 
+ 2DIAGNOSTIC,    31, -7.201185595838e-02, 1.031740482688e-06, 1.0082e+01, 1.6560e-01, 
+  Elapsed time (stage 0): 1.0682e+01
+
+
+Stage 1
+  iterations = 1000x500x250x100
+  convergence threshold = 1.0000e-06
+  convergence window size = 10
+  number of levels = 4
+  using the Mattes MI metric (number of bins = 32, weight = 1.0000e+00)
+  preprocessing:  winsorizing the image intensities
+  Shrink factors (level 1 out of 4): [12, 12, 12]
+  Shrink factors (level 2 out of 4): [8, 8, 8]
+  Shrink factors (level 3 out of 4): [4, 4, 4]
+  Shrink factors (level 4 out of 4): [2, 2, 2]
+  smoothing sigmas per level: [4, 3, 2, 1]
+  regular sampling (percentage = 2.5000e-01)
+
+*** Running AffineTransform registration ***
+
+DIAGNOSTIC,Iteration,metricValue,convergenceValue,ITERATION_TIME_INDEX,SINCE_LAST
+ 2DIAGNOSTIC,     1, -2.841380817174e-01, 1.797693134862e+308, 8.0696e-01, 8.0696e-01, 
+ 2DIAGNOSTIC,     2, -2.869322672112e-01, 1.797693134862e+308, 8.1150e-01, 4.5412e-03, 
+ 2DIAGNOSTIC,     3, -2.917849448884e-01, 1.797693134862e+308, 8.1599e-01, 4.4880e-03, 
+ 2DIAGNOSTIC,     4, -3.037272263541e-01, 1.797693134862e+308, 8.2040e-01, 4.4100e-03, 
+ 2DIAGNOSTIC,     5, -3.140106658062e-01, 1.797693134862e+308, 8.2574e-01, 5.3420e-03, 
+ 2DIAGNOSTIC,     6, -3.238663172312e-01, 1.797693134862e+308, 8.3160e-01, 5.8560e-03, 
+ 2DIAGNOSTIC,     7, -3.248320687164e-01, 1.797693134862e+308, 8.3617e-01, 4.5719e-03, 
+ 2DIAGNOSTIC,     8, -3.262693277241e-01, 1.797693134862e+308, 8.4068e-01, 4.5090e-03, 
+ 2DIAGNOSTIC,     9, -3.273735732865e-01, 1.797693134862e+308, 8.4681e-01, 6.1378e-03, 
+ 2DIAGNOSTIC,    10, -3.276979964558e-01, 1.047240093316e-02, 8.5154e-01, 4.7231e-03, 
+ 2DIAGNOSTIC,    11, -3.280594929681e-01, 7.853574858570e-03, 8.5798e-01, 6.4402e-03, 
+ 2DIAGNOSTIC,    12, -3.281985097729e-01, 5.220473307883e-03, 8.6281e-01, 4.8299e-03, 
+ 2DIAGNOSTIC,    13, -3.283821837418e-01, 2.883529626947e-03, 8.6758e-01, 4.7698e-03, 
+ 2DIAGNOSTIC,    14, -3.286095457938e-01, 1.402685313335e-03, 8.7486e-01, 7.2830e-03, 
+ 2DIAGNOSTIC,    15, -3.286740739193e-01, 6.023654141823e-04, 8.7975e-01, 4.8862e-03, 
+ 2DIAGNOSTIC,    16, -3.287134997441e-01, 4.043416797232e-04, 8.8465e-01, 4.9000e-03, 
+ 2DIAGNOSTIC,    17, -3.288027284837e-01, 2.475991836570e-04, 8.8951e-01, 4.8652e-03, 
+ 2DIAGNOSTIC,    18, -3.289247056348e-01, 1.620246465522e-04, 8.9416e-01, 4.6499e-03, 
+ 2DIAGNOSTIC,    19, -3.290134994774e-01, 1.263529197645e-04, 9.0029e-01, 6.1300e-03, 
+ 2DIAGNOSTIC,    20, -3.290553324350e-01, 9.872953542264e-05, 9.0608e-01, 5.7840e-03, 
+ 2DIAGNOSTIC,    21, -3.291321709529e-01, 8.340486283964e-05, 9.1304e-01, 6.9609e-03, 
+ 2DIAGNOSTIC,    22, -3.292461763942e-01, 7.191418950259e-05, 9.1784e-01, 4.8020e-03, 
+ 2DIAGNOSTIC,    23, -3.292558154241e-01, 6.194113463019e-05, 9.2264e-01, 4.8010e-03, 
+ 2DIAGNOSTIC,    24, -3.293009996011e-01, 5.720489549462e-05, 9.2886e-01, 6.2180e-03, 
+ 2DIAGNOSTIC,    25, -3.293139632306e-01, 5.040099773949e-05, 9.3361e-01, 4.7522e-03, 
+ 2DIAGNOSTIC,    26, -3.293430259256e-01, 4.180281916702e-05, 9.4145e-01, 7.8421e-03, 
+ 2DIAGNOSTIC,    27, -3.293443430789e-01, 3.286786367853e-05, 9.4620e-01, 4.7481e-03, 
+ 2DIAGNOSTIC,    28, -3.293463856655e-01, 2.547078720531e-05, 9.5094e-01, 4.7421e-03, 
+ 2DIAGNOSTIC,    29, -3.293529890305e-01, 1.923190104292e-05, 9.5548e-01, 4.5428e-03, 
+ 2DIAGNOSTIC,    30, -3.293671479403e-01, 1.330934923885e-05, 9.5994e-01, 4.4570e-03, 
+ 2DIAGNOSTIC,    31, -3.293941461437e-01, 9.472506325929e-06, 9.6463e-01, 4.6909e-03, 
+ 2DIAGNOSTIC,    32, -3.294244712461e-01, 9.041350991494e-06, 9.6924e-01, 4.6108e-03, 
+ 2DIAGNOSTIC,    33, -3.297240199286e-01, 1.607641630732e-05, 9.7824e-01, 9.0001e-03, 
+ 2DIAGNOSTIC,    34, -3.297780252564e-01, 2.361363680325e-05, 9.8326e-01, 5.0151e-03, 
+ 2DIAGNOSTIC,    35, -3.298583666067e-01, 3.093411077857e-05, 9.8894e-01, 5.6860e-03, 
+ 2DIAGNOSTIC,    36, -3.300652775602e-01, 4.080114693669e-05, 9.9450e-01, 5.5540e-03, 
+ 2DIAGNOSTIC,    37, -3.301163750235e-01, 4.743931958829e-05, 9.9928e-01, 4.7810e-03, 
+ 2DIAGNOSTIC,    38, -3.302855305810e-01, 5.317488535794e-05, 1.0050e+00, 5.6849e-03, 
+ 2DIAGNOSTIC,    39, -3.304319291846e-01, 5.699867283883e-05, 1.0107e+00, 5.6889e-03, 
+ 2DIAGNOSTIC,    40, -3.305512085299e-01, 5.821049956461e-05, 1.0175e+00, 6.8710e-03, 
+ 2DIAGNOSTIC,    41, -3.305763461759e-01, 5.501503618468e-05, 1.0223e+00, 4.8189e-03, 
+ 2DIAGNOSTIC,    42, -3.306370877769e-01, 4.857359579074e-05, 1.0270e+00, 4.6940e-03, 
+ 2DIAGNOSTIC,    43, -3.307157623682e-01, 4.555359052119e-05, 1.0317e+00, 4.6899e-03, 
+ 2DIAGNOSTIC,    44, -3.307455043128e-01, 3.998282227080e-05, 1.0381e+00, 6.3779e-03, 
+ 2DIAGNOSTIC,    45, -3.307534458835e-01, 3.254471960477e-05, 1.0438e+00, 5.6770e-03, 
+ 2DIAGNOSTIC,    46, -3.307563202508e-01, 2.643483336955e-05, 1.0487e+00, 4.9181e-03, 
+ 2DIAGNOSTIC,    47, -3.307618333705e-01, 1.913947574260e-05, 1.0543e+00, 5.6040e-03, 
+ 2DIAGNOSTIC,    48, -3.307680743873e-01, 1.350139551788e-05, 1.0605e+00, 6.2199e-03, 
+ 2DIAGNOSTIC,    49, -3.307784709358e-01, 9.605406495625e-06, 1.0800e+00, 1.9431e-02, 
+ 2DIAGNOSTIC,    50, -3.307784709313e-01, 7.106203834858e-06, 1.0992e+00, 1.9266e-02, 
+ 2DIAGNOSTIC,    51, -3.307784709313e-01, 4.513645882484e-06, 1.1049e+00, 5.7070e-03, 
+ 2DIAGNOSTIC,    52, -3.307784709313e-01, 2.639072034863e-06, 1.1106e+00, 5.6391e-03, 
+ 2DIAGNOSTIC,    53, -3.307784709313e-01, 1.921454220909e-06, 1.1160e+00, 5.4710e-03, 
+ 2DIAGNOSTIC,    54, -3.307784709313e-01, 1.579636389193e-06, 1.1222e+00, 6.1390e-03, 
+ 2DIAGNOSTIC,    55, -3.307784709313e-01, 1.282562135350e-06, 1.1278e+00, 5.6062e-03, 
+DIAGNOSTIC,Iteration,metricValue,convergenceValue,ITERATION_TIME_INDEX,SINCE_LAST
+ 2DIAGNOSTIC,     1, -2.876735128797e-01, 1.797693134862e+308, 1.9179e+00, 7.9016e-01, 
+ 2DIAGNOSTIC,     2, -2.828475665964e-01, 1.797693134862e+308, 1.9237e+00, 5.7390e-03, 
+ 2DIAGNOSTIC,     3, -2.845196173286e-01, 1.797693134862e+308, 1.9293e+00, 5.6062e-03, 
+ 2DIAGNOSTIC,     4, -2.864505622983e-01, 1.797693134862e+308, 1.9350e+00, 5.6970e-03, 
+ 2DIAGNOSTIC,     5, -2.888560471134e-01, 1.797693134862e+308, 1.9417e+00, 6.6669e-03, 
+ 2DIAGNOSTIC,     6, -2.904211876915e-01, 1.797693134862e+308, 1.9483e+00, 6.6009e-03, 
+ 2DIAGNOSTIC,     7, -2.924274543101e-01, 1.797693134862e+308, 1.9540e+00, 5.7771e-03, 
+ 2DIAGNOSTIC,     8, -2.963633699762e-01, 1.797693134862e+308, 1.9627e+00, 8.7039e-03, 
+ 2DIAGNOSTIC,     9, -3.001599835596e-01, 1.797693134862e+308, 1.9684e+00, 5.7042e-03, 
+ 2DIAGNOSTIC,    10, -3.033169520855e-01, 4.113781794967e-03, 1.9746e+00, 6.1979e-03, 
+ 2DIAGNOSTIC,    11, -3.062425008501e-01, 4.706490103492e-03, 1.9815e+00, 6.8181e-03, 
+ 2DIAGNOSTIC,    12, -3.080593481323e-01, 4.529284361154e-03, 1.9896e+00, 8.1520e-03, 
+ 2DIAGNOSTIC,    13, -3.090940419447e-01, 4.168764793585e-03, 1.9966e+00, 7.0119e-03, 
+ 2DIAGNOSTIC,    14, -3.096628970808e-01, 3.651079970002e-03, 2.0056e+00, 8.9588e-03, 
+ 2DIAGNOSTIC,    15, -3.100482015443e-01, 3.050411140585e-03, 2.0113e+00, 5.7721e-03, 
+ 2DIAGNOSTIC,    16, -3.113153033014e-01, 2.417159222838e-03, 2.0183e+00, 6.9320e-03, 
+ 2DIAGNOSTIC,    17, -3.115149491885e-01, 1.758491656558e-03, 2.0243e+00, 6.0298e-03, 
+ 2DIAGNOSTIC,    18, -3.115936527982e-01, 1.223938883306e-03, 2.0313e+00, 6.9828e-03, 
+ 2DIAGNOSTIC,    19, -3.110224221172e-01, 7.946565799617e-04, 2.0412e+00, 9.9390e-03, 
+ 2DIAGNOSTIC,    20, -3.103737357189e-01, 4.530570570433e-04, 2.0483e+00, 7.0999e-03, 
+ 2DIAGNOSTIC,    21, -3.104039098383e-01, 2.340364565649e-04, 2.0552e+00, 6.9032e-03, 
+ 2DIAGNOSTIC,    22, -3.104496263417e-01, 9.180916962628e-05, 2.0637e+00, 8.4689e-03, 
+DIAGNOSTIC,Iteration,metricValue,convergenceValue,ITERATION_TIME_INDEX,SINCE_LAST
+ 2DIAGNOSTIC,     1, -1.780023740683e-01, 1.797693134862e+308, 2.9018e+00, 8.3812e-01, 
+ 2DIAGNOSTIC,     2, -1.568871620526e-01, 1.797693134862e+308, 2.9225e+00, 2.0656e-02, 
+ 2DIAGNOSTIC,     3, -1.580198291455e-01, 1.797693134862e+308, 2.9432e+00, 2.0740e-02, 
+ 2DIAGNOSTIC,     4, -1.592022856478e-01, 1.797693134862e+308, 2.9651e+00, 2.1887e-02, 
+ 2DIAGNOSTIC,     5, -1.595718092726e-01, 1.797693134862e+308, 2.9887e+00, 2.3610e-02, 
+ 2DIAGNOSTIC,     6, -1.586952540871e-01, 1.797693134862e+308, 3.0109e+00, 2.2177e-02, 
+ 2DIAGNOSTIC,     7, -1.603054174508e-01, 1.797693134862e+308, 3.0331e+00, 2.2187e-02, 
+ 2DIAGNOSTIC,     8, -1.619246537741e-01, 1.797693134862e+308, 3.0705e+00, 3.7424e-02, 
+ 2DIAGNOSTIC,     9, -1.619666905656e-01, 1.797693134862e+308, 3.0937e+00, 2.3211e-02, 
+DIAGNOSTIC,Iteration,metricValue,convergenceValue,ITERATION_TIME_INDEX,SINCE_LAST
+ 2DIAGNOSTIC,     1, -6.608581787700e-02, 1.797693134862e+308, 4.1471e+00, 1.0534e+00, 
+ 2DIAGNOSTIC,     2, -6.661696949842e-02, 1.797693134862e+308, 4.3015e+00, 1.5436e-01, 
+ 2DIAGNOSTIC,     3, -6.774078060116e-02, 1.797693134862e+308, 4.4564e+00, 1.5491e-01, 
+ 2DIAGNOSTIC,     4, -6.940454183926e-02, 1.797693134862e+308, 4.6078e+00, 1.5136e-01, 
+ 2DIAGNOSTIC,     5, -7.142185827474e-02, 1.797693134862e+308, 4.7622e+00, 1.5449e-01, 
+ 2DIAGNOSTIC,     6, -7.318046965577e-02, 1.797693134862e+308, 4.9108e+00, 1.4854e-01, 
+ 2DIAGNOSTIC,     7, -7.499841137639e-02, 1.797693134862e+308, 5.0650e+00, 1.5418e-01, 
+ 2DIAGNOSTIC,     8, -7.777392836519e-02, 1.797693134862e+308, 5.2401e+00, 1.7510e-01, 
+ 2DIAGNOSTIC,     9, -7.873337596233e-02, 1.797693134862e+308, 5.4341e+00, 1.9399e-01, 
+ 2DIAGNOSTIC,    10, -8.003294752608e-02, 1.350089657179e-02, 5.5852e+00, 1.5112e-01, 
+ 2DIAGNOSTIC,    11, -8.107397236094e-02, 1.233221265638e-02, 5.7593e+00, 1.7414e-01, 
+ 2DIAGNOSTIC,    12, -8.433725674709e-02, 1.144501150023e-02, 5.9554e+00, 1.9603e-01, 
+ 2DIAGNOSTIC,    13, -8.784064870916e-02, 1.096459923378e-02, 6.1065e+00, 1.5116e-01, 
+ 2DIAGNOSTIC,    14, -8.816368122544e-02, 1.008346855333e-02, 6.2576e+00, 1.5109e-01, 
+ 2DIAGNOSTIC,    15, -8.854614582642e-02, 9.031250291707e-03, 6.5002e+00, 2.4261e-01, 
+ 2DIAGNOSTIC,    16, -8.864634230589e-02, 7.735128227585e-03, 6.6534e+00, 1.5316e-01, 
+ 2DIAGNOSTIC,    17, -8.875160237315e-02, 6.290866627141e-03, 6.8271e+00, 1.7374e-01, 
+ 2DIAGNOSTIC,    18, -8.900637748256e-02, 5.042242799152e-03, 7.0035e+00, 1.7635e-01, 
+ 2DIAGNOSTIC,    19, -8.907020999480e-02, 3.669740975822e-03, 7.1544e+00, 1.5090e-01, 
+ 2DIAGNOSTIC,    20, -8.913274897493e-02, 2.363912326367e-03, 7.3097e+00, 1.5537e-01, 
+ 2DIAGNOSTIC,    21, -8.918255255741e-02, 1.152615148032e-03, 7.4819e+00, 1.7214e-01, 
+ 2DIAGNOSTIC,    22, -8.927245360692e-02, 4.766606066305e-04, 7.6324e+00, 1.5049e-01, 
+ 2DIAGNOSTIC,    23, -8.944211374296e-02, 3.784246583580e-04, 7.7873e+00, 1.5494e-01, 
+ 2DIAGNOSTIC,    24, -8.975262442769e-02, 3.439640890978e-04, 7.9823e+00, 1.9496e-01, 
+ 2DIAGNOSTIC,    25, -9.045856242144e-02, 4.307854472423e-04, 8.1960e+00, 2.1369e-01, 
+ 2DIAGNOSTIC,    26, -9.049681028684e-02, 4.865640551284e-04, 8.3465e+00, 1.5056e-01, 
+ 2DIAGNOSTIC,    27, -9.063738763068e-02, 5.241691315653e-04, 8.5022e+00, 1.5567e-01, 
+ 2DIAGNOSTIC,    28, -9.072848755073e-02, 5.524355622148e-04, 8.6735e+00, 1.7128e-01, 
+ 2DIAGNOSTIC,    29, -9.084532726291e-02, 5.469489882976e-04, 8.8883e+00, 2.1479e-01, 
+ 2DIAGNOSTIC,    30, -9.089224934970e-02, 5.016187467096e-04, 9.0382e+00, 1.4999e-01, 
+ 2DIAGNOSTIC,    31, -9.109020551803e-02, 4.395959292230e-04, 9.1922e+00, 1.5393e-01, 
+ 2DIAGNOSTIC,    32, -9.113124320678e-02, 3.546647440357e-04, 9.3454e+00, 1.5324e-01, 
+ 2DIAGNOSTIC,    33, -9.115386522922e-02, 2.615159855050e-04, 9.4966e+00, 1.5120e-01, 
+ 2DIAGNOSTIC,    34, -9.121419886858e-02, 1.847074091888e-04, 9.7543e+00, 2.5766e-01, 
+ 2DIAGNOSTIC,    35, -9.122873122065e-02, 1.643782342819e-04, 9.9054e+00, 1.5109e-01, 
+ 2DIAGNOSTIC,    36, -9.125623142137e-02, 1.355131463916e-04, 1.0078e+01, 1.7304e-01, 
+ 2DIAGNOSTIC,    37, -9.130222422233e-02, 1.122840413709e-04, 1.0230e+01, 1.5204e-01, 
+ 2DIAGNOSTIC,    38, -9.133195515609e-02, 9.031328284530e-05, 1.0404e+01, 1.7356e-01, 
+ 2DIAGNOSTIC,    39, -9.136895130139e-02, 7.425983048306e-05, 1.0582e+01, 1.7826e-01, 
+ 2DIAGNOSTIC,    40, -9.139390213108e-02, 5.761645289387e-05, 1.1113e+01, 5.3068e-01, 
+ 2DIAGNOSTIC,    41, -9.139389754462e-02, 5.244709156348e-05, 1.1263e+01, 1.4995e-01, 
+ 2DIAGNOSTIC,    42, -9.139392694869e-02, 4.588202405752e-05, 1.1417e+01, 1.5423e-01, 
+ 2DIAGNOSTIC,    43, -9.139397675840e-02, 3.697261744280e-05, 1.1570e+01, 1.5318e-01, 
+ 2DIAGNOSTIC,    44, -9.139406105850e-02, 2.957002851507e-05, 1.1725e+01, 1.5433e-01, 
+ 2DIAGNOSTIC,    45, -9.139420342670e-02, 2.082069197621e-05, 1.1877e+01, 1.5252e-01, 
+ 2DIAGNOSTIC,    46, -9.139444361016e-02, 1.251390847645e-05, 1.2032e+01, 1.5488e-01, 
+ 2DIAGNOSTIC,    47, -9.139484747734e-02, 6.707306755522e-06, 1.2183e+01, 1.5141e-01, 
+ 2DIAGNOSTIC,    48, -9.139553117213e-02, 2.616042644277e-06, 1.2336e+01, 1.5211e-01, 
+ 2DIAGNOSTIC,    49, -9.139675553532e-02, 1.032763354510e-06, 1.2487e+01, 1.5097e-01, 
+ 2DIAGNOSTIC,    50, -9.139886404227e-02, 1.258314298126e-06, 1.2638e+01, 1.5110e-01, 
+ 2DIAGNOSTIC,    51, -9.140245907451e-02, 1.646659803754e-06, 1.2794e+01, 1.5600e-01, 
+ 2DIAGNOSTIC,    52, -9.140889225430e-02, 2.327456086137e-06, 1.2950e+01, 1.5600e-01, 
+ 2DIAGNOSTIC,    53, -9.142027870519e-02, 3.518507347706e-06, 1.3102e+01, 1.5209e-01, 
+ 2DIAGNOSTIC,    54, -9.143992699778e-02, 5.567860990707e-06, 1.3259e+01, 1.5687e-01, 
+ 2DIAGNOSTIC,    55, -9.147044705550e-02, 8.863272723789e-06, 1.3409e+01, 1.5033e-01, 
+ 2DIAGNOSTIC,    56, -9.151098897707e-02, 1.358826278199e-05, 1.3561e+01, 1.5233e-01, 
+ 2DIAGNOSTIC,    57, -9.155739827453e-02, 1.953446187929e-05, 1.3712e+01, 1.5072e-01, 
+ 2DIAGNOSTIC,    58, -9.162101752663e-02, 2.702379146921e-05, 1.3868e+01, 1.5572e-01, 
+ 2DIAGNOSTIC,    59, -9.171344992260e-02, 3.681606498861e-05, 1.4025e+01, 1.5777e-01, 
+ 2DIAGNOSTIC,    60, -9.177676294513e-02, 4.623476188163e-05, 1.4242e+01, 2.1681e-01, 
+ 2DIAGNOSTIC,    61, -9.178666594115e-02, 5.163790065522e-05, 1.4397e+01, 1.5500e-01, 
+ 2DIAGNOSTIC,    62, -9.181196207443e-02, 5.367034303919e-05, 1.4551e+01, 1.5411e-01, 
+ 2DIAGNOSTIC,    63, -9.182665899796e-02, 5.183124013150e-05, 1.4722e+01, 1.7066e-01, 
+ 2DIAGNOSTIC,    64, -9.183013272892e-02, 4.620534607445e-05, 1.4897e+01, 1.7490e-01, 
+ 2DIAGNOSTIC,    65, -9.183825388443e-02, 3.826317983981e-05, 1.5048e+01, 1.5096e-01, 
+ 2DIAGNOSTIC,    66, -9.184401521838e-02, 2.923368280663e-05, 1.5200e+01, 1.5218e-01, 
+ 2DIAGNOSTIC,    67, -9.185103804368e-02, 2.028923176004e-05, 1.5379e+01, 1.7896e-01, 
+ 2DIAGNOSTIC,    68, -9.185905302431e-02, 1.301965281389e-05, 1.5531e+01, 1.5218e-01, 
+ 2DIAGNOSTIC,    69, -9.186540755233e-02, 9.318666244162e-06, 1.5721e+01, 1.8951e-01, 
+ 2DIAGNOSTIC,    70, -9.186069795640e-02, 7.584756411022e-06, 1.5873e+01, 1.5214e-01, 
+ 2DIAGNOSTIC,    71, -9.186826306195e-02, 5.996439017313e-06, 1.6048e+01, 1.7469e-01, 
+ 2DIAGNOSTIC,    72, -9.188407797179e-02, 5.735919820291e-06, 1.6225e+01, 1.7697e-01, 
+ 2DIAGNOSTIC,    73, -9.188812529718e-02, 5.778203922379e-06, 1.6400e+01, 1.7539e-01, 
+ 2DIAGNOSTIC,    74, -9.189247596179e-02, 5.647663011060e-06, 1.6566e+01, 1.6607e-01, 
+ 2DIAGNOSTIC,    75, -9.189464378943e-02, 5.471889694990e-06, 1.6725e+01, 1.5929e-01, 
+ 2DIAGNOSTIC,    76, -9.189946586243e-02, 5.258785887325e-06, 1.6886e+01, 1.6122e-01, 
+ 2DIAGNOSTIC,    77, -9.190777866732e-02, 5.202143661247e-06, 1.7144e+01, 2.5799e-01, 
+ 2DIAGNOSTIC,    78, -9.190767328201e-02, 4.995661883689e-06, 1.7298e+01, 1.5385e-01, 
+ 2DIAGNOSTIC,    79, -9.190887370770e-02, 4.683646462543e-06, 1.7468e+01, 1.6937e-01, 
+ 2DIAGNOSTIC,    80, -9.190918472964e-02, 3.794140837676e-06, 1.7742e+01, 2.7430e-01, 
+ 2DIAGNOSTIC,    81, -9.190922070287e-02, 2.884227657759e-06, 1.7898e+01, 1.5599e-01, 
+ 2DIAGNOSTIC,    82, -9.190924554703e-02, 2.371380224611e-06, 1.8069e+01, 1.7107e-01, 
+ 2DIAGNOSTIC,    83, -9.190934805613e-02, 1.839568778949e-06, 1.8237e+01, 1.6810e-01, 
+ 2DIAGNOSTIC,    84, -9.190954566390e-02, 1.359229626669e-06, 1.8393e+01, 1.5547e-01, 
+  Elapsed time (stage 1): 1.9011e+01
+
+
+Stage 2
+  iterations = 100x100x70x50x20
+  convergence threshold = 1.0000e-06
+  convergence window size = 10
+  number of levels = 5
+  using the Mattes MI metric (number of bins = 4, weight = 1.0000e+00)
+  preprocessing:  winsorizing the image intensities
+  Shrink factors (level 1 out of 5): [10, 10, 10]
+  Shrink factors (level 2 out of 5): [6, 6, 6]
+  Shrink factors (level 3 out of 5): [4, 4, 4]
+  Shrink factors (level 4 out of 5): [2, 2, 2]
+  Shrink factors (level 5 out of 5): [1, 1, 1]
+  smoothing sigmas per level: [5, 3, 2, 1, 0]
+  Using default NONE metricSamplingStrategy 
+
+*** Running SyN registration (varianceForUpdateField = 3.0000e+00, varianceForTotalField = 0.0000e+00) ***
+
+XXDIAGNOSTIC,Iteration,metricValue,convergenceValue,ITERATION_TIME_INDEX,SINCE_LAST
+ 1DIAGNOSTIC,     1, -0.000000000000e+00, 1.797693134862e+308, 7.3179e-01, 7.3179e-01, 
+ 1DIAGNOSTIC,     2, -0.000000000000e+00, 1.797693134862e+308, 7.4719e-01, 1.5408e-02, 
+ 1DIAGNOSTIC,     3, -0.000000000000e+00, 1.797693134862e+308, 7.6352e-01, 1.6324e-02, 
+ 1DIAGNOSTIC,     4, -0.000000000000e+00, 1.797693134862e+308, 7.7936e-01, 1.5839e-02, 
+ 1DIAGNOSTIC,     5, -0.000000000000e+00, 1.797693134862e+308, 7.9563e-01, 1.6275e-02, 
+ 1DIAGNOSTIC,     6, -0.000000000000e+00, 1.797693134862e+308, 8.1149e-01, 1.5862e-02, 
+ 1DIAGNOSTIC,     7, -0.000000000000e+00, 1.797693134862e+308, 8.2772e-01, 1.6226e-02, 
+ 1DIAGNOSTIC,     8, -0.000000000000e+00, 1.797693134862e+308, 8.4461e-01, 1.6894e-02, 
+ 1DIAGNOSTIC,     9, -0.000000000000e+00, 1.797693134862e+308, 8.6083e-01, 1.6220e-02, 
+ 1DIAGNOSTIC,    10, -0.000000000000e+00, -0.000000000000e+00, 8.7674e-01, 1.5906e-02, 
+XXDIAGNOSTIC,Iteration,metricValue,convergenceValue,ITERATION_TIME_INDEX,SINCE_LAST
+ 1DIAGNOSTIC,     1, -0.000000000000e+00, 1.797693134862e+308, 1.6904e+00, 8.1371e-01, 
+ 1DIAGNOSTIC,     2, -0.000000000000e+00, 1.797693134862e+308, 1.7430e+00, 5.2600e-02, 
+ 1DIAGNOSTIC,     3, -0.000000000000e+00, 1.797693134862e+308, 1.7965e+00, 5.3490e-02, 
+ 1DIAGNOSTIC,     4, -0.000000000000e+00, 1.797693134862e+308, 1.8542e+00, 5.7688e-02, 
+ 1DIAGNOSTIC,     5, -0.000000000000e+00, 1.797693134862e+308, 1.9077e+00, 5.3523e-02, 
+ 1DIAGNOSTIC,     6, -0.000000000000e+00, 1.797693134862e+308, 1.9620e+00, 5.4300e-02, 
+ 1DIAGNOSTIC,     7, -0.000000000000e+00, 1.797693134862e+308, 2.0142e+00, 5.2166e-02, 
+ 1DIAGNOSTIC,     8, -0.000000000000e+00, 1.797693134862e+308, 2.0682e+00, 5.3949e-02, 
+ 1DIAGNOSTIC,     9, -0.000000000000e+00, 1.797693134862e+308, 2.1230e+00, 5.4804e-02, 
+ 1DIAGNOSTIC,    10, -0.000000000000e+00, -0.000000000000e+00, 2.1816e+00, 5.8589e-02, 
+XXDIAGNOSTIC,Iteration,metricValue,convergenceValue,ITERATION_TIME_INDEX,SINCE_LAST
+ 1DIAGNOSTIC,     1, -0.000000000000e+00, 1.797693134862e+308, 3.1174e+00, 9.3585e-01, 
+ 1DIAGNOSTIC,     2, -0.000000000000e+00, 1.797693134862e+308, 3.2648e+00, 1.4737e-01, 
+ 1DIAGNOSTIC,     3, -0.000000000000e+00, 1.797693134862e+308, 3.4098e+00, 1.4498e-01, 
+ 1DIAGNOSTIC,     4, -0.000000000000e+00, 1.797693134862e+308, 3.5575e+00, 1.4771e-01, 
+ 1DIAGNOSTIC,     5, -0.000000000000e+00, 1.797693134862e+308, 3.7199e+00, 1.6246e-01, 
+ 1DIAGNOSTIC,     6, -0.000000000000e+00, 1.797693134862e+308, 3.8788e+00, 1.5887e-01, 
+ 1DIAGNOSTIC,     7, -0.000000000000e+00, 1.797693134862e+308, 4.0271e+00, 1.4833e-01, 
+ 1DIAGNOSTIC,     8, -0.000000000000e+00, 1.797693134862e+308, 4.1700e+00, 1.4287e-01, 
+ 1DIAGNOSTIC,     9, -0.000000000000e+00, 1.797693134862e+308, 4.3376e+00, 1.6761e-01, 
+ 1DIAGNOSTIC,    10, -0.000000000000e+00, -0.000000000000e+00, 4.4841e+00, 1.4654e-01, 
+XXDIAGNOSTIC,Iteration,metricValue,convergenceValue,ITERATION_TIME_INDEX,SINCE_LAST
+ 1DIAGNOSTIC,     1, -0.000000000000e+00, 1.797693134862e+308, 6.4594e+00, 1.9753e+00, 
+ 1DIAGNOSTIC,     2, -0.000000000000e+00, 1.797693134862e+308, 7.5473e+00, 1.0879e+00, 
+ 1DIAGNOSTIC,     3, -0.000000000000e+00, 1.797693134862e+308, 8.7408e+00, 1.1935e+00, 
+ 1DIAGNOSTIC,     4, -0.000000000000e+00, 1.797693134862e+308, 9.8977e+00, 1.1569e+00, 
+ 1DIAGNOSTIC,     5, -0.000000000000e+00, 1.797693134862e+308, 1.0984e+01, 1.0860e+00, 
+ 1DIAGNOSTIC,     6, -0.000000000000e+00, 1.797693134862e+308, 1.2096e+01, 1.1126e+00, 
+ 1DIAGNOSTIC,     7, -0.000000000000e+00, 1.797693134862e+308, 1.3329e+01, 1.2330e+00, 
+ 1DIAGNOSTIC,     8, -0.000000000000e+00, 1.797693134862e+308, 1.4467e+01, 1.1374e+00, 
+ 1DIAGNOSTIC,     9, -0.000000000000e+00, 1.797693134862e+308, 1.5592e+01, 1.1255e+00, 
+ 1DIAGNOSTIC,    10, -0.000000000000e+00, -0.000000000000e+00, 1.6752e+01, 1.1598e+00, 
+XXDIAGNOSTIC,Iteration,metricValue,convergenceValue,ITERATION_TIME_INDEX,SINCE_LAST
+ 1DIAGNOSTIC,     1, -0.000000000000e+00, 1.797693134862e+308, 2.8078e+01, 1.1327e+01, 
+ 1DIAGNOSTIC,     2, -0.000000000000e+00, 1.797693134862e+308, 3.8011e+01, 9.9324e+00, 
+ 1DIAGNOSTIC,     3, -0.000000000000e+00, 1.797693134862e+308, 4.8606e+01, 1.0595e+01, 
+ 1DIAGNOSTIC,     4, -0.000000000000e+00, 1.797693134862e+308, 5.8584e+01, 9.9782e+00, 
+ 1DIAGNOSTIC,     5, -0.000000000000e+00, 1.797693134862e+308, 6.9234e+01, 1.0650e+01, 
+ 1DIAGNOSTIC,     6, -0.000000000000e+00, 1.797693134862e+308, 7.9470e+01, 1.0236e+01, 
+ 1DIAGNOSTIC,     7, -0.000000000000e+00, 1.797693134862e+308, 8.9158e+01, 9.6885e+00, 
+ 1DIAGNOSTIC,     8, -0.000000000000e+00, 1.797693134862e+308, 9.9202e+01, 1.0044e+01, 
+ 1DIAGNOSTIC,     9, -0.000000000000e+00, 1.797693134862e+308, 1.0922e+02, 1.0022e+01, 
+ 1DIAGNOSTIC,    10, -0.000000000000e+00, -0.000000000000e+00, 1.1996e+02, 1.0737e+01, 
+  Elapsed time (stage 2): 121.2
+
+
+Total elapsed time: 151.1
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+** AFNI converts NIFTI_datatype=64 (FLOAT64) in file /gpfs/gsfs11/users/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-05_task-movie_run-01_VASO_working_ANTs/warped_MP2RAGE.nii to FLOAT32
+     Warnings of this type will be muted for this session.
+     Set AFNI_NIFTI_TYPE_WARN to YES to see them all, NO to see none.
+++ Output dataset ./warped_MP2RAGE.nii
+FINISHED
+Files are in /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-05_task-movie_run-01_VASO_working_ANTs
+returning to original dir
+Applying ANTS xfm /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-05_task-movie_run-01_VASO_working_ANTs/registered_1Warp.nii.gz
+converting to short to save space 
+resamplign to /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-05_task-movie_run-01_VASO_working_bias/muncorr.nii
+outputs: warped_equi_volume_layers_n3.nii
+         warped_equi_volume_layers_n3.resample2muncorr.nii
+       
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+** AFNI converts NIFTI_datatype=64 (FLOAT64) in file /gpfs/gsfs11/users/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/warped_equi_volume_layers_n3.nii to FLOAT32
+     Warnings of this type will be muted for this session.
+     Set AFNI_NIFTI_TYPE_WARN to YES to see them all, NO to see none.
+++ Output dataset ./warped_equi_volume_layers_n3.nii
+Applying ANTS xfm /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-05_task-movie_run-01_VASO_working_ANTs/registered_1Warp.nii.gz
+converting to short to save space 
+resamplign to /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-05_task-movie_run-01_VASO_working_bias/muncorr.nii
+outputs: warped_equi_volume_layers_n10.nii
+         warped_equi_volume_layers_n10.resample2muncorr.nii
+       
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+** AFNI converts NIFTI_datatype=64 (FLOAT64) in file /gpfs/gsfs11/users/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/warped_equi_volume_layers_n10.nii to FLOAT32
+     Warnings of this type will be muted for this session.
+     Set AFNI_NIFTI_TYPE_WARN to YES to see them all, NO to see none.
+++ Output dataset ./warped_equi_volume_layers_n10.nii
+Applying ANTS xfm /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-05_task-movie_run-01_VASO_working_ANTs/registered_1Warp.nii.gz
+converting to short to save space 
+resamplign to /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-05_task-movie_run-01_VASO_working_bias/muncorr.nii
+outputs: warped_rim.nii
+         warped_rim.resample2muncorr.nii
+       
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+** AFNI converts NIFTI_datatype=64 (FLOAT64) in file /gpfs/gsfs11/users/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/warped_rim.nii to FLOAT32
+     Warnings of this type will be muted for this session.
+     Set AFNI_NIFTI_TYPE_WARN to YES to see them all, NO to see none.
+++ Output dataset ./warped_rim.nii
+Applying ANTS xfm /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-05_task-movie_run-01_VASO_working_ANTs/registered_1Warp.nii.gz
+converting to short to save space 
+resamplign to /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-05_task-movie_run-01_VASO_working_bias/muncorr.nii
+outputs: warped_rim_columns1000.nii
+         warped_rim_columns1000.resample2muncorr.nii
+       
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+** AFNI converts NIFTI_datatype=64 (FLOAT64) in file /gpfs/gsfs11/users/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/warped_rim_columns1000.nii to FLOAT32
+     Warnings of this type will be muted for this session.
+     Set AFNI_NIFTI_TYPE_WARN to YES to see them all, NO to see none.
+++ Output dataset ./warped_rim_columns1000.nii
+Applying ANTS xfm /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-05_task-movie_run-01_VASO_working_ANTs/registered_1Warp.nii.gz
+converting to short to save space 
+resamplign to /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-05_task-movie_run-01_VASO_working_bias/muncorr.nii
+outputs: warped_rim_columns10000.nii
+         warped_rim_columns10000.resample2muncorr.nii
+       
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+** AFNI converts NIFTI_datatype=64 (FLOAT64) in file /gpfs/gsfs11/users/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/warped_rim_columns10000.nii to FLOAT32
+     Warnings of this type will be muted for this session.
+     Set AFNI_NIFTI_TYPE_WARN to YES to see them all, NO to see none.
+++ Output dataset ./warped_rim_columns10000.nii
+Applying ANTS xfm /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-05_task-movie_run-01_VASO_working_ANTs/registered_1Warp.nii.gz
+converting to short to save space 
+resamplign to /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-05_task-movie_run-01_VASO_working_bias/muncorr.nii
+outputs: warped_ThalamicNuclei.v12.T1.nii
+         warped_ThalamicNuclei.v12.T1.resample2muncorr.nii
+       
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+** AFNI converts NIFTI_datatype=64 (FLOAT64) in file /gpfs/gsfs11/users/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/warped_ThalamicNuclei.v12.T1.nii to FLOAT32
+     Warnings of this type will be muted for this session.
+     Set AFNI_NIFTI_TYPE_WARN to YES to see them all, NO to see none.
+++ Output dataset ./warped_ThalamicNuclei.v12.T1.nii
+Applying ANTS xfm /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-05_task-movie_run-01_VASO_working_ANTs/registered_1Warp.nii.gz
+converting to short to save space 
+resamplign to /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-05_task-movie_run-01_VASO_working_bias/muncorr.nii
+outputs: warped_hcp-mmp-b.nii
+         warped_hcp-mmp-b.resample2muncorr.nii
+       
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+** AFNI converts NIFTI_datatype=64 (FLOAT64) in file /gpfs/gsfs11/users/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/warped_hcp-mmp-b.nii to FLOAT32
+     Warnings of this type will be muted for this session.
+     Set AFNI_NIFTI_TYPE_WARN to YES to see them all, NO to see none.
+++ Output dataset ./warped_hcp-mmp-b.nii
+roi_file: /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/warped_ThalamicNuclei.v12.T1.nii
+roi_list: /home/kleinrl/projects/laminar_fmri/tools/LUT_thalamic.txt
+out: /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3
+ROI:  ID: 8103 
+ROI:  ID: 8104 
+ROI:  ID: 8105 
+ROI:  ID: 8106 
+ROI:  ID: 8108 
+ROI:  ID: 8109 
+ROI:  ID: 8110 
+ROI:  ID: 8111 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 8112 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 8113 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 8115 
+ROI:  ID: 8116 
+ROI:  ID: 8118 
+ROI:  ID: 8120 
+ROI:  ID: 8121 
+ROI:  ID: 8122 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 8123 
+ROI:  ID: 8126 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 8127 
+ROI:  ID: 8128 
+ROI:  ID: 8129 
+ROI:  ID: 8133 
+ROI:  ID: 8203 
+ROI:  ID: 8204 
+ROI:  ID: 8205 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 8206 
+ROI:  ID: 8208 
+ROI:  ID: 8209 
+ROI:  ID: 8210 
+ROI:  ID: 8211 
+ROI:  ID: 8212 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 8213 
+ROI:  ID: 8215 
+ROI:  ID: 8216 
+ROI:  ID: 8217 
+ROI:  ID: 8218 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+ROI:  ID: 8220 
+++ Authored by: A cast of thousands
+ROI:  ID: 8221 
+ROI:  ID: 8222 
+ROI:  ID: 8223 
+ROI:  ID: 8226 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 8227 
+ROI:  ID: 8228 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 8229 
+ROI:  ID: 8233 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+roi_file: /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/warped_hcp-mmp-b.nii
+roi_list: /home/kleinrl/projects/laminar_fmri/tools/LUT_hcp-mmp-b_v2.txt
+out: /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp
+ROI:  ID: 1001 
+ROI:  ID: 1002 
+ROI:  ID: 1003 
+ROI:  ID: 1004 
+ROI:  ID: 1005 
+ROI:  ID: 1006 
+ROI:  ID: 1007 
+ROI:  ID: 1008 
+ROI:  ID: 1009 
+ROI:  ID: 1010 
+ROI:  ID: 1011 
+ROI:  ID: 1012 
+ROI:  ID: 1013 
+ROI:  ID: 1014 
+ROI:  ID: 1015 
+ROI:  ID: 1016 
+ROI:  ID: 1017 
+ROI:  ID: 1018 
+ROI:  ID: 1019 
+ROI:  ID: 1020 
+ROI:  ID: 1021 
+ROI:  ID: 1022 
+ROI:  ID: 1023 
+ROI:  ID: 1024 
+ROI:  ID: 1025 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 1026 
+ROI:  ID: 1027 
+ROI:  ID: 1028 
+ROI:  ID: 1029 
+ROI:  ID: 1030 
+ROI:  ID: 1031 
+ROI:  ID: 1032 
+ROI:  ID: 1033 
+ROI:  ID: 1034 
+ROI:  ID: 1035 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 1036 
+ROI:  ID: 1037 
+ROI:  ID: 1038 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 1039 
+ROI:  ID: 1040 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 1041 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 1042 
+ROI:  ID: 1043 
+ROI:  ID: 1044 
+ROI:  ID: 1045 
+ROI:  ID: 1046 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 1047 
+ROI:  ID: 1048 
+ROI:  ID: 1049 
+ROI:  ID: 1050 
+ROI:  ID: 1051 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 1052 
+ROI:  ID: 1053 
+ROI:  ID: 1054 
+ROI:  ID: 1055 
+ROI:  ID: 1056 
+ROI:  ID: 1057 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 1058 
+ROI:  ID: 1059 
+ROI:  ID: 1060 
+ROI:  ID: 1061 
+ROI:  ID: 1062 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 1063 
+ROI:  ID: 1064 
+ROI:  ID: 1065 
+ROI:  ID: 1066 
+ROI:  ID: 1067 
+ROI:  ID: 1068 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 1069 
+ROI:  ID: 1070 
+ROI:  ID: 1071 
+ROI:  ID: 1072 
+ROI:  ID: 1073 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 1074 
+ROI:  ID: 1075 
+ROI:  ID: 1076 
+ROI:  ID: 1077 
+ROI:  ID: 1078 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 1079 
+ROI:  ID: 1080 
+ROI:  ID: 1081 
+ROI:  ID: 1082 
+ROI:  ID: 1083 
+ROI:  ID: 1084 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 1085 
+ROI:  ID: 1086 
+ROI:  ID: 1087 
+ROI:  ID: 1088 
+ROI:  ID: 1089 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 1090 
+ROI:  ID: 1091 
+ROI:  ID: 1092 
+ROI:  ID: 1093 
+ROI:  ID: 1094 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 1095 
+ROI:  ID: 1096 
+ROI:  ID: 1097 
+ROI:  ID: 1098 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 1099 
+ROI:  ID: 1100 
+ROI:  ID: 1101 
+ROI:  ID: 1102 
+ROI:  ID: 1103 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 1104 
+ROI:  ID: 1105 
+ROI:  ID: 1106 
+ROI:  ID: 1107 
+ROI:  ID: 1108 
+ROI:  ID: 1109 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 1110 
+ROI:  ID: 1111 
+ROI:  ID: 1112 
+ROI:  ID: 1113 
+ROI:  ID: 1114 
+ROI:  ID: 1115 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 1116 
+ROI:  ID: 1117 
+ROI:  ID: 1118 
+ROI:  ID: 1119 
+ROI:  ID: 1120 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 1121 
+ROI:  ID: 1122 
+ROI:  ID: 1123 
+ROI:  ID: 1124 
+ROI:  ID: 1125 
+ROI:  ID: 1126 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 1127 
+ROI:  ID: 1128 
+ROI:  ID: 1129 
+ROI:  ID: 1130 
+ROI:  ID: 1131 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 1132 
+ROI:  ID: 1133 
+ROI:  ID: 1134 
+ROI:  ID: 1135 
+ROI:  ID: 1136 
+ROI:  ID: 1137 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 1138 
+ROI:  ID: 1139 
+ROI:  ID: 1140 
+ROI:  ID: 1141 
+ROI:  ID: 1142 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 1143 
+ROI:  ID: 1144 
+ROI:  ID: 1145 
+ROI:  ID: 1146 
+ROI:  ID: 1147 
+ROI:  ID: 1148 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 1149 
+ROI:  ID: 1150 
+ROI:  ID: 1151 
+ROI:  ID: 1152 
+ROI:  ID: 1153 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 1154 
+ROI:  ID: 1155 
+ROI:  ID: 1156 
+ROI:  ID: 1157 
+ROI:  ID: 1158 
+ROI:  ID: 1159 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 1160 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 1161 
+ROI:  ID: 1162 
+ROI:  ID: 1163 
+ROI:  ID: 1164 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 1165 
+ROI:  ID: 1166 
+ROI:  ID: 1167 
+ROI:  ID: 1168 
+ROI:  ID: 1169 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 1170 
+ROI:  ID: 1171 
+ROI:  ID: 1172 
+ROI:  ID: 1173 
+ROI:  ID: 1174 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 1175 
+ROI:  ID: 1176 
+ROI:  ID: 1177 
+ROI:  ID: 1178 
+ROI:  ID: 1179 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 1180 
+ROI:  ID: 2001 
+ROI:  ID: 2002 
+ROI:  ID: 2003 
+ROI:  ID: 2004 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2005 
+ROI:  ID: 2006 
+ROI:  ID: 2007 
+ROI:  ID: 2008 
+ROI:  ID: 2009 
+ROI:  ID: 2010 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2011 
+ROI:  ID: 2012 
+ROI:  ID: 2013 
+ROI:  ID: 2014 
+ROI:  ID: 2015 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2016 
+ROI:  ID: 2017 
+ROI:  ID: 2018 
+ROI:  ID: 2019 
+ROI:  ID: 2020 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2021 
+ROI:  ID: 2022 
+ROI:  ID: 2023 
+ROI:  ID: 2024 
+ROI:  ID: 2025 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2026 
+ROI:  ID: 2027 
+ROI:  ID: 2028 
+ROI:  ID: 2029 
+ROI:  ID: 2030 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2031 
+ROI:  ID: 2032 
+ROI:  ID: 2033 
+ROI:  ID: 2034 
+ROI:  ID: 2035 
+ROI:  ID: 2036 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2037 
+ROI:  ID: 2038 
+ROI:  ID: 2039 
+ROI:  ID: 2040 
+ROI:  ID: 2041 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2042 
+ROI:  ID: 2043 
+ROI:  ID: 2044 
+ROI:  ID: 2045 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2046 
+ROI:  ID: 2047 
+ROI:  ID: 2048 
+ROI:  ID: 2049 
+ROI:  ID: 2050 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2051 
+ROI:  ID: 2052 
+ROI:  ID: 2053 
+ROI:  ID: 2054 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2055 
+ROI:  ID: 2056 
+ROI:  ID: 2057 
+ROI:  ID: 2058 
+ROI:  ID: 2059 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2060 
+ROI:  ID: 2061 
+ROI:  ID: 2062 
+ROI:  ID: 2063 
+ROI:  ID: 2064 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2065 
+ROI:  ID: 2066 
+ROI:  ID: 2067 
+ROI:  ID: 2068 
+ROI:  ID: 2069 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2070 
+ROI:  ID: 2071 
+ROI:  ID: 2072 
+ROI:  ID: 2073 
+ROI:  ID: 2074 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2075 
+ROI:  ID: 2076 
+ROI:  ID: 2077 
+ROI:  ID: 2078 
+ROI:  ID: 2079 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2080 
+ROI:  ID: 2081 
+ROI:  ID: 2082 
+ROI:  ID: 2083 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2084 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2085 
+ROI:  ID: 2086 
+ROI:  ID: 2087 
+ROI:  ID: 2088 
+ROI:  ID: 2089 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2090 
+ROI:  ID: 2091 
+ROI:  ID: 2092 
+ROI:  ID: 2093 
+ROI:  ID: 2094 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2095 
+ROI:  ID: 2096 
+ROI:  ID: 2097 
+ROI:  ID: 2098 
+ROI:  ID: 2099 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2100 
+ROI:  ID: 2101 
+ROI:  ID: 2102 
+ROI:  ID: 2103 
+ROI:  ID: 2104 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2105 
+ROI:  ID: 2106 
+ROI:  ID: 2107 
+ROI:  ID: 2108 
+ROI:  ID: 2109 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2110 
+ROI:  ID: 2111 
+ROI:  ID: 2112 
+ROI:  ID: 2113 
+ROI:  ID: 2114 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2115 
+ROI:  ID: 2116 
+ROI:  ID: 2117 
+ROI:  ID: 2118 
+ROI:  ID: 2119 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2120 
+ROI:  ID: 2121 
+ROI:  ID: 2122 
+ROI:  ID: 2123 
+ROI:  ID: 2124 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2125 
+ROI:  ID: 2126 
+ROI:  ID: 2127 
+ROI:  ID: 2128 
+ROI:  ID: 2129 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2130 
+ROI:  ID: 2131 
+ROI:  ID: 2132 
+ROI:  ID: 2133 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2134 
+ROI:  ID: 2135 
+ROI:  ID: 2136 
+ROI:  ID: 2137 
+ROI:  ID: 2138 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2139 
+ROI:  ID: 2140 
+ROI:  ID: 2141 
+ROI:  ID: 2142 
+ROI:  ID: 2143 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2144 
+ROI:  ID: 2145 
+ROI:  ID: 2146 
+ROI:  ID: 2147 
+ROI:  ID: 2148 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2149 
+ROI:  ID: 2150 
+ROI:  ID: 2151 
+ROI:  ID: 2152 
+ROI:  ID: 2153 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2154 
+ROI:  ID: 2155 
+ROI:  ID: 2156 
+ROI:  ID: 2157 
+ROI:  ID: 2158 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2159 
+ROI:  ID: 2160 
+ROI:  ID: 2161 
+ROI:  ID: 2162 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2163 
+ROI:  ID: 2164 
+ROI:  ID: 2165 
+ROI:  ID: 2166 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2167 
+ROI:  ID: 2168 
+ROI:  ID: 2169 
+ROI:  ID: 2170 
+ROI:  ID: 2171 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2172 
+ROI:  ID: 2173 
+ROI:  ID: 2174 
+ROI:  ID: 2175 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+ROI:  ID: 2176 
+ROI:  ID: 2177 
+ROI:  ID: 2178 
+ROI:  ID: 2179 
+ROI:  ID: 2180 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+roi_file: /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/warped_equi_volume_layers_n3.nii
+roi_list: /home/kleinrl/projects/laminar_fmri/tools/LUT_leakylayers3.txt
+out: /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.leakylayers.l3
+ROI:  ID: 1 
+ROI:  ID: 2 
+ROI:  ID: 3 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+roi_file: /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/warped_equi_volume_layers_n10.nii
+roi_list: /home/kleinrl/projects/laminar_fmri/tools/LUT_leakylayers10.txt
+out: /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.leakylayers.l10
+ROI:  ID: 1 
+ROI:  ID: 2 
+ROI:  ID: 3 
+ROI:  ID: 4 
+ROI:  ID: 5 
+ROI:  ID: 6 
+ROI:  ID: 7 
+ROI:  ID: 8 
+ROI:  ID: 9 
+ROI:  ID: 10 
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8109.lh.LGN.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8110.lh.LP.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8113.lh.MDm.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8103.lh.AV.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8112.lh.MDl.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8111.lh.L-Sg.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8108.lh.LD.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8104.lh.CeM.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8105.lh.CL.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8116.lh.MV-Re.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8106.lh.CM.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8203.rh.AV.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8126.lh.VA.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8122.lh.PuL.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8221.rh.PuI.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8123.lh.PuM.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8204.rh.CeM.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8211.rh.L-Sg.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8127.lh.VAmc.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8121.lh.PuI.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8206.rh.CM.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8212.rh.MDl.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8210.rh.LP.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8223.rh.PuM.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8118.lh.Pf.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8209.rh.LGN.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8128.lh.VLa.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8233.rh.VPL.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8222.rh.PuL.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8120.lh.PuA.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8129.lh.VLp.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8133.lh.VPL.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8226.rh.VA.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8228.rh.VLa.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8115.lh.MGN.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8205.rh.CL.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8215.rh.MGN.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8208.rh.LD.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8227.rh.VAmc.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8213.rh.MDm.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8217.rh.Pc.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8220.rh.PuA.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8216.rh.MV-Re.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8218.rh.Pf.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.thalamic.l3/8229.rh.VLp.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1004.L_V2.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1028.L_STV.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1008.L_4.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1015.L_POS2.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1006.L_V4.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1025.L_PSL.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1002.L_MST.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1019.L_V3B.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1017.L_IPS1.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1010.L_FEF.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1003.L_V6.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1007.L_V8.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1009.L_3b.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1026.L_SFL.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1013.L_V3A.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1018.L_FFC.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1016.L_V7.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1001.L_V1.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1011.L_PEF.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1023.L_MT.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1005.L_V3.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1021.L_LO2.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1024.L_A1.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1027.L_PCV.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1012.L_55b.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1020.L_LO1.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1014.L_RSC.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1038.L_23c.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1022.L_PIT.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1033.L_v23ab.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1031.L_POS1.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1032.L_23d.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1035.L_31pv.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1034.L_d23ab.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1030.L_7m.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1037.L_5mv.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1049.L_VIP.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1043.L_SCEF.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1029.L_7Pm.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1042.L_7AL.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1039.L_5L.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1047.L_7PC.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1040.L_24dd.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1036.L_5m.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1053.L_3a.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1044.L_6ma.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1055.L_6mp.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1057.L_p24pr.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1045.L_7Am.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1056.L_6v.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1054.L_6d.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1041.L_24dv.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1046.L_7PL.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1052.L_2.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1051.L_1.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1050.L_MIP.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1048.L_LIPv.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1060.L_p32pr.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1062.L_d32.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1059.L_a24pr.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1058.L_33pr.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1064.L_p32.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1066.L_47m.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1067.L_8Av.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1065.L_10r.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1071.L_9p.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1068.L_8Ad.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1063.L_8BM.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1061.L_a24.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1072.L_10d.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1078.L_6r.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1073.L_8C.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1075.L_45.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1083.L_p9-46v.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1080.L_IFJp.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1076.L_47l.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1069.L_9m.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1070.L_8BL.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1077.L_a47r.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1074.L_44.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1079.L_IFJa.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1082.L_IFSa.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1093.L_OFC.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1086.L_9-46d.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1081.L_IFSp.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1091.L_11l.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1089.L_a10p.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1094.L_47s.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1087.L_9a.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1084.L_46.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1088.L_10v.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1096.L_6a.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1100.L_OP4.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1090.L_10pp.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1097.L_i6-8.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1095.L_LIPd.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1085.L_a9-46v.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1098.L_s6-8.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1104.L_RI.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1102.L_OP2-3.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1099.L_43.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1107.L_TA2.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1092.L_13l.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1103.L_52.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1108.L_FOP4.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1112.L_AAIC.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1111.L_AVI.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1115.L_FOP2.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1106.L_PoI2.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1116.L_PFt.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1110.L_Pir.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1114.L_FOP3.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1117.L_AIP.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1113.L_FOP1.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1101.L_OP1.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1122.L_PeEc.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1131.L_TGd.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1120.L_H.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1119.L_PreS.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1118.L_EC.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1123.L_STGa.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1105.L_PFcm.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1109.L_MI.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1129.L_STSdp.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1124.L_PBelt.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1121.L_ProS.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1127.L_PHA3.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1136.L_TE2p.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1125.L_A5.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1130.L_STSvp.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1132.L_TE1a.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1145.L_IP1.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1134.L_TE2a.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1128.L_STSda.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1135.L_TF.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1142.L_DVT.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1139.L_TPOJ1.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1148.L_PF.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1143.L_PGp.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1146.L_IP0.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1141.L_TPOJ3.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1140.L_TPOJ2.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1133.L_TE1p.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1126.L_PHA1.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1147.L_PFop.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1138.L_PH.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1151.L_PGs.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1144.L_IP2.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1149.L_PFm.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1152.L_V6A.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1157.L_FST.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1153.L_VMV1.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1137.L_PHT.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1150.L_PGi.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1164.L_25.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1159.L_LO3.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1154.L_VMV3.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1160.L_VMV2.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1155.L_PHA2.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1173.L_MBelt.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1166.L_pOFC.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1168.L_Ig.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1156.L_V4t.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1163.L_VVC.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1165.L_s32.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1174.L_LBelt.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1158.L_V3CD.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1162.L_31a.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1172.L_TGv.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1161.L_31pd.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1177.L_TE1m.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1170.L_p10p.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1179.L_a32pr.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1169.L_FOP5.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1167.L_PoI1.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1171.L_p47r.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1178.L_PI.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1175.L_A4.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2008.R_4.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2001.R_V1.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1176.L_STSva.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2009.R_3b.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2003.R_V6.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2007.R_V8.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2005.R_V3.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2002.R_MST.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/1180.L_p24.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2012.R_55b.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2006.R_V4.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2017.R_IPS1.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2004.R_V2.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2015.R_POS2.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2021.R_LO2.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2010.R_FEF.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2020.R_LO1.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2016.R_V7.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2022.R_PIT.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2013.R_V3A.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2019.R_V3B.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2024.R_A1.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2018.R_FFC.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2014.R_RSC.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2023.R_MT.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2034.R_d23ab.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2033.R_v23ab.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2011.R_PEF.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2030.R_7m.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2025.R_PSL.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2029.R_7Pm.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2032.R_23d.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2037.R_5mv.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2028.R_STV.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2035.R_31pv.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2031.R_POS1.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2027.R_PCV.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2026.R_SFL.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2039.R_5L.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2040.R_24dd.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2045.R_7Am.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2042.R_7AL.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2038.R_23c.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2041.R_24dv.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2036.R_5m.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2043.R_SCEF.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2050.R_MIP.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2048.R_LIPv.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2047.R_7PC.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2056.R_6v.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2049.R_VIP.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2058.R_33pr.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2057.R_p24pr.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2054.R_6d.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2044.R_6ma.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2055.R_6mp.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2063.R_8BM.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2060.R_p32pr.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2051.R_1.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2059.R_a24pr.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2046.R_7PL.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2062.R_d32.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2061.R_a24.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2065.R_10r.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2069.R_9m.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2067.R_8Av.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2070.R_8BL.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2053.R_3a.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2064.R_p32.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2088.R_10v.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2071.R_9p.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2052.R_2.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2073.R_8C.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2066.R_47m.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2083.R_p9-46v.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2087.R_9a.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2076.R_47l.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2074.R_44.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2068.R_8Ad.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2072.R_10d.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2082.R_IFSa.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2075.R_45.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2079.R_IFJa.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2077.R_a47r.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2080.R_IFJp.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2089.R_a10p.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2081.R_IFSp.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2094.R_47s.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2084.R_46.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2085.R_a9-46v.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2093.R_OFC.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2086.R_9-46d.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2078.R_6r.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2090.R_10pp.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2092.R_13l.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2091.R_11l.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2095.R_LIPd.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2098.R_s6-8.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2102.R_OP2-3.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2096.R_6a.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2097.R_i6-8.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2103.R_52.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2099.R_43.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2100.R_OP4.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2101.R_OP1.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2117.R_AIP.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2106.R_PoI2.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2115.R_FOP2.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2104.R_RI.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2109.R_MI.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2119.R_PreS.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2116.R_PFt.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2113.R_FOP1.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2105.R_PFcm.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2111.R_AVI.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2123.R_STGa.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2110.R_Pir.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2107.R_TA2.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2120.R_H.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2108.R_FOP4.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2128.R_STSda.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2112.R_AAIC.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2122.R_PeEc.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2126.R_PHA1.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2133.R_TE1p.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2114.R_FOP3.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2130.R_STSvp.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2135.R_TF.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2118.R_EC.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2137.R_PHT.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2136.R_TE2p.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.hcp/2124.R_PBelt.nii
+++ Output dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-05_task-movie_run-01_VASO/rois.leakylayers.l10/3.L3.nii

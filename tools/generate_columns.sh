@@ -25,24 +25,24 @@ curr_dir=`pwd`
 
 if [ -z $borders ]
 then
-  col_dir="${layer4EPI}/columns_${col_type}_${col_num}"
+  col_dir="columns_${col_type}_${col_num}"
   echo "borders unset"
 else 
 
-  col_dir="${layer4EPI}/columns_${col_type}_${col_num}_borders"
+  col_dir="columns_${col_type}_${col_num}_borders"
   echo "borders set" 
 fi 
 
 echo 'col_dir: ' ${col_dir}
-mkdir ${col_dir}
+mkdir -p ${col_dir}
 
 
-cp $layer4EPI/rim.nii $layer4EPI/rim_midGM_equi* ${col_dir}/
+cp rim.nii rim_midGM_equi* ${col_dir}/
 cd ${col_dir}
 
 
 # todo: LUT file !!!!!!!! NEED to fix !!!!!!!!!!!!!!!!!!!!!!!!!!!
-LUT_col="${layer4EPI}/${col_dir}/LUT_columns_${col_num}_${col_type}.txt"
+LUT_col="LUT_columns_${col_num}_${col_type}.txt"
 touch $LUT_col
 for c in `seq 1 $((col_num))`; do
   echo "$c $c" >> $LUT_col

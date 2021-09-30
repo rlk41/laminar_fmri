@@ -1,0 +1,27 @@
+#!/bin/bash 
+set -e 
+
+
+for EPI in $VASO_func_dir/*VASO.nii
+do 
+    echo $EPI 
+    source /home/kleinrl/projects/laminar_fmri/paths_biowulf 
+    log="/home/kleinrl/projects/laminar_fmri/logs/buildIntersection.hcp.l3-${EPI_base}.log"
+
+    echo "  "
+    echo "EPI: ${EPI}"
+    echo "scaled_EPI: ${scaled_EPI}"
+    echo "  "
+    echo "LOG: ${log}"
+    echo "  "
+
+    sbatch --mem=20g --cpus-per-task=10 \
+    --partition=norm \
+    --mail-type=BEGIN,TIME_LIMIT_90,END \
+    --output=$log \
+    --time 10:00:00 \
+    build_layerxROIs.sh -f $warp_layers_ev_n3 \
+    -l 3 -r $warp_parc_hcp -m $LUT_hcp -j 60 \
+    -o $rois_hcpl3 -c $cmds_buildROIs_hcpl3
+
+done 

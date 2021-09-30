@@ -1,0 +1,73 @@
+/data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-01_task-test_run-01_VASO.nii
+                        
+EPI set using: /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-01_task-test_run-01_VASO.nii
+                                                         
+----------------------------------
+YOU NEED TO SUPPLY: 
+               spm_path - location of spm files ('matlab_toolbox')
+               ds_dir - location of data ('ds003216-download')
+               EPI_base - currently working with 
+                         'sub-01_ses-06_task-movie_run-05_VASO' 
+                         main_anat.sh for processing MP2RAGE, then loop 
+                         main_EPI.sh for each EPI
+----------------------------------
+project_dir: /home/kleinrl/projects/laminar_fmri
+spm_path:    
+tools_dir:   /home/kleinrl/projects/laminar_fmri/tools
+cmds_dir:    /home/kleinrl/projects/laminar_fmri/cmds
+EPI:         /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-01_task-test_run-01_VASO.nii
+EPI_base     sub-01_ses-01_task-test_run-01_VASO
+----------------------------------
+                                                                                
+                                                                                
+  
+EPI: /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-01_task-test_run-01_VASO.nii
+  
+LOG: /home/kleinrl/projects/laminar_fmri/logs/buildROIs-sub-01_ses-01_task-test_run-01_VASO.log
+  
+[-] Unloading Matlab  2021a  on cn3308 
+[+] Loading Matlab  2021a  on cn3308 
+[-] Unloading matlab-spm, version 12.7219...
+[+] Loading matlab-spm, version 12.7219...
+[-] Unloading gcc  7.3.0  ... 
+[-] Unloading ANTs  2.3.2 
+[+] Loading gcc  7.3.0  ... 
+[+] Loading ANTs  2.3.2 
+[-] Unloading AFNI current-openmp  ... 
+[+] Loading AFNI current-openmp  ... 
+AFNI/current-openmp last updated  2021-09-23
+
+[-] Unloading freesurfer  7.1.1 on cn3308 
+[+] Loading freesurfer  7.1.1  on cn3308 
+[-] Unloading FSL 6.0.4  ... 
+[+] Loading FSL 6.0.4  ... 
+[-] Unloading python 3.7  ... 
+[+] Loading python 3.7  ... 
+                        
+EPI set using: /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-01_task-test_run-01_VASO.nii
+                                                         
+----------------------------------
+YOU NEED TO SUPPLY: 
+               spm_path - location of spm files ('matlab_toolbox')
+               ds_dir - location of data ('ds003216-download')
+               EPI_base - currently working with 
+                         'sub-01_ses-06_task-movie_run-05_VASO' 
+                         main_anat.sh for processing MP2RAGE, then loop 
+                         main_EPI.sh for each EPI
+----------------------------------
+project_dir: /home/kleinrl/projects/laminar_fmri
+spm_path:    
+tools_dir:   /home/kleinrl/projects/laminar_fmri/tools
+cmds_dir:    /home/kleinrl/projects/laminar_fmri/cmds
+EPI:         /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-01_task-test_run-01_VASO.nii
+EPI_base     sub-01_ses-01_task-test_run-01_VASO
+----------------------------------
+                                                                                
+                                                                                
+  
+EPI: /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-01_task-test_run-01_VASO.nii
+  
+LOG: /home/kleinrl/projects/laminar_fmri/logs/buildROIs-sub-01_ses-01_task-test_run-01_VASO.log
+  
+sbatch: error: Unable to open file /home/kleinrl/projects/laminar_fmri/scripts_batch/build_rois.submitjobs.sh
+sbatch: error: Unable to open file /home/kleinrl/projects/laminar_fmri/scripts_batch/build_rois.submitjobs.sh

@@ -1,0 +1,571 @@
+[-] Unloading Matlab  2021a  on cn2439 
+[+] Loading Matlab  2021a  on cn2439 
+[-] Unloading matlab-spm, version 12.7219...
+[+] Loading matlab-spm, version 12.7219...
+[-] Unloading gcc  7.3.0  ... 
+[-] Unloading ANTs  2.3.2 
+[+] Loading gcc  7.3.0  ... 
+[+] Loading ANTs  2.3.2 
+[-] Unloading AFNI current-openmp  ... 
+[+] Loading AFNI current-openmp  ... 
+AFNI/current-openmp last updated  2021-09-28
+
+[-] Unloading freesurfer  7.1.1 on cn2439 
+[+] Loading freesurfer  7.1.1  on cn2439 
+[-] Unloading FSL 6.0.4  ... 
+[+] Loading FSL 6.0.4  ... 
+[-] Unloading python 3.7  ... 
+[+] Loading python 3.7  ... 
+                        
+EPI set using: /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-05_task-movie_run-02_VASO.nii
+                                                         
+----------------------------------
+YOU NEED TO SUPPLY: 
+               spm_path - location of spm files ('matlab_toolbox')
+               ds_dir - location of data ('ds003216-download')
+               EPI_base - currently working with 
+                         'sub-01_ses-06_task-movie_run-05_VASO' 
+                         main_anat.sh for processing MP2RAGE, then loop 
+                         main_EPI.sh for each EPI
+----------------------------------
+project_dir: /home/kleinrl/projects/laminar_fmri
+spm_path:    
+tools_dir:   /home/kleinrl/projects/laminar_fmri/tools
+cmds_dir:    /home/kleinrl/projects/laminar_fmri/cmds
+EPI:         /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-05_task-movie_run-02_VASO.nii
+EPI_base     sub-01_ses-05_task-movie_run-02_VASO
+----------------------------------
+                                                                                
+                                                                                
+RUNNING: run_ANTS this will calculate the xfm from ANAT to EPI_mean and
+and apply the xfm producing warped_MP2RAGE.nii
+'warp_ANTS_resampleNN.sh <input_nii> <master_file>' will 
+apply this xfm using nearestneighbor so only use with parcs
+/data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-05_task-movie_run-02_VASO_working_bias/muncorr.nii
+/data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w.bias.nii
+EPI_mean:             /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-05_task-movie_run-02_VASO_working_bias/muncorr.nii
+ANAT:                 /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w.bias.nii
+dir_name:             /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-05_task-movie_run-02_VASO_working_bias
+base_name:            muncorr.nii
+working dir:          /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-05_task-movie_run-02_VASO_working_ANTs
+creating working dir
+I expect 2 files. the T1_weighted EPI.nii and a MP2RAGE_orig.nii (renzo)
+we are using the T1_weighted EPI_bias corrected and MP2RAGE bias corrected
+++ 3dcalc: AFNI version=AFNI_21.2.09 (Sep 27 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ Output dataset ./MP2RAGE.nii
+*****************************************
+************* starting with ANTS ********
+*****************************************
+All_Command_lines_OK
+Using single precision for computations.
+=============================================================================
+The composite transform comprises the following transforms (in order): 
+  1. initial_matrix.txt (type = MatrixOffsetTransformBase)
+=============================================================================
+  number of levels = 2
+  number of levels = 2
+  number of levels = 2
+  fixed image: EPI.nii
+  moving image: MP2RAGE.nii
+  fixed image: EPI.nii
+  moving image: MP2RAGE.nii
+  fixed image: EPI.nii
+  moving image: MP2RAGE.nii
+Dimension = 3
+Number of stages = 3
+Use Histogram Matching false
+Winsorize image intensities true
+Lower quantile = 0.005
+Upper quantile = 0.995
+Stage 1 State
+   Image metric = CC
+     Fixed image = Image (0x2dec420)
+  RTTI typeinfo:   itk::Image<float, 3u>
+  Reference Count: 2
+  Modified Time: 1288
+  Debug: Off
+  Object Name: 
+  Observers: 
+    none
+  Source: (none)
+  Source output name: (none)
+  Release Data: Off
+  Data Released: False
+  Global Release Data: Off
+  PipelineMTime: 0
+  UpdateMTime: 1071
+  RealTimeStamp: 0 seconds 
+  LargestPossibleRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [162, 216, 120]
+  BufferedRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [162, 216, 120]
+  RequestedRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [162, 216, 120]
+  Spacing: [0.802469, 0.802469, 0.8]
+  Origin: [-64.0361, 62.2044, -29.4552]
+  Direction: 
+1 0 0
+0 -1 0
+0 0 1
+
+  IndexToPointMatrix: 
+0.802469 0 0
+0 -0.802469 0
+0 0 0.8
+
+  PointToIndexMatrix: 
+1.24615 0 0
+0 -1.24615 0
+0 0 1.25
+
+  Inverse Direction: 
+1 0 0
+0 -1 0
+0 0 1
+
+  PixelContainer: 
+    ImportImageContainer (0x2dec6e0)
+      RTTI typeinfo:   itk::ImportImageContainer<unsigned long, float>
+      Reference Count: 1
+      Modified Time: 1068
+      Debug: Off
+      Object Name: 
+      Observers: 
+        none
+      Pointer: 0x2aaab0f8d010
+      Container manages memory: true
+      Size: 4199040
+      Capacity: 4199040
+
+     Moving image = Image (0x2dfb730)
+  RTTI typeinfo:   itk::Image<float, 3u>
+  Reference Count: 2
+  Modified Time: 1289
+  Debug: Off
+  Object Name: 
+  Observers: 
+    none
+  Source: (none)
+  Source output name: (none)
+  Release Data: Off
+  Data Released: False
+  Global Release Data: Off
+  PipelineMTime: 0
+  UpdateMTime: 1286
+  RealTimeStamp: 0 seconds 
+  LargestPossibleRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [320, 320, 240]
+  BufferedRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [320, 320, 240]
+  RequestedRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [320, 320, 240]
+  Spacing: [0.65, 0.65, 0.65]
+  Origin: [77.6828, -138.321, -102.731]
+  Direction: 
+-0 0 -1
+1 -0 0
+0 1 -0
+
+  IndexToPointMatrix: 
+0 0 -0.65
+0.65 0 0
+0 0.65 0
+
+  PointToIndexMatrix: 
+0 1.53846 0
+0 0 1.53846
+-1.53846 0 0
+
+  Inverse Direction: 
+0 1 0
+0 0 1
+-1 0 0
+
+  PixelContainer: 
+    ImportImageContainer (0x2ddff90)
+      RTTI typeinfo:   itk::ImportImageContainer<unsigned long, float>
+      Reference Count: 1
+      Modified Time: 1283
+      Debug: Off
+      Object Name: 
+      Observers: 
+        none
+      Pointer: 0x2aaab1f92010
+      Container manages memory: true
+      Size: 24576000
+      Capacity: 24576000
+
+     Weighting = 0.7
+     Sampling strategy = regular
+     Number of bins = 32
+     Radius = 32
+     Sampling percentage  = 0.1
+   Transform = Rigid
+     Gradient step = 0.05
+     Update field sigma (voxel space) = 0
+     Total field sigma (voxel space) = 0
+     Update field time sigma = 0
+     Total field time sigma  = 0
+     Number of time indices = 0
+     Number of time point samples = 0
+Stage 2 State
+   Image metric = Mattes
+     Fixed image = Image (0x2dfef50)
+  RTTI typeinfo:   itk::Image<float, 3u>
+  Reference Count: 2
+  Modified Time: 1720
+  Debug: Off
+  Object Name: 
+  Observers: 
+    none
+  Source: (none)
+  Source output name: (none)
+  Release Data: Off
+  Data Released: False
+  Global Release Data: Off
+  PipelineMTime: 0
+  UpdateMTime: 1503
+  RealTimeStamp: 0 seconds 
+  LargestPossibleRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [162, 216, 120]
+  BufferedRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [162, 216, 120]
+  RequestedRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [162, 216, 120]
+  Spacing: [0.802469, 0.802469, 0.8]
+  Origin: [-64.0361, 62.2044, -29.4552]
+  Direction: 
+1 0 0
+0 -1 0
+0 0 1
+
+  IndexToPointMatrix: 
+0.802469 0 0
+0 -0.802469 0
+0 0 0.8
+
+  PointToIndexMatrix: 
+1.24615 0 0
+0 -1.24615 0
+0 0 1.25
+
+  Inverse Direction: 
+1 0 0
+0 -1 0
+0 0 1
+
+  PixelContainer: 
+    ImportImageContainer (0x2dff240)
+      RTTI typeinfo:   itk::ImportImageContainer<unsigned long, float>
+      Reference Count: 1
+      Modified Time: 1500
+      Debug: Off
+      Object Name: 
+      Observers: 
+        none
+      Pointer: 0x2e01ad0
+      Container manages memory: true
+      Size: 4199040
+      Capacity: 4199040
+
+     Moving image = Image (0x2dfc710)
+  RTTI typeinfo:   itk::Image<float, 3u>
+  Reference Count: 2
+  Modified Time: 1721
+  Debug: Off
+  Object Name: 
+  Observers: 
+    none
+  Source: (none)
+  Source output name: (none)
+  Release Data: Off
+  Data Released: False
+  Global Release Data: Off
+  PipelineMTime: 0
+  UpdateMTime: 1718
+  RealTimeStamp: 0 seconds 
+  LargestPossibleRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [320, 320, 240]
+  BufferedRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [320, 320, 240]
+  RequestedRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [320, 320, 240]
+  Spacing: [0.65, 0.65, 0.65]
+  Origin: [77.6828, -138.321, -102.731]
+  Direction: 
+-0 0 -1
+1 -0 0
+0 1 -0
+
+  IndexToPointMatrix: 
+0 0 -0.65
+0.65 0 0
+0 0.65 0
+
+  PointToIndexMatrix: 
+0 1.53846 0
+0 0 1.53846
+-1.53846 0 0
+
+  Inverse Direction: 
+0 1 0
+0 0 1
+-1 0 0
+
+  PixelContainer: 
+    ImportImageContainer (0x2dfca00)
+      RTTI typeinfo:   itk::ImportImageContainer<unsigned long, float>
+      Reference Count: 1
+      Modified Time: 1715
+      Debug: Off
+      Object Name: 
+      Observers: 
+        none
+      Pointer: 0x2aaab7d53010
+      Container manages memory: true
+      Size: 24576000
+      Capacity: 24576000
+
+     Weighting = 0.7
+     Sampling strategy = regular
+     Number of bins = 32
+     Radius = 4
+     Sampling percentage  = 0.1
+   Transform = Affine
+     Gradient step = 0.1
+     Update field sigma (voxel space) = 0
+     Total field sigma (voxel space) = 0
+     Update field time sigma = 0
+     Total field time sigma  = 0
+     Number of time indices = 0
+     Number of time point samples = 0
+Stage 3 State
+   Image metric = CC
+     Fixed image = Image (0x2e00a40)
+  RTTI typeinfo:   itk::Image<float, 3u>
+  Reference Count: 2
+  Modified Time: 2152
+  Debug: Off
+  Object Name: 
+  Observers: 
+    none
+  Source: (none)
+  Source output name: (none)
+  Release Data: Off
+  Data Released: False
+  Global Release Data: Off
+  PipelineMTime: 0
+  UpdateMTime: 1935
+  RealTimeStamp: 0 seconds 
+  LargestPossibleRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [162, 216, 120]
+  BufferedRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [162, 216, 120]
+  RequestedRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [162, 216, 120]
+  Spacing: [0.802469, 0.802469, 0.8]
+  Origin: [-64.0361, 62.2044, -29.4552]
+  Direction: 
+1 0 0
+0 -1 0
+0 0 1
+
+  IndexToPointMatrix: 
+0.802469 0 0
+0 -0.802469 0
+0 0 0.8
+
+  PointToIndexMatrix: 
+1.24615 0 0
+0 -1.24615 0
+0 0 1.25
+
+  Inverse Direction: 
+1 0 0
+0 -1 0
+0 0 1
+
+  PixelContainer: 
+    ImportImageContainer (0x2e00d30)
+      RTTI typeinfo:   itk::ImportImageContainer<unsigned long, float>
+      Reference Count: 1
+      Modified Time: 1932
+      Debug: Off
+      Object Name: 
+      Observers: 
+        none
+      Pointer: 0x3e0a8c0
+      Container manages memory: true
+      Size: 4199040
+      Capacity: 4199040
+
+     Moving image = Image (0x2df50b0)
+  RTTI typeinfo:   itk::Image<float, 3u>
+  Reference Count: 2
+  Modified Time: 2153
+  Debug: Off
+  Object Name: 
+  Observers: 
+    none
+  Source: (none)
+  Source output name: (none)
+  Release Data: Off
+  Data Released: False
+  Global Release Data: Off
+  PipelineMTime: 0
+  UpdateMTime: 2150
+  RealTimeStamp: 0 seconds 
+  LargestPossibleRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [320, 320, 240]
+  BufferedRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [320, 320, 240]
+  RequestedRegion: 
+    Dimension: 3
+    Index: [0, 0, 0]
+    Size: [320, 320, 240]
+  Spacing: [0.65, 0.65, 0.65]
+  Origin: [77.6828, -138.321, -102.731]
+  Direction: 
+-0 0 -1
+1 -0 0
+0 1 -0
+
+  IndexToPointMatrix: 
+0 0 -0.65
+0.65 0 0
+0 0.65 0
+
+  PointToIndexMatrix: 
+0 1.53846 0
+0 0 1.53846
+-1.53846 0 0
+
+  Inverse Direction: 
+0 1 0
+0 0 1
+-1 0 0
+
+  PixelContainer: 
+    ImportImageContainer (0x2df5bc0)
+      RTTI typeinfo:   itk::ImportImageContainer<unsigned long, float>
+      Reference Count: 1
+      Modified Time: 2147
+      Debug: Off
+      Object Name: 
+      Observers: 
+        none
+      Pointer: 0x2aaabdb14010
+      Container manages memory: true
+      Size: 24576000
+      Capacity: 24576000
+
+     Weighting = 1
+     Sampling strategy = none
+     Number of bins = 32
+     Radius = 2
+     Sampling percentage  = 1
+   Transform = SyN
+     Gradient step = 0.1
+     Update field sigma (voxel space) = 2
+     Total field sigma (voxel space) = 0
+     Update field time sigma = 0
+     Total field time sigma  = 0
+     Number of time indices = 0
+     Number of time point samples = 0
+Registration using 3 total stages.
+
+Stage 0
+  iterations = 1000x500
+  convergence threshold = 1e-06
+  convergence window size = 10
+  number of levels = 2
+  using the CC metric (radius = 32, weight = 0.7)
+  preprocessing:  winsorizing the image intensities
+  Shrink factors (level 1 out of 2): [2, 2, 2]
+  Shrink factors (level 2 out of 2): [1, 1, 1]
+  smoothing sigmas per level: [1, 0]
+  regular sampling (percentage = 0.1)
+
+*** Running Euler3DTransform registration ***
+
+DIAGNOSTIC,Iteration,metricValue,convergenceValue,ITERATION_TIME_INDEX,SINCE_LAST
+ 2DIAGNOSTIC,     1, -4.214106872678e-02, inf, 8.1151e+02, 8.1151e+02, 
+ 2DIAGNOSTIC,     2, -4.214106872678e-02, inf, 1.6234e+03, 8.1188e+02, 
+ 2DIAGNOSTIC,     3, -4.214106872678e-02, inf, 2.4386e+03, 8.1525e+02, 
+ 2DIAGNOSTIC,     4, -4.214106872678e-02, inf, 3.2673e+03, 8.2872e+02, 
+ 2DIAGNOSTIC,     5, -4.214106872678e-02, inf, 4.0964e+03, 8.2904e+02, 
+ 2DIAGNOSTIC,     6, -4.214106872678e-02, inf, 4.9031e+03, 8.0670e+02, 
+ 2DIAGNOSTIC,     7, -4.214106872678e-02, inf, 5.7101e+03, 8.0703e+02, 
+ 2DIAGNOSTIC,     8, -4.214106872678e-02, inf, 6.5257e+03, 8.1555e+02, 
+ 2DIAGNOSTIC,     9, -4.214106872678e-02, inf, 7.3381e+03, 8.1243e+02, 
+ 2DIAGNOSTIC,    10, -4.214106872678e-02, 3.180992280249e-06, 8.1527e+03, 8.1459e+02, 
+ 2DIAGNOSTIC,    11, -4.214106872678e-02, 2.891811163863e-06, 8.9640e+03, 8.1132e+02, 
+ 2DIAGNOSTIC,    12, -4.214106872678e-02, 2.650826900208e-06, 9.7720e+03, 8.0798e+02, 
+ 2DIAGNOSTIC,    13, -4.214106872678e-02, 2.446917051202e-06, 1.0582e+04, 8.1009e+02, 
+ 2DIAGNOSTIC,    14, -4.214106872678e-02, 2.272137407999e-06, 1.1417e+04, 8.3457e+02, 
+ 2DIAGNOSTIC,    15, -4.214106872678e-02, 2.120661520166e-06, 1.2327e+04, 9.0996e+02, 
+ 2DIAGNOSTIC,    16, -4.214106872678e-02, 1.988120175156e-06, 1.3241e+04, 9.1398e+02, 
+ 2DIAGNOSTIC,    17, -4.214106872678e-02, 1.871171889434e-06, 1.4158e+04, 9.1732e+02, 
+ 2DIAGNOSTIC,    18, -4.214106872678e-02, 1.767217895576e-06, 1.5072e+04, 9.1394e+02, 
+ 2DIAGNOSTIC,    19, -4.214106872678e-02, 1.674206487223e-06, 1.5989e+04, 9.1717e+02, 
+ 2DIAGNOSTIC,    20, -4.214106872678e-02, 1.590496140125e-06, 1.6908e+04, 9.1902e+02, 
+ 2DIAGNOSTIC,    21, -4.214106872678e-02, 1.514758196208e-06, 1.7820e+04, 9.1234e+02, 
+ 2DIAGNOSTIC,    22, -4.214106872678e-02, 1.445905581932e-06, 1.8738e+04, 9.1715e+02, 
+ 2DIAGNOSTIC,    23, -4.214106500149e-02, 1.381947868140e-06, 1.9658e+04, 9.2087e+02, 
+ 2DIAGNOSTIC,    24, -4.214106500149e-02, 1.323452238466e-06, 2.0579e+04, 9.2072e+02, 
+ 2DIAGNOSTIC,    25, -4.214106500149e-02, 1.269808308280e-06, 2.1496e+04, 9.1713e+02, 
+ 2DIAGNOSTIC,    26, -4.214106500149e-02, 1.220518470291e-06, 2.2413e+04, 9.1631e+02, 
+ 2DIAGNOSTIC,    27, -4.214105755091e-02, 1.173299324364e-06, 2.3331e+04, 9.1809e+02, 
+ 2DIAGNOSTIC,    28, -4.214105755091e-02, 1.129976453740e-06, 2.4250e+04, 9.1962e+02, 
+ 2DIAGNOSTIC,    29, -4.214105755091e-02, 1.090199020837e-06, 2.5169e+04, 9.1844e+02, 
+ 2DIAGNOSTIC,    30, -4.214106500149e-02, 1.055340476341e-06, 2.6091e+04, 9.2251e+02, 
+ 2DIAGNOSTIC,    31, -4.214106500149e-02, 1.023153117785e-06, 2.7004e+04, 9.1243e+02, 
+DIAGNOSTIC,Iteration,metricValue,convergenceValue,ITERATION_TIME_INDEX,SINCE_LAST
+ 2DIAGNOSTIC,     1, -1.770629361272e-02, inf, 3.4899e+04, 7.8957e+03, 
+ 2DIAGNOSTIC,     2, -1.770629361272e-02, inf, 4.2627e+04, 7.7281e+03, 
+ 2DIAGNOSTIC,     3, -1.770629361272e-02, inf, 5.0463e+04, 7.8358e+03, 
+ 2DIAGNOSTIC,     4, -1.770629361272e-02, inf, 5.8277e+04, 7.8137e+03, 
+ 2DIAGNOSTIC,     5, -1.770629361272e-02, inf, 6.5819e+04, 7.5416e+03, 
+ 2DIAGNOSTIC,     6, -1.770629361272e-02, inf, 7.3175e+04, 7.3559e+03, 
+ 2DIAGNOSTIC,     7, -1.770629361272e-02, inf, 8.0768e+04, 7.5932e+03, 
+ 2DIAGNOSTIC,     8, -1.770629361272e-02, inf, 8.8197e+04, 7.4294e+03, 
+ 2DIAGNOSTIC,     9, -1.770629361272e-02, inf, 9.5515e+04, 7.3180e+03, 
+ 2DIAGNOSTIC,    10, -1.770629361272e-02, 3.180992280249e-06, 1.0279e+05, 7.2773e+03, 
+ 2DIAGNOSTIC,    11, -1.770629547536e-02, 2.894528961406e-06, 1.1032e+05, 7.5267e+03, 
+ 2DIAGNOSTIC,    12, -1.770629547536e-02, 2.655494654391e-06, 1.1797e+05, 7.6542e+03, 
+ 2DIAGNOSTIC,    13, -1.770629361272e-02, 2.450541387589e-06, 1.2544e+05, 7.4629e+03, 

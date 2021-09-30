@@ -1,0 +1,81 @@
+Running 'SUMA_Make_Spec_FS' 
+creating meshes and rim file on the MP2RAGE ANAT volume (as opposed to EPI)
+based on Renzo's code https://layerfmri.com/2017/11/26/getting-layers-in-epi-space/#more-115
+++ Running @SUMA_Make_Spec_FS version: 2.2.4
+failure: cannot find directory 'surf' under '.'
+(subject to a maximum search depth of 4 subdirectories)
+
+program failure: exiting...
+
+/var/spool/slurm/slurmd/job22981622/slurm_script: line 10: cd: /data/kleinrl/data/DSST/openneuro/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/SUMA: No such file or directory
+dense mesh starting
+Error SUMA_Read_SpecFile: File subject_name_lh.spec does not exist or cannot be read.
+Error MapIcosahedron: Error in subject_name_lh.spec SUMA_Read_SpecFile
+Error SUMA_Read_SpecFile: File subject_name_rh.spec does not exist or cannot be read.
+Error MapIcosahedron: Error in subject_name_rh.spec SUMA_Read_SpecFile
+************************ get surfaces in oblique orientation left
+SpecFilePath: /spin1/home/linux/kleinrl/projects/laminar_fmri/tools/
+SpecFileName: std_BOTH.ld564.lh.orient.spec
+2 surfaces in Spec, 1 defined states, 1 groups
+0) 
+1) 
+ **************************
+ get binary mask of surface left
+ **************************
+** error: invalid input dataset 'T1.nii'
+** error: invalid input dataset 'T1.nii'
+** error: invalid input dataset 'T1.nii'
+ **************************
+ *******DONE WITH LEFT HEMISHPERE
+ **************************
+************************ get surfaces in oblique orientation left
+SpecFilePath: /spin1/home/linux/kleinrl/projects/laminar_fmri/tools/
+SpecFileName: std_BOTH.ld564.rh.orient.spec
+2 surfaces in Spec, 1 defined states, 1 groups
+0) 
+1) 
+ **************************
+ get binary mask of surface right
+ **************************
+** error: invalid input dataset 'T1.nii'
+** error: invalid input dataset 'T1.nii'
+** error: invalid input dataset 'T1.nii'
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset ribbonmask_564_rh.nii
+** Program compile date = Sep  1 2021
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset lh.pial.epi_vol.nii
+** Program compile date = Sep  1 2021
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset lh.WM.epi_vol.nii
+** Program compile date = Sep  1 2021
+++ 3dLocalstat: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: Emperor Zhark
+[7m** FATAL ERROR:[0m Can't open dataset 'fill.nii'
+** Program compile date = Sep  1 2021
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset filled_fill.nii
+** Program compile date = Sep  1 2021
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset filled_fill.nii
+** Program compile date = Sep  1 2021
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset filled_fill.nii
+** Program compile date = Sep  1 2021
+cp: cannot stat ‘filled_fill.nii’: No such file or directory
+cp: cannot stat ‘pial_vol.nii’: No such file or directory
+cp: cannot stat ‘WM_vol.nii’: No such file or directory
+cp: cannot stat ‘rim_auto.nii’: No such file or directory
+cp: cannot stat ‘scaled_EPI.nii’: No such file or directory
+cp: cannot stat ‘GM_robbon4_manual_corr.nii’: No such file or directory
+/var/spool/slurm/slurmd/job22981622/slurm_script: line 70: cd: /data/kleinrl/data/DSST/openneuro/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII: Not a directory
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset pial_vol.nii
+** Program compile date = Sep  1 2021

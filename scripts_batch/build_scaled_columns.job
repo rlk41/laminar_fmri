@@ -1,0 +1,65 @@
+#!/bin/bash 
+
+set  -e 
+
+cd $layer_dir
+
+echo "$(date)"
+echo "create columns_scaled"
+mkdir -p columns_scaled 
+cd columns_scaled
+
+echo "$(date)"
+echo "created symbolic link"
+ln -s ../rim.scaled.nii rim.scaled.nii
+
+echo "$(date)"
+echo "LN2_LAYERS -rim rim.scaled.nii -equivol -iter_smooth 50 -debug -nr_layers 10 "
+LN2_LAYERS -rim rim.scaled.nii -equivol -iter_smooth 50 -debug -nr_layers 10 
+
+
+echo "$(date)"
+echo "RUNNING LN2_LAYERS - with borders "
+mkdir -p borders
+cd borders
+ln -s ../rim.scaled.nii rim.scaled.nii
+ln -s ../rim_midGM_equivol.scaled.nii rim_midGM_equivol.scaled.nii
+
+
+
+echo "$(date)"
+echo "LN2_COLUMNS -rim rim.scaled.nii -midgm rim_midGM_equivol.nii -nr_columns 10000 -incl_borders"
+LN2_COLUMNS -rim rim.scaled.nii -midgm rim_midGM_equivol.scaled.nii -nr_columns 10000 -incl_borders
+
+echo "$(date)"
+echo "LN2_COLUMNS -rim rim.scaled.nii -midgm rim_midGM_equivol.nii -nr_columns 1000 -incl_borders"
+LN2_COLUMNS -rim rim.scaled.nii -midgm rim_midGM_equivol.scaled.nii \
+    -nr_columns 1000 -incl_borders -centroids rim_centroids10000.scaled.nii
+
+cd ..
+#####################
+
+echo "$(date)"
+echo "RUNNING LN2_LAYERS - without borders "
+mkdir -p no_borders 
+cd no_borders
+ln -s ../rim.scaled.nii rim.scaled.nii
+ln -s ../rim_midGM_equivol.nii rim_midGM_equivol.scaled.nii
+ln -s ../borders/rim_centroids10000.scaled.nii rim_centroids10000.scaled.nii
+
+echo "done making symbolic links "
+
+echo "$(date)"
+echo "LN2_COLUMNS -rim rim.scaled.nii -midgm rim_midGM_equivol.nii -nr_columns 1000"
+LN2_COLUMNS -rim rim.scaled.nii -midgm rim_midGM_equivol.scaled.nii -nr_columns 1000 \
+  -centroids rim_centroids10000.scaled.nii
+
+echo "$(date)"
+echo "LN2_COLUMNS -rim rim.scaled.nii -midgm rim_midGM_equivol.nii -nr_columns 10000"
+LN2_COLUMNS -rim rim.scaled.nii -midgm rim_midGM_equivol.nii -nr_columns 10000 \
+  -centroids rim_centroids10000.scaled.nii
+cd ..
+
+
+echo "$(date)"
+echo "DONE"

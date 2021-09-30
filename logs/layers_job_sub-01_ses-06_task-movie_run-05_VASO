@@ -1,0 +1,95 @@
+Layer calculation will be done in 3D.
+ =======================
+LAYNII v2.1.1          
+=======================
+LN_GROW_LAYERS
+
+    File name: rim.nii
+    Image details: 320 X | 320 Y | 320 Z | 1 T 
+    Voxel size = 0.65 x 0.65 x 0.65
+    Datatype = 2
+
+  Using 1000 layers.
+  Calculate layers up to cortical thicknesses of 60 voxels 
+  Starting 3D loop...
+  Select GM regions...
+  Start growing from WM...
+  Start growing from CSF...
+  Correcting for Pytagoras error...
+  Running until here...
+  Running also until here...
+  Running also until here 3...
+    Writing output as:
+      rim_layers.nii
+  Finished.
+=======================
+LAYNII v2.1.1          
+=======================
+LN_LEAKY_LAYERS
+
+    File name: rim.nii
+    Image details: 320 X | 320 Y | 320 Z | 1 T 
+    Voxel size = 0.65 x 0.65 x 0.65
+    Datatype = 2
+
+  vic = 1
+  Kernel size = 1
+  Iteration: 0 of 100  Iteration: 1 of 100  Iteration: 2 of 100  Iteration: 3 of 100  Iteration: 4 of 100  Iteration: 5 of 100  Iteration: 6 of 100  Iteration: 7 of 100  Iteration: 8 of 100  Iteration: 9 of 100  Iteration: 10 of 100  Iteration: 11 of 100  Iteration: 12 of 100  Iteration: 13 of 100  Iteration: 14 of 100  Iteration: 15 of 100  Iteration: 16 of 100  Iteration: 17 of 100  Iteration: 18 of 100  Iteration: 19 of 100  Iteration: 20 of 100  Iteration: 21 of 100  Iteration: 22 of 100  Iteration: 23 of 100  Iteration: 24 of 100  Iteration: 25 of 100  Iteration: 26 of 100  Iteration: 27 of 100  Iteration: 28 of 100  Iteration: 29 of 100  Iteration: 30 of 100  Iteration: 31 of 100  Iteration: 32 of 100  Iteration: 33 of 100  Iteration: 34 of 100  Iteration: 35 of 100  Iteration: 36 of 100  Iteration: 37 of 100  Iteration: 38 of 100  Iteration: 39 of 100  Iteration: 40 of 100  Iteration: 41 of 100  Iteration: 42 of 100  Iteration: 43 of 100  Iteration: 44 of 100  Iteration: 45 of 100  Iteration: 46 of 100  Iteration: 47 of 100  Iteration: 48 of 100  Iteration: 49 of 100  Iteration: 50 of 100  Iteration: 51 of 100  Iteration: 52 of 100  Iteration: 53 of 100  Iteration: 54 of 100  Iteration: 55 of 100  Iteration: 56 of 100  Iteration: 57 of 100  Iteration: 58 of 100  Iteration: 59 of 100  Iteration: 60 of 100  Iteration: 61 of 100  Iteration: 62 of 100  Iteration: 63 of 100  Iteration: 64 of 100  Iteration: 65 of 100  Iteration: 66 of 100  Iteration: 67 of 100  Iteration: 68 of 100  Iteration: 69 of 100  Iteration: 70 of 100  Iteration: 71 of 100  Iteration: 72 of 100  Iteration: 73 of 100  Iteration: 74 of 100  Iteration: 75 of 100  Iteration: 76 of 100  Iteration: 77 of 100  Iteration: 78 of 100  Iteration: 79 of 100  Iteration: 80 of 100  Iteration: 81 of 100  Iteration: 82 of 100  Iteration: 83 of 100  Iteration: 84 of 100  Iteration: 85 of 100  Iteration: 86 of 100  Iteration: 87 of 100  Iteration: 88 of 100  Iteration: 89 of 100  Iteration: 90 of 100  Iteration: 91 of 100  Iteration: 92 of 100  Iteration: 93 of 100  Iteration: 94 of 100  Iteration: 95 of 100  Iteration: 96 of 100  Iteration: 97 of 100  Iteration: 98 of 100  Iteration: 99 of 100    Writing output as:
+      rim_leaky_layers.nii
+  Finished.
+I will assume a smooth folding pattern
+I will estimate 3 layers
+=======================
+LAYNII v2.1.1          
+=======================
+LN_LOITUMA
+
+    File name: rim_leaky_layers.nii
+    Image details: 320 X | 320 Y | 320 Z | 1 T 
+    Voxel size = 0.65 x 0.65 x 0.65
+    Datatype = 4
+
+    File name: rim_layers.nii
+    Image details: 320 X | 320 Y | 320 Z | 1 T 
+    Voxel size = 0.65 x 0.65 x 0.65
+    Datatype = 4
+
+ smoothing in GM 
+ here 4 
+ here 5 
+ estimating equivol 
+ min layer is 2   max layers is 1000
+    Writing output as:
+      equi_volume_layers.nii
+    Writing output as:
+      equi_distance_layers.nii
+    Writing output as:
+      leaky_layers.nii
+I will assume a smooth folding pattern
+I will estimate 10 layers
+=======================
+LAYNII v2.1.1          
+=======================
+LN_LOITUMA
+
+    File name: rim_leaky_layers.nii
+    Image details: 320 X | 320 Y | 320 Z | 1 T 
+    Voxel size = 0.65 x 0.65 x 0.65
+    Datatype = 4
+
+    File name: rim_layers.nii
+    Image details: 320 X | 320 Y | 320 Z | 1 T 
+    Voxel size = 0.65 x 0.65 x 0.65
+    Datatype = 4
+
+ smoothing in GM 
+ here 4 
+ here 5 
+ estimating equivol 
+ min layer is 2   max layers is 1000
+    Writing output as:
+      equi_volume_layers.nii
+    Writing output as:
+      equi_distance_layers.nii
+    Writing output as:
+      leaky_layers.nii

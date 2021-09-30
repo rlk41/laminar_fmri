@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 ####################################################################
 ####################################################################
@@ -15,6 +16,7 @@
 
 # for maTT2 to function, download the .gcs files from: 
 # https://doi.org/10.6084/m9.figshare.5998583  
+# https://figshare.com/ndownloader/files/25079594
 # or here:
 # https://doi.org/10.6084/m9.figshare.7552853
 # and put these files into the 
@@ -42,13 +44,13 @@ export atlasList="hcp-mmp-b" #schaefer100-yeo17 schaefer200-yeo17 yeo17dil"
 # this line and set the variable 'py_bin' to that location
 # export py_bin=/custom/path/to/your/python
 
-conda activate openneuro
+#conda activate openneuro
 
 ####################################################################
 ####################################################################
 # subject variables
 
-subj=$subjid #"warped_MP2RAGE"
+export subj=$subjid #"warped_MP2RAGE"
 inputFSDir=$recon_dir #"/media/richard/bfb1e328-6d97-4280-8331-5daeb988f70a/bandettini/subjects/${subj}"
 outputDir=$recon_dir"/multiAtlasTT"
 mkdir -p ${outputDir} || \
@@ -80,8 +82,13 @@ start=`date +%s`
 cmd="${scriptBaseDir}/src/maTT2_applyGCS.sh \
         -d ${inputFSDir} \
         -o ${outputDir} \
-        -f 6p0 \
+        -f 7p1 \
     "
+# cmd="${scriptBaseDir}/src/maTT2_applyGCS.sh \
+#     -d ${inputFSDir} \
+#     -o ${outputDir} \
+#     -f 6p0 \
+# "
 echo $cmd 
 eval $cmd | tee -a ${OUT}
 

@@ -48,11 +48,14 @@ cd ${working_dir}
 
 
 
-#cp Bias_field_script_job.m ./Bias_field_script_job.m
+cp Bias_field_script_job.m ./Bias_field_script_job.m
+
 matlab -nodesktop -nosplash -r "cd ${working_dir};\
  addpath(genpath('/home/richard/matlab_toolbox')); \
  run('${working_dir}/Bias_field_script_job.m')"
 
+# BIOWULF 
+#run_Bias_field_script_job.sh /usr/local/matlab-compiler/v95 
 
 
 #

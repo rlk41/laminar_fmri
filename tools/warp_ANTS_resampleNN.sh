@@ -10,13 +10,19 @@
 f=$1
 resample_master=$2
 
-dir=$(dirname $f)
+#dir=$(dirname $f)
 
 f_base=$(basename $f .nii)
-f_out="${dir}/warped_${f_base}.nii"
+f_base=$(basename $f_base .nii.gz)
+f_base=$(basename $f_base .mgz)
+
+#f_out="${dir}/warped_${f_base}.nii"
+f_out="warped_${f_base}.nii"
+
 
 rs_base=$(basename $resample_master .nii)
 f_out_rs="${dir}/warped_${f_base}.resample2${rs_base}.nii"
+f_out_rs="warped_${f_base}.resample2${rs_base}.nii"
 
 echo "Applying ANTS xfm ${ANTs_reg_1warp}"
 echo "converting to short to save space "

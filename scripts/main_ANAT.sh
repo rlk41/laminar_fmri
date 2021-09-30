@@ -1,10 +1,11 @@
 #!/bin/bash
+set -e 
 
 parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 cd "$parent_path"
 
 # set required paths!
-source ../paths
+source /home/kleinrl/projects/laminar_fmri/paths_biowulf
 
 
 # RUNNING BIAS CORRECTION ON EPI output EPI_bias
@@ -15,6 +16,10 @@ source ../paths
 # RUNNING BIAS CORECTION ON ANAT output is ANAT_bias
 echo "Running spm_bias_field_correction on ${ANAT}"
 spm_bias_field_correct -i ${ANAT};
+
+
+#echo "Running N4BiasFieldCorrection on ${EPI}"
+#N4BiasFieldCorrection -d 4 -i $EPI  -o $EPI_bias
 
 #freeview ${ANAT_bias} ${EPI_bias}
 
@@ -46,17 +51,22 @@ mkdir ${ANTs_dir}
 
 mkdir $SUBJECTS_DIR
 cp $tools_dir/expert.opts $expert
-cp $tools_dir/FreeSurferColorLUT.txt $LUT
+cp $tools_dir/FreeSurferColorLUT.txt $LUT_fs
 cp $tools_dir/HCPMMP1_LUT_ordered_RS.txt $SUBJECTS_DIR
 cp $tools_dir/HCPMMP1_LUT_original_RS.txt $SUBJECTS_DIR
 
 
 recon-all -all -hires \
-  -i $ANAT_bias \
-  -subjid $subjid \
-  -parallel -openmp 40 \
-  -expert $expert
+ -i $ANAT_bias \
+ -subjid $subjid \
+ -parallel -openmp 40 \
+ -expert $expert
 
+# recon-all -autorecon1 -hires \
+#   -i $ANAT_bias \
+#   -subjid $subjid \
+#   -parallel -openmp 40 \
+#   -expert $expert
 # MANUAL EDITS - BRAINMASK
 
 # 1) Use SPM's C1,C2 segmentations to brainextract.
@@ -65,33 +75,49 @@ recon-all -all -hires \
 # reference -- 01_registration_vaso.sh
 
 # 1) combine c1uncorr.nii and c2uncorr.nii
-3dcalc -a "$ANAT_bias_dir/c1uncorr.nii" \
--b "$ANAT_bias_dir/c2uncorr.nii" \
--expr '(a+b)' \
--prefix "$ANAT_bias_dir/c12uncorr.nii"
+#3dcalc -a "$ANAT_bias_dir/c1uncorr.nii" \
+#-b "$ANAT_bias_dir/c2uncorr.nii" \
+#-expr '(a+b)' \
+#-prefix "$ANAT_bias_dir/c12uncorr.nii"
 
 # mri_mask [options] <in vol> <mask vol> <out vol>
-mri_mask "$recon_dir/mri/brainmask.mgz" \
-"$ANAT_bias_dir/c12uncorr.nii" \
-"$recon_dir/mri/brainmask.manualedit.nii"
+#mri_mask "$recon_dir/mri/brainmask.mgz" \
+#"$ANAT_bias_dir/c12uncorr.nii" \
+#"$recon_dir/mri/brainmask.manualedit.nii"
 
 # 2) use mri_gcut to try to get rid of dura
-mri_gcut -110 "$recon_dir/mri/brainmask.manualedit.nii" \
-"$recon_dir/mri/brainmask.manualedit2.nii"
+#mri_gcut -110 "$recon_dir/mri/brainmask.manualedit.nii" \
+#"$recon_dir/mri/brainmask.manualedit2.nii"
 
 #3 manualedits
 # freeview -> recon edit -> shift left click to erase voxels outside brain (Dura,etc.)-> save as brainmask.manualedit#.mgz
 
-mv "$recon_dir/mri/brainmask.mgz" "$recon_dir/mri/brainmask.backup.mgz"
-cp brainmask.manualedit2.mgz brainmask.mgz
+#mv "$recon_dir/mri/brainmask.mgz" "$recon_dir/mri/brainmask.backup.mgz"
+#cp brainmask.manualedit2.mgz brainmask.mgz
 
-recon-all -autorecon2 -hires \
+cp $SUBJECTS_DIR/$ANAT_base/mri/brainmask.mgz $SUBJECTS_DIR/$ANAT_base/mri/brainmask.orig.mgz 
+cp $SUBJECTS_DIR/$ANAT_base/mri/brain.mgz $SUBJECTS_DIR/$ANAT_base/mri/brain.orig.mgz 
+cp $SUBJECTS_DIR/$ANAT_base/mri/wm.mgz $SUBJECTS_DIR/$ANAT_base/mri/wm.orig.mgz 
+
+cp $project_dir/manualedits/brainmask.mgz  $SUBJECTS_DIR/$ANAT_base/mri/brainmask.mgz 
+cp $project_dir/manualedits/brainmask.mgz  $SUBJECTS_DIR/$ANAT_base/mri/brain.mgz 
+cp $project_dir/manualedits/wm.mgz  $SUBJECTS_DIR/$ANAT_base/mri/wm.mgz 
+
+
+
+# recon-all -autorecon2 -hires \
+#   -s $subjid \
+#   -parallel -openmp 40
+
+recon-all -autorecon2-wm -autorecon-pial\
+  -hires \
   -s $subjid \
   -parallel -openmp 40
 
-recon-all -autorecon3 -hires \
-  -s $subjid \
-  -parallel -openmp 40
+
+# recon-all -autorecon3 -hires \
+#   -s $subjid \
+#   -parallel -openmp 40
 
 
 
@@ -128,6 +154,14 @@ freeview -v mri/T1.mgz \
 -f surf/rh.white:edgecolor=yellow \
 -f surf/rh.pial:edgecolor=red
 
+# module load fsl virtualgl freeview 
+# vglrun freeview -v mri/T1.mgz \
+# -f surf/lh.white:edgecolor=yellow \
+# -f surf/lh.pial:edgecolor=red \
+# -f surf/rh.white:edgecolor=yellow \
+# -f surf/rh.pial:edgecolor=red
+
+
 cd $recon_dir
 
 # SUMA, build meshes, build rim
@@ -135,7 +169,7 @@ cd $recon_dir
 # output: rim.nii
 build_rim.sh
 
-
+build_rim_scaled.sh 
 
 
 
@@ -148,6 +182,8 @@ build_rim.sh
 # https://layerfmri.com/2017/11/26/getting-layers-in-epi-space/
 # https://layerfmri.com/2020/04/24/equivol/
 
+cd $layer_dir 
+
 LN_GROW_LAYERS -rim rim.nii -N 1000 -vinc 60 -threeD
 LN_LEAKY_LAYERS -rim rim.nii -nr_layers 1000 -iterations 100
 
@@ -156,10 +192,10 @@ LN_LOITUMA -equidist rim_layers.nii -leaky rim_leaky_layers.nii -FWHM 1 -nr_laye
 mv equi_distance_layers.nii equi_distance_layers_n3.nii
 mv equi_volume_layers.nii equi_volume_layers_n3.nii
 
-# N10
-LN_LOITUMA -equidist rim_layers.nii -leaky rim_leaky_layers.nii -FWHM 1 -nr_layers 10
-mv equi_distance_layers.nii equi_distance_layers_n10.nii
-mv equi_volume_layers.nii equi_volume_layers_n10.nii
+# # N10
+# LN_LOITUMA -equidist rim_layers.sacled.nii -leaky rim_leaky_layers.scaled.nii -FWHM 1 -nr_layers 10
+# mv equi_distance_layers.scaled.nii equi_distance_layers_n10.scaled.nii
+# mv equi_volume_layers.scaled.nii equi_volume_layers_n10.scaled.nii
 
 
 ########################################################
@@ -206,6 +242,45 @@ generate_columns.sh -t "equivol" -n 10000
 generate_columns.sh -t "equidist" -n 10000
 
 
+## SCALED 
+#LN2_LAYERS -rim rim.nii -equivol -iter_smooth 50 -debug
+#generate_columns.sh -t "equivol" -n 1000
+#generate_columns.sh -t "equivol" -n 1000 -b
+#generate_columns.sh -t "equidist" -n 1000
+
+#generate_columns.sh -t "equivol" -n 10000
+#generate_columns.sh -t "equidist" -n 10000
+
+# SCALED 
+# SCALED N10 ##################
+mkdir -p layers_scaled 
+cd layers_scaled 
+LN_GROW_LAYERS -rim ../rim.scaled.nii -N 1000 -vinc 60 -threeD
+LN_LEAKY_LAYERS -rim ../rim.scaled.nii -nr_layers 1000 -iterations 100
+
+# N10
+LN_LOITUMA -equidist rim_layers.scaled.nii -leaky rim_leaky_layers.scaled.nii -FWHM 1 -nr_layers 10
+mv equi_distance_layers.scaled.nii equi_distance_layers_n10.scaled.nii
+mv equi_volume_layers.scaled.nii equi_volume_layers_n10.scaled.nii
+
+cd ..
+mkdir -p columns_scaled 
+cd columns_scaled
+LN2_LAYERS -rim ../rim.scaled.nii -equivol -iter_smooth 50 -debug
+
+mkdir -p borders
+cd borders
+LN2_COLUMNS -rim ../rim.scaled.nii -midgm ../rim_midGM_equivol.nii -nr_columns 1000 -incl_borders
+LN2_COLUMNS -rim ../rim.scaled.nii -midgm ../rim_midGM_equivol.nii -nr_columns 10000 -incl_borders
+cd ..
+
+mkdir -p no_borders 
+cd no_borders
+LN2_COLUMNS -rim ../rim.scaled.nii -midgm ../rim_midGM_equivol.nii -nr_columns 1000 
+LN2_COLUMNS -rim ../rim.scaled.nii -midgm ../rim_midGM_equivol.nii -nr_columns 10000 
+cd ..
+
+
 
 
 
@@ -218,11 +293,13 @@ generate_columns.sh -t "equidist" -n 10000
 # https://github.com/faskowit/multiAtlasTT
 # TODO: THE REQUIRES PYTHON. MIGHT NEED TO REWRITE.
 
-conda activate openneuro
+#conda activate openneuro
+# git clone https://github.com/faskowit/multiAtlasTT $tools_dir/multiAtlasTT
 warped_MP2RAGE_run_maTT2.sh
 
 # build thalamic segmentation
 segmentThalamicNuclei.sh  $subjid
+mri_convert "$recon_dir/mri/ThalamicNuclei.v12.T1.mgz" "$recon_dir/mri/ThalamicNuclei.v12.T1.nii" 
 
 # build brainstem segmentation
 segmentBS.sh $subjid

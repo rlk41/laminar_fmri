@@ -1,0 +1,14 @@
+#!/bin/bash 
+
+EPI=$1
+
+echo "resampleEPI.job: $EPI"
+
+source /home/kleinrl/projects/laminar_fmri/paths_biowulf 
+
+if [ ! -f $scaledEPI ]; then 
+    echo "resampling EPI"
+    resample_EPI.sh 
+fi 
+
+

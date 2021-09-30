@@ -1,0 +1,27 @@
+#!/bin/bash 
+set -e 
+
+for EPI in $VASO_func_dir/*VASO.nii
+do 
+    echo $EPI 
+    source /home/kleinrl/projects/laminar_fmri/paths_biowulf 
+    log="/home/kleinrl/projects/laminar_fmri/logs/upsampleEPI-${EPI_base}.log"
+
+    echo "  "
+    echo "EPI: ${EPI}"
+    echo "scaled_EPI: ${scaled_EPI}"
+    echo "  "
+    echo "LOG: ${log}"
+    echo "  "
+
+    sbatch --mem=120g --cpus-per-task=20 \
+    --partition=norm \
+    --mail-type=BEGIN,TIME_LIMIT_90,END \
+    --output=$log \
+    --time 10:00:00 \
+    main_EPI_upsample.sh $EPI
+
+    #resampleEPI.job
+    #/home/kleinrl/projects/laminar_fmri/tools/ANTs_job.sh
+
+done 

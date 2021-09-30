@@ -1,0 +1,49 @@
+created symbolic link Fri Sep 24 18:35:40 EDT 2021
+Fri Sep 24 18:35:40 EDT 2021
+LN_GROW_LAYERS -rim rim.scaled.nii -N 1000 -vinc 60 -threeD
+Layer calculation will be done in 3D.
+ =======================
+LAYNII v2.1.1          
+=======================
+LN_GROW_LAYERS
+
+    File name: rim.scaled.nii
+    Image details: 648 X | 864 Y | 480 Z | 1 T 
+    Voxel size = 0.200617 x 0.200617 x 0.2
+    Datatype = 2
+
+  Using 1000 layers.
+  Calculate layers up to cortical thicknesses of 60 voxels 
+  Starting 3D loop...
+  Select GM regions...
+  Start growing from WM...
+  Start growing from CSF...
+  Correcting for Pytagoras error...
+  Running until here...
+  Running also until here...
+/var/spool/slurm/slurmd/job23833509/slurm_script: line 13: 38520 Segmentation fault      LN_GROW_LAYERS -rim rim.scaled.nii -N 1000 -vinc 60 -threeD
+Fri Sep 24 21:05:19 EDT 2021
+LN_LEAKY_LAYERS -rim rim.scaled.nii -nr_layers 1000 -iterations 100
+=======================
+LAYNII v2.1.1          
+=======================
+LN_LEAKY_LAYERS
+
+    File name: rim.scaled.nii
+    Image details: 648 X | 864 Y | 480 Z | 1 T 
+    Voxel size = 0.200617 x 0.200617 x 0.2
+    Datatype = 2
+
+  vic = 1
+  Kernel size = 1
+  Iteration: 0 of 100  Iteration: 1 of 100  Iteration: 2 of 100  Iteration: 3 of 100  Iteration: 4 of 100  Iteration: 5 of 100  Iteration: 6 of 100  Iteration: 7 of 100  Iteration: 8 of 100  Iteration: 9 of 100  Iteration: 10 of 100  Iteration: 11 of 100  Iteration: 12 of 100  Iteration: 13 of 100  Iteration: 14 of 100  Iteration: 15 of 100  Iteration: 16 of 100  Iteration: 17 of 100  Iteration: 18 of 100  Iteration: 19 of 100  Iteration: 20 of 100  Iteration: 21 of 100  Iteration: 22 of 100  Iteration: 23 of 100  Iteration: 24 of 100  Iteration: 25 of 100  Iteration: 26 of 100  Iteration: 27 of 100  Iteration: 28 of 100  Iteration: 29 of 100  Iteration: 30 of 100  Iteration: 31 of 100  Iteration: 32 of 100  Iteration: 33 of 100  Iteration: 34 of 100  Iteration: 35 of 100  Iteration: 36 of 100  Iteration: 37 of 100  Iteration: 38 of 100  Iteration: 39 of 100  Iteration: 40 of 100  Iteration: 41 of 100  Iteration: 42 of 100  Iteration: 43 of 100  Iteration: 44 of 100  Iteration: 45 of 100  Iteration: 46 of 100  Iteration: 47 of 100  Iteration: 48 of 100  Iteration: 49 of 100  Iteration: 50 of 100  Iteration: 51 of 100  Iteration: 52 of 100  Iteration: 53 of 100  Iteration: 54 of 100  Iteration: 55 of 100  Iteration: 56 of 100  Iteration: 57 of 100  Iteration: 58 of 100  Iteration: 59 of 100  Iteration: 60 of 100  Iteration: 61 of 100  Iteration: 62 of 100  Iteration: 63 of 100  Iteration: 64 of 100  Iteration: 65 of 100  Iteration: 66 of 100  Iteration: 67 of 100  Iteration: 68 of 100  Iteration: 69 of 100  Iteration: 70 of 100  Iteration: 71 of 100  Iteration: 72 of 100  Iteration: 73 of 100  Iteration: 74 of 100  Iteration: 75 of 100  Iteration: 76 of 100  Iteration: 77 of 100  Iteration: 78 of 100  Iteration: 79 of 100  Iteration: 80 of 100  Iteration: 81 of 100  Iteration: 82 of 100  Iteration: 83 of 100  Iteration: 84 of 100  Iteration: 85 of 100  Iteration: 86 of 100  Iteration: 87 of 100  Iteration: 88 of 100  Iteration: 89 of 100  Iteration: 90 of 100  Iteration: 91 of 100  Iteration: 92 of 100  Iteration: 93 of 100  Iteration: 94 of 100  Iteration: 95 of 100  Iteration: 96 of 100  Iteration: 97 of 100  Iteration: 98 of 100  Iteration: 99 of 100    Writing output as:
+      rim_leaky_layers.scaled.nii
+  Finished.
+Sat Sep 25 00:12:27 EDT 2021
+LN_LOITUMA -equidist sc_rim_layers.nii -leaky sc_rim_leaky_layers.nii -FWHM 1 -nr_layers 10
+I will assume a smooth folding pattern
+I will estimate 10 layers
+** ERROR (nifti_image_read): failed to find header file for 'rim_layers.scaled.nii'
+/var/spool/slurm/slurmd/job23833509/slurm_script: line 21: 69680 Segmentation fault      LN_LOITUMA -equidist rim_layers.scaled.nii -leaky rim_leaky_layers.scaled.nii -FWHM 1 -nr_layers 10
+Sat Sep 25 00:12:27 EDT 2021
+----DONE with layers -----

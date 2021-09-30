@@ -1,0 +1,15 @@
+#!/bin/bash 
+set -e 
+
+
+source /home/kleinrl/projects/laminar_fmri/paths_biowulf 
+log="/home/kleinrl/projects/laminar_fmri/logs/build_scaled_columns.log"
+
+
+
+sbatch --mem=120g --cpus-per-task=5 \
+--partition=norm \
+--mail-type=TIME_LIMIT_90,END \
+--output=$log \
+--time 100:00:00 \
+"${scripts_batch_dir}/build_scaled_columns.job"

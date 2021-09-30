@@ -21,6 +21,9 @@ echo "out: $out"
 #reading from LUT. But 3dhistog doesn't get the last unq value if not
 #consequtive
 
+cmds=$cmds_dir/$(basename $roi_file .nii).cmds
+jobs=10
+
 
 while IFS= read -r line
 do
@@ -28,7 +31,9 @@ do
     ID=${line[0]};
     ROI_name=${line[1]}
     echo "ROI: $roi ID: $ID "
-    3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii &
+    3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii 
+    #echo "3dcalc -a ${roi_file} -expr "'"equals(a,'"$ID"')"'" -prefix $out/$ID.$ROI_name.nii" >> $cmds
+
 done < $roi_list
 
 #parallel --jobs ${jobs} < $cmds

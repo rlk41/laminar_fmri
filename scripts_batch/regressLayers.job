@@ -1,0 +1,8 @@
+#!/bin/bash 
+
+echo "running regressLayers.job"
+
+source /home/kleinrl/projects/laminar_fmri/paths_biowulf 
+module load python 
+
+python /home/kleinrl/projects/laminar_fmri/analyses/analysis.regressLayers.pca_vs_columns.groupEPI.py  

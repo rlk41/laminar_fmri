@@ -1,0 +1,25 @@
+created symbolic link Sun Sep 26 18:33:10 EDT 2021
+Sun Sep 26 18:33:10 EDT 2021
+LN_GROW_LAYERS -rim rim.scaled.nii -N 1000 -vinc 60 -threeD
+Layer calculation will be done in 3D.
+ =======================
+LAYNII v2.1.1          
+=======================
+LN_GROW_LAYERS
+
+    File name: rim.scaled.nii
+    Image details: 648 X | 864 Y | 480 Z | 1 T 
+    Voxel size = 0.200617 x 0.200617 x 0.2
+    Datatype = 2
+
+  Using 1000 layers.
+  Calculate layers up to cortical thicknesses of 60 voxels 
+  Starting 3D loop...
+  Select GM regions...
+  Start growing from WM...
+  Start growing from CSF...
+  Correcting for Pytagoras error...
+  Running until here...
+  Running also until here...
+/var/spool/slurm/slurmd/job24004681/slurm_script: line 25: 18664 Segmentation fault      LN_GROW_LAYERS -rim rim.scaled.nii -N 1000 -vinc 60 -threeD
+FAIL: fail on LN_GROW_LAYERS

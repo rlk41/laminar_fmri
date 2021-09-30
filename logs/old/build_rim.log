@@ -1,0 +1,89 @@
+Running 'SUMA_Make_Spec_FS' 
+creating meshes and rim file on the MP2RAGE ANAT volume (as opposed to EPI)
+based on Renzo's code https://layerfmri.com/2017/11/26/getting-layers-in-epi-space/#more-115
+++ Running @SUMA_Make_Spec_FS version: 2.2.4
+failure: will not overwrite files: 
+        './SUMA/subject_name_lh.spec'
+        './SUMA/subject_name_rh.spec'
+        './SUMA/subject_name_SurfVol.nii'
+
+please remove these files if you want to rerun the script.
+program failure: exiting...
+
+dense mesh starting
+rgb = [1.000000, 0.000000, 0.000000]
+++     Notice MapIcosahedron (SUMA_MapIcosahedron.c:810 @15:19:34):
+Adding -NN_dset_map ./lh.aparc.a2009s.annot.niml.dset
+
+
+**               **
+    To view in SUMA, run:
+  suma -spec std_lh.ld564.subject_name_lh.spec 
+**               **
+
+rgb = [1.000000, 0.000000, 0.000000]
+++     Notice MapIcosahedron (SUMA_MapIcosahedron.c:810 @15:31:14):
+Adding -NN_dset_map ./rh.aparc.a2009s.annot.niml.dset
+
+
+**               **
+    To view in SUMA, run:
+  suma -spec std_rh.ld564.subject_name_rh.spec 
+**               **
+
+************************ get surfaces in oblique orientation left
+SpecFilePath: /gpfs/gsfs11/users/kleinrl/data/DSST/openneuro/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/SUMA/
+SpecFileName: std_BOTH.ld564.lh.orient.spec
+2 surfaces in Spec, 1 defined states, 1 groups
+0) 
+1) 
+ **************************
+ get binary mask of surface left
+ **************************
+rgb = [1.000000, 0.000000, 0.000000]
+rgb = [1.000000, 0.000000, 0.000000]
+rgb = [1.000000, 0.000000, 0.000000]
+ **************************
+ *******DONE WITH LEFT HEMISHPERE
+ **************************
+************************ get surfaces in oblique orientation left
+SpecFilePath: /gpfs/gsfs11/users/kleinrl/data/DSST/openneuro/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/SUMA/
+SpecFileName: std_BOTH.ld564.rh.orient.spec
+2 surfaces in Spec, 1 defined states, 1 groups
+0) 
+1) 
+ **************************
+ get binary mask of surface right
+ **************************
+rgb = [1.000000, 0.000000, 0.000000]
+rgb = [1.000000, 0.000000, 0.000000]
+rgb = [1.000000, 0.000000, 0.000000]
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ Output dataset ./fill.nii
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ Output dataset ./pial_vol.nii
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ Output dataset ./WM_vol.nii
+++ 3dLocalstat: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: Emperor Zhark
+[7m*+ WARNING:[0m Illegal input to MCW_build_mask: dx=0.65 dy=0.65 dz=0.65 max_dist=0.3
+++ Neighborhood comprises 1 voxels
+++ Start sub-brick [0]
+++ Output dataset ./filled_fill.nii
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ Output dataset ./filled_fill.nii
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ Output dataset ./GM_robbon4_manual_corr.nii
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ Output dataset ./rim_auto.nii
+cp: cannot stat ‘scaled_EPI.nii’: No such file or directory
+/var/spool/slurm/slurmd/job22995149/slurm_script: line 72: cd: /data/kleinrl/data/DSST/openneuro/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII: Not a directory
+++ 3dcalc: AFNI version=AFNI_21.2.06 (Sep  1 2021) [64-bit]
+++ Authored by: A cast of thousands
+++ Output dataset ./rim.nii

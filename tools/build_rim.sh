@@ -4,6 +4,8 @@ echo "Running 'SUMA_Make_Spec_FS' "
 echo "creating meshes and rim file on the MP2RAGE ANAT volume (as opposed to EPI)"
 echo "based on Renzo's code https://layerfmri.com/2017/11/26/getting-layers-in-epi-space/#more-115"
 
+cd $recon_dir 
+
 # running SUMA to create surfaces
 @SUMA_Make_Spec_FS -sid subject_name -NIFTI
 
@@ -59,11 +61,13 @@ echo " **************************"
 
 
 
+mkdir -p $layer_dir
+
 cp filled_fill.nii  ${layer_dir}
 cp pial_vol.nii     ${layer_dir}
 cp WM_vol.nii       ${layer_dir}
 cp rim_auto.nii     ${layer_dir}
-cp scaled_EPI.nii   ${layer_dir}
+#cp scaled_EPI.nii   ${layer_dir}
 cp $ANAT_bias       ${layer_dir}
 cp GM_robbon4_manual_corr.nii ${layer_dir}
 

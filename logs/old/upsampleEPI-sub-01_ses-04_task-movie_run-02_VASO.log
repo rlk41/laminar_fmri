@@ -1,0 +1,2444 @@
+[-] Unloading Matlab  2021a  on cn3119 
+[+] Loading Matlab  2021a  on cn3119 
+[-] Unloading matlab-spm, version 12.7219...
+[+] Loading matlab-spm, version 12.7219...
+[-] Unloading gcc  7.3.0  ... 
+[-] Unloading ANTs  2.3.2 
+[+] Loading gcc  7.3.0  ... 
+[+] Loading ANTs  2.3.2 
+[-] Unloading AFNI current-openmp  ... 
+[+] Loading AFNI current-openmp  ... 
+AFNI/current-openmp last updated  2021-09-21
+
+[-] Unloading freesurfer  7.1.1 on cn3119 
+[+] Loading freesurfer  7.1.1  on cn3119 
+[-] Unloading FSL 6.0.4  ... 
+[+] Loading FSL 6.0.4  ... 
+[-] Unloading python 3.7  ... 
+[+] Loading python 3.7  ... 
+                        
+EPI set using: /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-04_task-movie_run-02_VASO.nii
+                                                         
+----------------------------------
+YOU NEED TO SUPPLY: 
+               spm_path - location of spm files ('matlab_toolbox')
+               ds_dir - location of data ('ds003216-download')
+               EPI_base - currently working with 
+                         'sub-01_ses-06_task-movie_run-05_VASO' 
+                         main_anat.sh for processing MP2RAGE, then loop 
+                         main_EPI.sh for each EPI
+----------------------------------
+project_dir: /home/kleinrl/projects/laminar_fmri
+spm_path:    
+tools_dir:   /home/kleinrl/projects/laminar_fmri/tools
+cmds_dir:    /home/kleinrl/projects/laminar_fmri/cmds
+EPI:         /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-04_task-movie_run-02_VASO.nii
+EPI_base     sub-01_ses-04_task-movie_run-02_VASO
+----------------------------------
+                                                                                
+                                                                                
+resampleEPI.job: /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-04_task-movie_run-02_VASO.nii
+************* upscaling EPI.nii ******************************
+requires '/data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-04_task-movie_run-02_VASO.nii file 
+outputs as /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-04_task-movie_run-02_VASO.scaled.nii
+.20061725000000000000
+.20061725000000000000
+.20000000000000000000
+++ options initialized: options struct at 0x7fffffff4c50 :
+    dset        = 0x612ba0 (valid)
+    mset        = (nil) (invalid)
+    (dx,dy,dz)  = ( 0.201,  0.201,  0.200)
+    orient      = (nil)
+    prefix      = /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_s
+    resam       = 2
+    debug       = 1
+dset </data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-04_task-movie_run-02_VASO.scaled.nii> has been written to disk
+Applying ANTS xfm /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-04_task-movie_run-02_VASO_working_ANTs/registered_1Warp.nii.gz
+converting to short to save space 
+resamplign to /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-04_task-movie_run-02_VASO.scaled.nii
+outputs: warped_equi_volume_layers_n3.nii
+         warped_equi_volume_layers_n3.resample2sub-01_ses-04_task-movie_run-02_VASO.scaled.nii
+       
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+** AFNI converts NIFTI_datatype=64 (FLOAT64) in file /gpfs/gsfs11/users/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_equi_volume_layers_n3.nii to FLOAT32
+     Warnings of this type will be muted for this session.
+     Set AFNI_NIFTI_TYPE_WARN to YES to see them all, NO to see none.
+++ Output dataset ./warped_equi_volume_layers_n3.nii
+Applying ANTS xfm /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-04_task-movie_run-02_VASO_working_ANTs/registered_1Warp.nii.gz
+converting to short to save space 
+resamplign to /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-04_task-movie_run-02_VASO.scaled.nii
+outputs: warped_equi_volume_layers_n10.nii
+         warped_equi_volume_layers_n10.resample2sub-01_ses-04_task-movie_run-02_VASO.scaled.nii
+       
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+** AFNI converts NIFTI_datatype=64 (FLOAT64) in file /gpfs/gsfs11/users/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_equi_volume_layers_n10.nii to FLOAT32
+     Warnings of this type will be muted for this session.
+     Set AFNI_NIFTI_TYPE_WARN to YES to see them all, NO to see none.
+++ Output dataset ./warped_equi_volume_layers_n10.nii
+Applying ANTS xfm /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-04_task-movie_run-02_VASO_working_ANTs/registered_1Warp.nii.gz
+converting to short to save space 
+resamplign to /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-04_task-movie_run-02_VASO.scaled.nii
+outputs: warped_rim.nii
+         warped_rim.resample2sub-01_ses-04_task-movie_run-02_VASO.scaled.nii
+       
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+** AFNI converts NIFTI_datatype=64 (FLOAT64) in file /gpfs/gsfs11/users/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_rim.nii to FLOAT32
+     Warnings of this type will be muted for this session.
+     Set AFNI_NIFTI_TYPE_WARN to YES to see them all, NO to see none.
+++ Output dataset ./warped_rim.nii
+Applying ANTS xfm /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-04_task-movie_run-02_VASO_working_ANTs/registered_1Warp.nii.gz
+converting to short to save space 
+resamplign to /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-04_task-movie_run-02_VASO.scaled.nii
+outputs: warped_rim_columns1000.nii
+         warped_rim_columns1000.resample2sub-01_ses-04_task-movie_run-02_VASO.scaled.nii
+       
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+** AFNI converts NIFTI_datatype=64 (FLOAT64) in file /gpfs/gsfs11/users/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_rim_columns1000.nii to FLOAT32
+     Warnings of this type will be muted for this session.
+     Set AFNI_NIFTI_TYPE_WARN to YES to see them all, NO to see none.
+++ Output dataset ./warped_rim_columns1000.nii
+Applying ANTS xfm /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-04_task-movie_run-02_VASO_working_ANTs/registered_1Warp.nii.gz
+converting to short to save space 
+resamplign to /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-04_task-movie_run-02_VASO.scaled.nii
+outputs: warped_rim_columns10000.nii
+         warped_rim_columns10000.resample2sub-01_ses-04_task-movie_run-02_VASO.scaled.nii
+       
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+** AFNI converts NIFTI_datatype=64 (FLOAT64) in file /gpfs/gsfs11/users/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_rim_columns10000.nii to FLOAT32
+     Warnings of this type will be muted for this session.
+     Set AFNI_NIFTI_TYPE_WARN to YES to see them all, NO to see none.
+++ Output dataset ./warped_rim_columns10000.nii
+Applying ANTS xfm /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-04_task-movie_run-02_VASO_working_ANTs/registered_1Warp.nii.gz
+converting to short to save space 
+resamplign to /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-04_task-movie_run-02_VASO.scaled.nii
+outputs: warped_ThalamicNuclei.v12.T1.nii
+         warped_ThalamicNuclei.v12.T1.resample2sub-01_ses-04_task-movie_run-02_VASO.scaled.nii
+       
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+** AFNI converts NIFTI_datatype=64 (FLOAT64) in file /gpfs/gsfs11/users/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.nii to FLOAT32
+     Warnings of this type will be muted for this session.
+     Set AFNI_NIFTI_TYPE_WARN to YES to see them all, NO to see none.
+++ Output dataset ./warped_ThalamicNuclei.v12.T1.nii
+Applying ANTS xfm /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-04_task-movie_run-02_VASO_working_ANTs/registered_1Warp.nii.gz
+converting to short to save space 
+resamplign to /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-04_task-movie_run-02_VASO.scaled.nii
+outputs: warped_hcp-mmp-b.nii
+         warped_hcp-mmp-b.resample2sub-01_ses-04_task-movie_run-02_VASO.scaled.nii
+       
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+** AFNI converts NIFTI_datatype=64 (FLOAT64) in file /gpfs/gsfs11/users/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_hcp-mmp-b.nii to FLOAT32
+     Warnings of this type will be muted for this session.
+     Set AFNI_NIFTI_TYPE_WARN to YES to see them all, NO to see none.
+++ Output dataset ./warped_hcp-mmp-b.nii
+roi_file: /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+roi_list: /home/kleinrl/projects/laminar_fmri/tools/LUT_thalamic.txt
+out: /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/rois.scaled.thalamic.l3
+ROI:  ID: 8103 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8104 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8105 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8106 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8108 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8109 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8110 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8111 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8112 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8113 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8115 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8116 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8118 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8120 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8121 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8122 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8123 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8126 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8127 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8128 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8129 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8133 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8203 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8204 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8205 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8206 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8208 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8209 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8210 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8211 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8212 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8213 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8215 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8216 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8217 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8218 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8220 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8221 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8222 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8223 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8226 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8227 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8228 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8229 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+ROI:  ID: 8233 
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset /data/kleinrl/ds003216/sub-01/ses-01/anat/sub-01_ses-01_run-01_T1w_working_recon-all/sub-01_ses-01_run-01_T1w/LAYNII_sub-01_ses-04_task-movie_run-02_VASO/warped_ThalamicNuclei.v12.T1.resample2scaledEPI.nii
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m can't open dataset -expr
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8108.lh.LD.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8112.lh.MDl.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8113.lh.MDm.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8110.lh.LP.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8103.lh.AV.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8111.lh.L-Sg.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8105.lh.CL.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8109.lh.LGN.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8104.lh.CeM.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8106.lh.CM.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8116.lh.MV-Re.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8115.lh.MGN.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8118.lh.Pf.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8120.lh.PuA.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8121.lh.PuI.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8122.lh.PuL.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8129.lh.VLp.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8133.lh.VPL.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8203.rh.AV.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8126.lh.VA.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8123.lh.PuM.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8204.rh.CeM.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8127.lh.VAmc.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8128.lh.VLa.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8205.rh.CL.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8206.rh.CM.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8208.rh.LD.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8209.rh.LGN.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8210.rh.LP.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8213.rh.MDm.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m*+ WARNING:[0m output sub-brick 0 is all zeros!
+[7m** ERROR:[0m output dataset name '8217.rh.Pc.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8211.rh.L-Sg.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8212.rh.MDl.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8218.rh.Pf.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8215.rh.MGN.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8216.rh.MV-Re.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8220.rh.PuA.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8221.rh.PuI.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8223.rh.PuM.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8222.rh.PuL.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8226.rh.VA.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8229.rh.VLp.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8103.lh.AV.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8106.lh.CM.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8105.lh.CL.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8227.rh.VAmc.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8228.rh.VLa.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8233.rh.VPL.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8104.lh.CeM.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8108.lh.LD.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8110.lh.LP.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8111.lh.L-Sg.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8109.lh.LGN.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8112.lh.MDl.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8113.lh.MDm.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8123.lh.PuM.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8115.lh.MGN.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8116.lh.MV-Re.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8126.lh.VA.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8121.lh.PuI.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8118.lh.Pf.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8120.lh.PuA.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8127.lh.VAmc.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8128.lh.VLa.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8122.lh.PuL.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8129.lh.VLp.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8204.rh.CeM.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8133.lh.VPL.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8205.rh.CL.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8210.rh.LP.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8211.rh.L-Sg.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8203.rh.AV.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8206.rh.CM.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8208.rh.LD.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8209.rh.LGN.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8212.rh.MDl.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8213.rh.MDm.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8215.rh.MGN.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8216.rh.MV-Re.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m*+ WARNING:[0m output sub-brick 0 is all zeros!
+[7m** ERROR:[0m output dataset name '8217.rh.Pc.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8218.rh.Pf.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8221.rh.PuI.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8228.rh.VLa.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8227.rh.VAmc.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8229.rh.VLp.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8233.rh.VPL.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8220.rh.PuA.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8222.rh.PuL.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8223.rh.PuM.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8103.lh.AV.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8226.rh.VA.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8104.lh.CeM.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8105.lh.CL.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8106.lh.CM.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8108.lh.LD.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8109.lh.LGN.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8112.lh.MDl.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8116.lh.MV-Re.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8110.lh.LP.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8111.lh.L-Sg.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8118.lh.Pf.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8113.lh.MDm.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8115.lh.MGN.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8122.lh.PuL.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8123.lh.PuM.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8126.lh.VA.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8120.lh.PuA.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8121.lh.PuI.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8129.lh.VLp.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8204.rh.CeM.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8127.lh.VAmc.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8128.lh.VLa.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8205.rh.CL.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8209.rh.LGN.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8133.lh.VPL.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8206.rh.CM.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8203.rh.AV.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8208.rh.LD.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8210.rh.LP.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8211.rh.L-Sg.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8216.rh.MV-Re.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8213.rh.MDm.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8218.rh.Pf.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8220.rh.PuA.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8222.rh.PuL.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8212.rh.MDl.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+/usr/bin/bash: -c: line 0: syntax error near unexpected token `a,$ID'
+/usr/bin/bash: -c: line 0: `"3dcalc -a ${roi_file} -expr "equals(a,$ID)" -prefix $out/$ID.$ROI_name.nii"'
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8103)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8104)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8105)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8106)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m*+ WARNING:[0m output sub-brick 0 is all zeros!
+[7m** ERROR:[0m output dataset name '8217.rh.Pc.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8108)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8109)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8215.rh.MGN.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8110)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8111)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8112)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8115)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8113)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8116)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8118)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8120)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8121)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8221.rh.PuI.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8122)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8123)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8126)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8127)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8128)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8129)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8133)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8223.rh.PuM.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8203)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8204)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8205)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8208)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8206)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8209)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8210)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8212)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8211)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8213)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8215)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8216)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8217)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8218)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8220)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8221)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8222)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8223)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8228)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8226)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8227)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8229)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+/usr/bin/bash: -c: line 0: unexpected EOF while looking for matching `"'
+/usr/bin/bash: -c: line 1: syntax error: unexpected end of file
+ PARSER error   1: Can't interpret symbol        
+ "EQUALS(A,8233)" 
+.#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8226.rh.VA.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8227.rh.VAmc.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8228.rh.VLa.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8229.rh.VLp.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+ PARSER error  13: Expected an expression        
+ EQUALS(A,) 
+..........#
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** FATAL ERROR:[0m illegal expression -- see the help for details
+** Program compile date = Sep 20 2021
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8233.rh.VPL.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8108.lh.LD.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8109.lh.LGN.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8110.lh.LP.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8106.lh.CM.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8103.lh.AV.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8111.lh.L-Sg.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8105.lh.CL.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8104.lh.CeM.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8112.lh.MDl.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8113.lh.MDm.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8115.lh.MGN.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8118.lh.Pf.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8116.lh.MV-Re.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8120.lh.PuA.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8121.lh.PuI.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8128.lh.VLa.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8129.lh.VLp.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8203.rh.AV.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8122.lh.PuL.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8126.lh.VA.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8127.lh.VAmc.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8123.lh.PuM.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8205.rh.CL.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8133.lh.VPL.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8204.rh.CeM.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8206.rh.CM.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8208.rh.LD.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8209.rh.LGN.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8210.rh.LP.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m*+ WARNING:[0m output sub-brick 0 is all zeros!
+[7m** ERROR:[0m output dataset name '8217.rh.Pc.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8215.rh.MGN.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8213.rh.MDm.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8220.rh.PuA.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8211.rh.L-Sg.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8212.rh.MDl.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8221.rh.PuI.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8216.rh.MV-Re.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8218.rh.Pf.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8222.rh.PuL.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8227.rh.VAmc.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8226.rh.VA.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8105.lh.CL.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8223.rh.PuM.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8106.lh.CM.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8228.rh.VLa.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8229.rh.VLp.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8233.rh.VPL.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8103.lh.AV.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8104.lh.CeM.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8109.lh.LGN.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8108.lh.LD.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8110.lh.LP.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8112.lh.MDl.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8118.lh.Pf.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8111.lh.L-Sg.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8113.lh.MDm.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8116.lh.MV-Re.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8115.lh.MGN.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8122.lh.PuL.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8123.lh.PuM.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8120.lh.PuA.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8121.lh.PuI.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8126.lh.VA.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8128.lh.VLa.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8127.lh.VAmc.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8133.lh.VPL.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8204.rh.CeM.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8208.rh.LD.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8209.rh.LGN.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8203.rh.AV.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8129.lh.VLp.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8205.rh.CL.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8206.rh.CM.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8211.rh.L-Sg.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8210.rh.LP.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8213.rh.MDm.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8212.rh.MDl.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8215.rh.MGN.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8216.rh.MV-Re.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8223.rh.PuM.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8220.rh.PuA.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8226.rh.VA.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m*+ WARNING:[0m output sub-brick 0 is all zeros!
+[7m** ERROR:[0m output dataset name '8217.rh.Pc.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8227.rh.VAmc.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8218.rh.Pf.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8221.rh.PuI.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8222.rh.PuL.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8228.rh.VLa.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8229.rh.VLp.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8233.rh.VPL.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8103.lh.AV.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8104.lh.CeM.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8106.lh.CM.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8110.lh.LP.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8109.lh.LGN.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8105.lh.CL.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8108.lh.LD.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8113.lh.MDm.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8115.lh.MGN.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8118.lh.Pf.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8111.lh.L-Sg.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8116.lh.MV-Re.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8112.lh.MDl.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8121.lh.PuI.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8120.lh.PuA.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8126.lh.VA.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8122.lh.PuL.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8123.lh.PuM.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8128.lh.VLa.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8204.rh.CeM.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8127.lh.VAmc.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8205.rh.CL.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8129.lh.VLp.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8203.rh.AV.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8133.lh.VPL.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8206.rh.CM.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8209.rh.LGN.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8208.rh.LD.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8213.rh.MDm.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8215.rh.MGN.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m*+ WARNING:[0m output sub-brick 0 is all zeros!
+[7m** ERROR:[0m output dataset name '8217.rh.Pc.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8211.rh.L-Sg.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8210.rh.LP.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8218.rh.Pf.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8212.rh.MDl.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8216.rh.MV-Re.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8220.rh.PuA.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8221.rh.PuI.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8223.rh.PuM.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8222.rh.PuL.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8226.rh.VA.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8229.rh.VLp.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8227.rh.VAmc.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8228.rh.VLa.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+++ 3dcalc: AFNI version=AFNI_21.2.07 (Sep 20 2021) [64-bit]
+++ Authored by: A cast of thousands
+[7m** ERROR:[0m output dataset name '8233.rh.VPL.nii' conflicts with existing file
+[7m** ERROR:[0m dataset NOT written to disk!
+/var/spool/slurm/slurmd/job23570228/slurm_script: line 52: fail: command not found

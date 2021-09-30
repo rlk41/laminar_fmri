@@ -30,7 +30,7 @@ fi
 
 # if ANTs_dir doesn't exist create
 if [ ! -d $ANTs_dir ]; then
-  mkdir $ANTs_dir;
+  mkdir -p $ANTs_dir;
 fi
 
 
@@ -61,8 +61,12 @@ echo "we are using the T1_weighted EPI_bias corrected and MP2RAGE bias corrected
 
 #  bet MP2RAGE_orig.nii MP2RAGE.nii -f 0.05
 3dcalc -a MP2RAGE.nii -datum short -expr 'a' -prefix MP2RAGE.nii -overwrite
-ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=45
-export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS
+
+
+#ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=20
+#export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS
+
+
 echo "*****************************************"
 echo "************* starting with ANTS ********"
 echo "*****************************************"

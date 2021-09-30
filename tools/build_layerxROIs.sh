@@ -17,6 +17,8 @@ done
 
 #cmds='./cmds.build_layerxROIs.txt'
 #out=''
+mkdir -p $(dirname $cmds)
+
 rm $cmds
 touch $cmds
 

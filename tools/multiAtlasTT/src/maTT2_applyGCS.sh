@@ -234,7 +234,8 @@ cp -asv ${inputFSDir}/mri/aseg.presurf.mgz ${tempFSSubj}/mri/
 cp -asv ${inputFSDir}/mri/transforms/talairach.xfm ${tempFSSubj}/mri/transforms/
 
 # reset SUJECTS_DIR to the new inputFSDir
-export SUBJECTS_DIR=${outputDir}/tmpFsDir/
+export SUBJECTS_DIR=${outputDir}/tmpFsDir
+#export SUBJECTS_DIR=${outputDir}/tmpFsDir/
 
 ####################################################################
 ####################################################################

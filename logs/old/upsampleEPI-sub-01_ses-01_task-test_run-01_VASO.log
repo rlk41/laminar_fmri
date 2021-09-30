@@ -1,0 +1,74 @@
+[-] Unloading Matlab  2021a  on cn0888 
+[+] Loading Matlab  2021a  on cn0888 
+[-] Unloading matlab-spm, version 12.7219...
+[+] Loading matlab-spm, version 12.7219...
+[-] Unloading gcc  7.3.0  ... 
+[-] Unloading ANTs  2.3.2 
+[+] Loading gcc  7.3.0  ... 
+[+] Loading ANTs  2.3.2 
+[-] Unloading AFNI current-openmp  ... 
+[+] Loading AFNI current-openmp  ... 
+AFNI/current-openmp last updated  2021-09-21
+
+[-] Unloading freesurfer  7.1.1 on cn0888 
+[+] Loading freesurfer  7.1.1  on cn0888 
+[-] Unloading FSL 6.0.4  ... 
+[+] Loading FSL 6.0.4  ... 
+[-] Unloading python 3.7  ... 
+[+] Loading python 3.7  ... 
+                        
+EPI set using: /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-01_task-test_run-01_VASO.nii
+                                                         
+----------------------------------
+YOU NEED TO SUPPLY: 
+               spm_path - location of spm files ('matlab_toolbox')
+               ds_dir - location of data ('ds003216-download')
+               EPI_base - currently working with 
+                         'sub-01_ses-06_task-movie_run-05_VASO' 
+                         main_anat.sh for processing MP2RAGE, then loop 
+                         main_EPI.sh for each EPI
+----------------------------------
+project_dir: /home/kleinrl/projects/laminar_fmri
+spm_path:    
+tools_dir:   /home/kleinrl/projects/laminar_fmri/tools
+cmds_dir:    /home/kleinrl/projects/laminar_fmri/cmds
+EPI:         /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-01_task-test_run-01_VASO.nii
+EPI_base     sub-01_ses-01_task-test_run-01_VASO
+----------------------------------
+                                                                                
+                                                                                
+resampleEPI.job: /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-01_task-test_run-01_VASO.nii
+************* upscaling EPI.nii ******************************
+requires '/data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-01_task-test_run-01_VASO.nii file 
+outputs as /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-01_task-test_run-01_VASO.scaled.nii
+.20061725000000000000
+.20061725000000000000
+.22250000000000000000
+[7m*+ WARNING:[0m   If you are performing spatial transformations on an oblique dset,
+  such as /gpfs/gsfs11/users/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-01_task-test_run-01_VASO.nii,
+  or viewing/combining it with volumes of differing obliquity,
+  you should consider running: 
+     3dWarp -deoblique 
+  on this and  other oblique datasets in the same session.
+ See 3dWarp -help for details.
+++ Oblique dataset:/gpfs/gsfs11/users/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-01_task-test_run-01_VASO.nii is 5.800018 degrees from plumb.
+++ WARNING: nifti_read_buffer(/gpfs/gsfs11/users/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-01_task-test_run-01_VASO.nii):
+   data bytes needed = 16796160
+   data bytes input  = 7999488
+   number missing    = 8796672 (set to 0)
+** NIFTI load bricks: cannot read brick 24 from '/gpfs/gsfs11/users/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-01_task-test_run-01_VASO.nii'
+++ WARNING: nifti_read_buffer(/gpfs/gsfs11/users/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-01_task-test_run-01_VASO.nii):
+   data bytes needed = 16796160
+   data bytes input  = 7999488
+   number missing    = 8796672 (set to 0)
+** NIFTI load bricks: cannot read brick 24 from '/gpfs/gsfs11/users/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_ses-01_task-test_run-01_VASO.nii'
+r_fill_resampled_data_brick: failure to compute dataset slice 0
+failure to resample dataset, exiting...
+++ options initialized: options struct at 0x7fffffff4cb0 :
+    dset        = 0x612dd0 (valid)
+    mset        = (nil) (invalid)
+    (dx,dy,dz)  = ( 0.201,  0.201,  0.223)
+    orient      = (nil)
+    prefix      = /data/kleinrl/ds003216/derivatives/sub-01/VASO_func/sub-01_s
+    resam       = 2
+    debug       = 1
