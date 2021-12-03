@@ -10,15 +10,15 @@ module load matlab matlab-spm ANTs afni freesurfer fsl python
 
 
 #export ds_dir='/media/richard/bfb1e328-6d97-4280-8331-5daeb988f70a/bandettini/ds003216-download'
-export ds_dir='/data/kleinrl/ds003216'
+export ds_dir='/data/kleinrl/Wholebrain2.0'
 export project_dir='/home/kleinrl/projects/laminar_fmri'
-export logs="${project_dir}/logs"
+export logs="${ds_dir}/logs"
 
 # set EPI_base variable
 # if running through loop
 if [ -z "$EPI" ] ;
 then
-  export EPI="${ds_dir}/derivatives/sub-01/VASO_func/sub-01_ses-06_task-movie_run-05_VASO.nii"
+  export EPI="${ds_dir}/DAY3/run5/VASO_LN.nii"
   echo "                         "
   echo "EPI not set using: ${EPI}"
 else
@@ -33,6 +33,10 @@ fi
 export EPI_dir=$(dirname $EPI)
 export EPI_base=$(basename $EPI .nii)
 export EPI_base_path=${EPI_dir}/${EPI_base}
+export EPI_orig=$(dirname $EPI)/$(basename $EPI .nii).orig.nii.gz
+
+
+
 
 export scaled_EPI=${EPI_dir}/${EPI_base}.scaled.nii
 export scaled_EPI_mean=${EPI_dir}/${EPI_base}.scaled.mean.nii
@@ -46,13 +50,13 @@ export PATH="${tools_dir}:$PATH"
 export LAYNII_dir="/home/kleinrl/bin/LAYNII"
 export PATH="${LAYNII_dir}:$PATH"
 
-export scripts_batch_dir="${project_dir}/scripts_batch"
+export scripts_batch_dir="${project_dir}/scripts_batch_wholebrain"
 export PATH="${scripts_batch_dir}:$PATH"
 
-export scripts_dir="${project_dir}/scripts"
+export scripts_dir="${project_dir}/scripts_wholebrain"
 export PATH="${scripts_dir}:$PATH"
 
-export analyses_dir="${project_dir}/analyses"
+export analyses_dir="${project_dir}/analyses_wholebrain"
 export PATH="${analyses_dir}:$PATH"
 
 
@@ -63,16 +67,19 @@ export atlasBaseDir=$scriptBaseDir/atlas_data
 export VASO_func_dir=$EPI_dir # need to cleanup
 #export EPIs="${VASO_func_dir}/*VASO.nii"
 
-export fsl_feat_dir="${ds_dir}/derivatives/sub-01/fslFEAT"
-export feat_out_dir=$fsl_feat_dir/$EPI_base/$EPI_base.L_LGN.$EPI_base.feat
-export fsl_timecourse_dir="$fsl_feat_dir/timecourses"
+export EPIs=($(find $ds_dir -name "VASO_LN.nii"))
+export EPI_means=($(find $ds_dir -name "VASO_LN.mean.nii"))
+export EPI_mean_all=$ds_dir/VASO_LN.MEAN.nii
+export EPI_mean_all_bias=$ds_dir/VASO_LN.MEAN.bias.nii
 
-export fsl_feats=($(find $fsl_feat_dir -name thresh_zstat1.nii.gz ))
-export fsl_feats_mean=$fsl_feat_dir/thresh_zstat1.MEAN.nii.gz
+export T1Ws=($(find $ds_dir -name "T1w.nii"))
+export T1Ws_mean=$ds_dir/T1Ws.mean.nii
 
 
-export fsl_L2D=($(find $fsl_feat_dir -name "thresh_zstat1.scaled.L2D.nii.gz" ))
-export fsl_L2D_mean=$fsl_feat_dir/thresh_zstat1.scaled.L2D.mean.nii.gz
+
+# for e in ${EPIs[@]}; do 
+#   echo $e
+# done 
 
 
 echo "                                                         "
@@ -98,9 +105,10 @@ echo "                                                                          
 
 # todo: ANAT_base assumption
 # I chose one of the two anat session
-export ANAT_base="sub-01_ses-01_run-01_T1w"
-export ANAT="${ds_dir}/sub-01/ses-01/anat/${ANAT_base}.nii"
-export ANAT_bias="${ds_dir}/sub-01/ses-01/anat/${ANAT_base}.bias.nii"
+#export ANAT_base="ANAT_2"
+export ANAT_base="ANAT_2"
+export ANAT="${ds_dir}/ANAT/${ANAT_base}.nii"
+export ANAT_bias="${ds_dir}/ANAT/${ANAT_base}.bias.nii"
 export ANAT_bias_dir="$(dirname $ANAT)/$(basename $ANAT .nii)_working_bias"
 
 
@@ -155,7 +163,9 @@ export LUT_leakylayers3="$tools_dir/LUT_leakylayers3.txt"
 export LUT_leakylayers10="$tools_dir/LUT_leakylayers10.txt"
 
 
-export ANTs_dir="${EPI_base_path}_working_ANTs"
+#export ANTs_dir="$ds_dir/ANAT_newinitxfm_working_ANTs"
+export ANTs_dir="$ds_dir/ANAT_ANAT2VASO4_working_ANTs"
+
 export xfm_auto="${ANTs_dir}/initial_matrix.txt"
 export ANAT_warped="${ANTs_dir}/warped_MP2RAGE.nii"
 export ANTs_reg_1warp="$ANTs_dir/registered_1Warp.nii.gz"
@@ -197,8 +207,6 @@ export EPI_gsr_mean="${EPI_base_path}.gsr.mean.nii.gz"
 
 export scaled_EPI_gsr="${EPI_base_path}.gsr.scaled.nii.gz"
 export scaled_EPI_gsr_mean="${EPI_base_path}.gsr.scaled.mean.nii.gz"
-
-export EPIs=($(find $VASO_func_dir -name "sub*VASO.nii"))
 
 
 # DELETE scaled used for layer=10 ... not used anymore
@@ -292,8 +300,6 @@ export scaled_rim="$layer_dir/rim.scaled.nii"
 export scaled_layers_ed_n10="$layer_dir/layers_scaled/"
 export scaled_columns_ev_10000="$layer_dir/columns_scaled/rim_columns10000.scaled.nii"
 
-
-export warped_scaled_rims=($(find $recon_dir -name warped_rim.scaled.nii))
 
 
 
