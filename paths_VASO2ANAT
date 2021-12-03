@@ -6,7 +6,7 @@
 
 #####################################################
 #export spm_path='/home/richard/matlab_toolbox'
-module load matlab matlab-spm ANTs afni freesurfer fsl python
+module load matlab matlab-spm ANTs afni freesurfer fsl python git
 
 
 #export ds_dir='/media/richard/bfb1e328-6d97-4280-8331-5daeb988f70a/bandettini/ds003216-download'

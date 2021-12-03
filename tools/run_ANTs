@@ -63,8 +63,8 @@ echo "we are using the T1_weighted EPI_bias corrected and MP2RAGE bias corrected
 3dcalc -a MP2RAGE.nii -datum short -expr 'a' -prefix MP2RAGE.nii -overwrite
 
 
-#ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=20
-#export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS
+ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=50
+export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS
 
 
 echo "*****************************************"

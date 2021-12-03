@@ -9,8 +9,24 @@
 # # running SUMA to create surfaces
 # @SUMA_Make_Spec_FS -sid subject_name -NIFTI
 
-cd $suma_dir
-#cp $ANAT_warped ./warped_MP2RAGE.nii
+# cp -r $suma_dir $scaled_suma_dir
+
+# cd $scaled_suma_dir
+# #cp $ANAT_warped ./warped_MP2RAGE.nii
+
+# delta_x=$(3dinfo -di T1.nii)
+# delta_y=$(3dinfo -dj T1.nii)
+# delta_z=$(3dinfo -dk T1.nii)
+# sdelta_x=$(echo "(($delta_x / 4))"|bc -l)
+# sdelta_y=$(echo "(($delta_x / 4))"|bc -l)
+# sdelta_z=$(echo "(($delta_z / 4))"|bc -l)
+# echo "$sdelta_x"
+# echo "$sdelta_y"
+# echo "$sdelta_z"
+# 3dresample -dxyz $sdelta_x $sdelta_y $sdelta_z -rmode Cu -overwrite -prefix scaled_T1.nii -input T1.nii
+# #get obliquity matrix
+
+
 
 
 # echo "dense mesh starting"
@@ -80,7 +96,7 @@ echo "scaled"
 
 
 
-mkdir -p $layer_dir
+#mkdir -p $layer_dir
 
 #cp filled_fill.scaled.nii  ${layer_dir}
 #cp pial_vol.scaled.nii     ${layer_dir}
@@ -92,6 +108,6 @@ mkdir -p $layer_dir
 
 3dcalc -a pial_vol.scaled.nii -b WM_vol.scaled.nii -c filled_fill.scaled.nii -expr 'step(a)+2*step(b)+3*step(c)-3*step(a*c)-3*step(b*c)' -prefix rim.scaled.nii -overwrite
 
-cp rim.scaled.nii ${layer_dir}
+#cp rim.scaled.nii ${layer_dir}
 
-cd ${layer_dir}
+#cd ${layer_dir}

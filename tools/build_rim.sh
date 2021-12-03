@@ -1,15 +1,18 @@
 #!/bin/bash
 
+set -e 
+
 echo "Running 'SUMA_Make_Spec_FS' "
 echo "creating meshes and rim file on the MP2RAGE ANAT volume (as opposed to EPI)"
 echo "based on Renzo's code https://layerfmri.com/2017/11/26/getting-layers-in-epi-space/#more-115"
 
-cd $recon_dir 
+#cd $recon_dir 
 
 # running SUMA to create surfaces
 @SUMA_Make_Spec_FS -sid subject_name -NIFTI
 
-cd $suma_dir
+cd SUMA
+#cd $suma_dir
 #cp $ANAT_warped ./warped_MP2RAGE.nii
 
 
@@ -61,16 +64,20 @@ echo " **************************"
 
 
 
-mkdir -p $layer_dir
+#mkdir -p $layer_dir
+mkdir -p ../LAYNII
 
-cp filled_fill.nii  ${layer_dir}
-cp pial_vol.nii     ${layer_dir}
-cp WM_vol.nii       ${layer_dir}
-cp rim_auto.nii     ${layer_dir}
-#cp scaled_EPI.nii   ${layer_dir}
-cp $ANAT_bias       ${layer_dir}
-cp GM_robbon4_manual_corr.nii ${layer_dir}
+# cp filled_fill.nii  ${layer_dir}
+# cp pial_vol.nii     ${layer_dir}
+# cp WM_vol.nii       ${layer_dir}
+# cp rim_auto.nii     ${layer_dir}
+# #cp scaled_EPI.nii   ${layer_dir}
+# cp $ANAT_bias       ${layer_dir}
+# cp GM_robbon4_manual_corr.nii ${layer_dir}
 
-cd ${layer_dir}
+#cd ${layer_dir}
 # TODO: i'm not sure why we dont do this earlier
 3dcalc -a pial_vol.nii -b WM_vol.nii -c filled_fill.nii -expr 'step(a)+2*step(b)+3*step(c)-3*step(a*c)-3*step(b*c)' -prefix rim.nii -overwrite
+
+
+cp rim.nii ../LAYNII

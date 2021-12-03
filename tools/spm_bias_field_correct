@@ -13,6 +13,14 @@ done
 dir_name="$(dirname ${i})"
 base_name="$(basename ${i} .nii)"
 
+# IF dir_name == '.'; set dir_name = $(pwd)
+
+if [ $dir_name == '.' ]; then
+  dir_name=$(pwd)
+  echo "setting dir_name to $(pwd)"
+fi
+
+
 working_dir=${dir_name}'/'${base_name}'_working_bias'
 working_file=${working_dir}'/uncorr.nii'
 curr_dir=$(pwd)

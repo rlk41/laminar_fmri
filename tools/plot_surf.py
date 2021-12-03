@@ -28,7 +28,7 @@ import argparse
 #export ETS_TOOLKIT=qt4
 
 def plot_surf(subid, vol=False, surf='inflated', 
-        views=None, seed=None): 
+        views=None, seed=None, outfile=None): 
     
     if views == None: 
         views=['frontal','lat','caudal','med']
@@ -60,7 +60,8 @@ def plot_surf(subid, vol=False, surf='inflated',
             colorbar=False, colormap=['HotPink'])#alpha=1)
 
 
-    outfile=vol.rstrip('.nii')+'.png'
+    if outfile == None:
+        outfile=vol.rstrip('.nii')+'.png'
     print('SAVING TO: {}'.format(outfile))
     brain.save_image(outfile)
 
@@ -101,8 +102,9 @@ if __name__ == "__main__":
     parser.add_argument('--subid')
     parser.add_argument('--vol')
     parser.add_argument('--surf', default='inflated')
+    parser.add_argument('--outfile', default=None)
 
-    parser.add_argument('--seed')
+    parser.add_argument('--seed', default=None)
 
     args = parser.parse_args()
 
@@ -125,10 +127,11 @@ if __name__ == "__main__":
     surf = args.surf 
 
     seed = args.seed
+    outfile = args.outfile
 
     print("subid: {} \n\nvol: {}\n\n".format(subid, vol))
 
     #subid='fsaverage'
     #subid='sub-01_ses-06_task-movie_run-05_VASO'
 
-    plot_surf(subid, vol=vol, surf=surf, seed=seed)
+    plot_surf(subid, vol=vol, surf=surf, seed=seed, outfile=outfile)

@@ -8,7 +8,6 @@ log=$logs/regressLayers.log
 
 sbatch --mem=20g --cpus-per-task=20 \
 --partition=norm \
---mail-type=BEGIN,TIME_LIMIT_90,END \
 --output=$log \
 --time 10:00:00 \
 regressLayers.job

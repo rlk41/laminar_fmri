@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e 
 
-parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
-cd "$parent_path"
+#parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
+#cd "$parent_path"
 
 # set required paths!
 source /home/kleinrl/projects/laminar_fmri/paths_biowulf
@@ -95,6 +95,9 @@ recon-all -all -hires \
 #mv "$recon_dir/mri/brainmask.mgz" "$recon_dir/mri/brainmask.backup.mgz"
 #cp brainmask.manualedit2.mgz brainmask.mgz
 
+
+
+
 cp $SUBJECTS_DIR/$ANAT_base/mri/brainmask.mgz $SUBJECTS_DIR/$ANAT_base/mri/brainmask.orig.mgz 
 cp $SUBJECTS_DIR/$ANAT_base/mri/brain.mgz $SUBJECTS_DIR/$ANAT_base/mri/brain.orig.mgz 
 cp $SUBJECTS_DIR/$ANAT_base/mri/wm.mgz $SUBJECTS_DIR/$ANAT_base/mri/wm.orig.mgz 
@@ -104,13 +107,18 @@ cp $project_dir/manualedits/brainmask.mgz  $SUBJECTS_DIR/$ANAT_base/mri/brain.mg
 cp $project_dir/manualedits/wm.mgz  $SUBJECTS_DIR/$ANAT_base/mri/wm.mgz 
 
 
+# scp brainmask.manualedit4.mgz cn0932:/data/kleinrl/Wholebrain2.0/ANAT/ANAT_working_recon-all/ANAT/mri/brainmask.manualedit4.mgz
+
+# recon-all -autorecon-pial \
+#   -s $subjid \
+#   -parallel -openmp 10
+
 
 # recon-all -autorecon2 -hires \
 #   -s $subjid \
 #   -parallel -openmp 40
 
-recon-all -autorecon2-wm -autorecon-pial\
-  -hires \
+recon-all -autorecon2-wm -autorecon-pial \
   -s $subjid \
   -parallel -openmp 40
 
@@ -169,8 +177,23 @@ cd $recon_dir
 # output: rim.nii
 build_rim.sh
 
-build_rim_scaled.sh 
 
+# warping to EPI then resampling to scaled_EPI works but then in specific EPI space 
+
+
+
+
+#3dresample -master $EPI -rmode NN -prefix $rim_EPI_FOV -overwrite -input $rim 
+
+#resample
+
+#build_rim_scaled.sh 
+# THIS DOESNT WORK
+
+#resample_RIM.sh
+#upsample2scaledEPI_NN.sh $rim 
+
+#3dresample -master $scaled_EPI -rmode NN -overwrite -prefix $out_filepath -input $in
 
 
 
@@ -231,15 +254,29 @@ mv equi_volume_layers.nii equi_volume_layers_n3.nii
 
 # use -incl_borders option to include borders!
 
-LN2_LAYERS -rim rim.nii -equivol -iter_smooth 50 -debug
-generate_columns.sh -t "equivol" -n 1000
-generate_columns.sh -t "equivol" -n 1000 -b
+#LN2_LAYERS -rim rim.nii -equivol -iter_smooth 50 -debug
+# generate_columns.sh -t "equivol" -n 1000
+# generate_columns.sh -t "equivol" -n 1000 -b
+# generate_columns.sh -t "equivol" -n 10000
 
 
-generate_columns.sh -t "equidist" -n 1000
+# generate_columns.sh -t "equidist" -n 1000
+generate_columns.sh -t "equidist" -n 10000 -b
 
-generate_columns.sh -t "equivol" -n 10000
-generate_columns.sh -t "equidist" -n 10000
+
+# 10000 columns 
+LN2_COLUMNS -rim rim.nii -midgm rim_midGM_equivol.nii \
+-centroids rim_centroids10000.nii -nr_columns 10000 \
+-incl_borders -output 'columns_ev_10000_borders.nii'
+
+mv columns_ev_10000_borders_columns10000.nii columns_ev_10000_borders.nii
+
+# 100000 columns 
+LN2_COLUMNS -rim rim.nii -midgm rim_midGM_equivol.nii \
+-centroids rim_centroids10000.nii -nr_columns 100000 \
+-incl_borders -output 'columns_ev_10000_borders.nii'
+
+mv columns_ev_100000_borders_columns100000.nii columns_ev_100000_borders.nii
 
 
 ## SCALED 
@@ -251,34 +288,34 @@ generate_columns.sh -t "equidist" -n 10000
 #generate_columns.sh -t "equivol" -n 10000
 #generate_columns.sh -t "equidist" -n 10000
 
-# SCALED 
-# SCALED N10 ##################
-mkdir -p layers_scaled 
-cd layers_scaled 
-LN_GROW_LAYERS -rim ../rim.scaled.nii -N 1000 -vinc 60 -threeD
-LN_LEAKY_LAYERS -rim ../rim.scaled.nii -nr_layers 1000 -iterations 100
+# # SCALED 
+# # SCALED N10 ##################
+# mkdir -p layers_scaled 
+# cd layers_scaled 
+# LN_GROW_LAYERS -rim ../rim.scaled.nii -N 1000 -vinc 60 -threeD
+# LN_LEAKY_LAYERS -rim ../rim.scaled.nii -nr_layers 1000 -iterations 100
 
-# N10
-LN_LOITUMA -equidist rim_layers.scaled.nii -leaky rim_leaky_layers.scaled.nii -FWHM 1 -nr_layers 10
-mv equi_distance_layers.scaled.nii equi_distance_layers_n10.scaled.nii
-mv equi_volume_layers.scaled.nii equi_volume_layers_n10.scaled.nii
+# # N10
+# LN_LOITUMA -equidist rim_layers.scaled.nii -leaky rim_leaky_layers.scaled.nii -FWHM 1 -nr_layers 10
+# mv equi_distance_layers.scaled.nii equi_distance_layers_n10.scaled.nii
+# mv equi_volume_layers.scaled.nii equi_volume_layers_n10.scaled.nii
 
-cd ..
-mkdir -p columns_scaled 
-cd columns_scaled
-LN2_LAYERS -rim ../rim.scaled.nii -equivol -iter_smooth 50 -debug
+# cd ..
+# mkdir -p columns_scaled 
+# cd columns_scaled
+# LN2_LAYERS -rim ../rim.scaled.nii -equivol -iter_smooth 50 -debug
 
-mkdir -p borders
-cd borders
-LN2_COLUMNS -rim ../rim.scaled.nii -midgm ../rim_midGM_equivol.nii -nr_columns 1000 -incl_borders
-LN2_COLUMNS -rim ../rim.scaled.nii -midgm ../rim_midGM_equivol.nii -nr_columns 10000 -incl_borders
-cd ..
+# mkdir -p borders
+# cd borders
+# LN2_COLUMNS -rim ../rim.scaled.nii -midgm ../rim_midGM_equivol.nii -nr_columns 1000 -incl_borders
+# LN2_COLUMNS -rim ../rim.scaled.nii -midgm ../rim_midGM_equivol.nii -nr_columns 10000 -incl_borders
+# cd ..
 
-mkdir -p no_borders 
-cd no_borders
-LN2_COLUMNS -rim ../rim.scaled.nii -midgm ../rim_midGM_equivol.nii -nr_columns 1000 
-LN2_COLUMNS -rim ../rim.scaled.nii -midgm ../rim_midGM_equivol.nii -nr_columns 10000 
-cd ..
+# mkdir -p no_borders 
+# cd no_borders
+# LN2_COLUMNS -rim ../rim.scaled.nii -midgm ../rim_midGM_equivol.nii -nr_columns 1000 
+# LN2_COLUMNS -rim ../rim.scaled.nii -midgm ../rim_midGM_equivol.nii -nr_columns 10000 
+# cd ..
 
 
 

@@ -96,9 +96,40 @@ run_ANTs -e ${EPI_bias} -a ${ANAT_bias} || fail "fail on run_ANTs"
 mkdir -p $layer4EPI
 cd $layer4EPI
 
+
+# 3dcalc -a $seg_brain_2EPI -expr 'ispositive(a)' \
+# -prefix $seg_brain_bin -overwrite 
+
+# antsApplyTransforms -d 3 -i $seg_brain_bin   -o $warp_brain_bin -r $EPI \
+# -t $ANTs_reg_1warp -t $ANTs_reg_0GenAffine  \
+# -n NearestNeighbor || fail "fail on ANTS rim"
+
+
+antsApplyTransforms -d 3 -i $seg_brain   -o $warp_brain -r $EPI_bias \
+-t $ANTs_reg_1warp -t $ANTs_reg_0GenAffine  \
+-n NearestNeighbor || fail "fail on ANTS rim"
+
+3dcalc -a $warp_brain -expr 'ispositive(a-1)' -prefix $warp_brain_bin -overwrite 
+
+
+#global_signal_regression.py --mask $warp_brain_bin --epi $EPI --prefix $EPI_gsr
+
+#afni_proc.py \
+#    -dsets $EPI \
+#    -regress_ROI brain \
+#    -out_dir ./$EPI_base.afni_gsr_proc_results
+
+3dDeconvolve -input $EPI \
+
+
+3dTstat -mean -prefix $EPI_gsr_mean $EPI_gsr
+
+
+
+
+
 #cp $parc_hcp $layer4EPI
 #cp $parc_thalamic $layer4EPI
-
 
 # TODO: !!!
 # FOR EACH SESSION WE WANT TO TRANSFORM THE ANATOMICAL PARECELATIONS/LAYERS/ATLASES TO EPI SESSION SPACE
@@ -131,6 +162,8 @@ warp_ANTS_resampleNN.sh $columns_ev_1000 $EPI_bias || fail "fail on warp_ANTs co
 # columns_ev_10000
 warp_ANTS_resampleNN.sh $columns_ev_10000 $EPI_bias || fail "fail on warp_ANTs columns_ev_10000"
 
+warp_ANTS_resampleNN.sh $seg_brainmask $EPI_bias || fail "fail on warp_ANTs brain"
+3dcalc -a $warp_brainmask -expr 'ispositive(a-1)' -prefix $warp_brainmask_bin -overwrite 
 
 
 #todo: the columns are a lot thinner fix
@@ -224,3 +257,36 @@ build_layerxROIs.sh -f $warp_layers_ev_n3 \
 #conda activate openneuro
 #$tools_dir/build_dataframe.py --paths $timeseries_hcpl3 $timeseries_thalamic --type 'none' --savedir $dataframe_hcpl3_thalamic_preprocd
 
+
+
+
+# for EPI in $VASO_func_dir/*movie*VASO.nii
+# do 
+#     echo $EPI 
+#     source /home/kleinrl/projects/laminar_fmri/paths_biowulf 
+#     cd $layer4EPI
+#     echo "PWD: $(pwd)"
+#     echo "brain: $seg_brain"
+#     echo "EPI_bias: $EPI_bias"
+
+
+#     warp_ANTS_resampleNN.sh $seg_brainmask $EPI_bias || fail "fail on warp_ANTs brain"
+#     3dcalc -a $warp_brainmask -expr 'ispositive(a-1)' -prefix $warp_brainmask_bin -overwrite 
+
+# done 
+
+
+# for EPI in $VASO_func_dir/*movie*VASO.nii
+# do 
+#     echo $EPI 
+#     source /home/kleinrl/projects/laminar_fmri/paths_biowulf 
+#     cd $layer4EPI
+#     echo "PWD: $(pwd)"
+#     echo "brain: $seg_brain"
+#     echo "EPI_bias: $EPI_bias"
+#     antsApplyTransforms -d 3 -i $seg_brain   -o $warp_brain -r $EPI_bias \
+#     -t $ANTs_reg_1warp -t $ANTs_reg_0GenAffine  -n NearestNeighbor 
+
+#     3dcalc -a $warp_brain -expr 'ispositive(a-1)' -prefix $warp_brain_bin -overwrite 
+
+# done
