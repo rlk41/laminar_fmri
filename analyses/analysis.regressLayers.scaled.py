@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from re import match
 import nibabel as nib
 import argparse
 import numpy as np
@@ -28,6 +29,8 @@ from statsmodels.formula.api import ols
 
 '''
 TODO
+scaled -- alterations... 
+
 columns 
 plot columns 
 
@@ -338,12 +341,15 @@ def get_columns_by_roi(column_file, roi_file):
 
     columns_in_roi = column_data[roi_ind]
     column_ids_in_roi = np.unique(columns_in_roi)
+    column_ids_in_roi = column_ids_in_roi.astype(int)
+    column_ids_in_roi = column_ids_in_roi[column_ids_in_roi != 0]
 
     #column_ind        = np.where(column_data == 1)
     #column_epi        = epi_data[column_ind]
     #column_epi_mean   = np.mean(column_epi, 0)
     #column_pcas       = get_pcas(column_epi.T, num_timeseries=4)
     #del column_nii, column_data, column_ind
+    #column_ids_in_rois = [ c for c in column_ids_in_roi if c is not 0]
 
     return column_ids_in_roi
 
@@ -368,10 +374,10 @@ def regress_across_columns(job):
     regressors      = np.array(regressors) 
 
 
-    plot_dir    ='/home/kleinrl/plots/regressLayers_roi' #+layer4EPI_base
+    plot_dir    ='/home/kleinrl/plots/regressLayers_roi/' + layer4EPI_base  #+layer4EPI_base
     os.makedirs(plot_dir, exist_ok=True) 
     #plot_path   = plot_dir + '.png'
-    plot_path   = plot_dir + '/' + layer4EPI_base + '.png'
+    plot_path   = plot_dir + '/'+'column_{}.png'.format(cs[0])
 
     params = {  'plot_path': plot_path, 
                 'seed_control_VASO': seed_control_VASO,
@@ -430,6 +436,8 @@ recon_dir="/data/kleinrl/ds003216/sub-01/ses-01/anat/" + \
 EPIs=glob(VASO_dir + '*movie*VASO.nii')
 #EPIs.sort()
 
+
+
 coefs           = [] 
 seeds_list      = [] 
 controls_list   = []
@@ -440,6 +448,7 @@ coef_list       = []
 epi = EPIs[0]
 #EPIs = [ EPIs[4] ]
 epi_nii         = nib.load(epi)
+epi_main_affine = epi_nii.affine 
 epi_data        = epi_nii.get_fdata()
 
 layer4EPI_base = epi.split('/')[-1].split('.')[0]
@@ -448,14 +457,13 @@ seed_control_VASO = layer4EPI_base
 
 # SEED ROI
 seed            = glob(layer4EPI + '/rois.thalamic.l3/8109.lh.LGN.nii' )[0]
-seed_nii        = nib.load(seed)
-seed_data       = seed_nii.get_fdata()
-seed_ind        = np.where(seed_data == 1)
-seed_epi        = epi_data[seed_ind]
-seed_epi_mean   = np.mean(seed_epi, 0)
-seed_pcas_ts    = get_pcas(seed_epi.T, num_timeseries=4)
-seed_pcas_ncomp = get_pcas(seed_epi.T, num_components=4)
-seed_masker = NiftiMasker(mask_img=seed) 
+#seed_nii        = nib.load(seed)
+#seed_data       = seed_nii.get_fdata()
+#seed_ind        = np.where(seed_data == 1)
+#seed_epi        = epi_data[seed_ind]
+#seed_epi_mean   = np.mean(seed_epi, 0)
+
+seed_masker     = NiftiMasker(mask_img=seed) 
 # , standardize=True, 
 #                           memory="nilearn_cache", memory_level=2,
 #                           smoothing_fwhm=None) #mask_strategy='epi',
@@ -464,15 +472,21 @@ seed_masker_epi_report = seed_masker_epi.generate_report()
 save_path = '/home/kleinrl/plots/reports/seed_report.html'
 seed_masker_epi_report.save_as_html(save_path)
 
-del seed_nii, seed_data, seed_ind
+seed_epi        = seed_masker.fit_transform(epi)
+seed_epi_mean   = np.mean(seed_epi, 1)
+seed_pcas_ts    = get_pcas(seed_epi.T, num_timeseries=4)
+seed_pcas_ncomp = get_pcas(seed_epi.T, num_components=4)
+
+
+#del seed_nii, seed_data, seed_ind
 
 # CONTROL ROI
 control         = glob(layer4EPI + '/rois.hcp/1023.L_MT.nii')[0]
-control_nii     = nib.load(control)
-control_data    = control_nii.get_fdata()
-control_ind     = np.where(control_data == 1)
-control_epi     = epi_data[control_ind]
-control_epi_mean= np.mean(control_epi, 0) 
+#control_nii     = nib.load(control)
+#control_data    = control_nii.get_fdata()
+#control_ind     = np.where(control_data == 1)
+#control_epi     = epi_data[control_ind]
+#control_epi_mean= np.mean(control_epi, 0) 
 
 # control_epi2 = apply_mask(epi, control)
 # control_epi2_mean= np.mean(control_epi2, 0) 
@@ -481,29 +495,39 @@ control_epi_mean= np.mean(control_epi, 0)
 # plt.plot(control_epi2_mean)
 # plt.savefig('/home/kleinrl/comp_extract.png')
 
+control_masker      = NiftiMasker(mask_img=control) 
+                        # standardize=True, mask_strategy='epi',
+                        #  memory="nilearn_cache", memory_level=2,
+                        #  smoothing_fwhm=None)
+control_masker_epi = control_masker.fit(epi)
+control_masker_epi_report = seed_masker_epi.generate_report()
+control_path = '/home/kleinrl/plots/reports/control_report.html'
+control_masker_epi_report.save_as_html(save_path) 
+
+control_epi = control_masker.fit_transform(epi)
+control_epi_mean = np.mean(control_epi,1)
+
+
 control_pcas_ts    = get_pcas(control_epi.T, num_timeseries=4)
 control_pcas_ncomp = get_pcas(control_epi.T, num_components=4)
-# control_masker      = NiftiMasker(standardize=True, mask_strategy='epi',
-#                          memory="nilearn_cache", memory_level=2,
-#                          smoothing_fwhm=None)
-# control_masker_epi = control_masker.fit(epi)
-# control_masker_epi_report = seed_masker_epi.generate_report()
-# control_path = '/home/kleinrl/plots/reports/control_report.html'
-# control_masker_epi_report.save_as_html(save_path) 
 
 
-del control_nii, control_data, control_ind
+
+#del control_nii, control_data, control_ind
 
 # TODO get pca voxels for plotting 
 
 roi2_file        = layer4EPI + '/rois.hcp/2001.R_V1.nii'
-roi2_nii         = nib.load(roi2_file)
-roi2_data        = roi2_nii.get_fdata()
-roi2_ind         = np.where(roi2_data == 1)
-roi2_epi         = epi_data[roi2_ind]
-roi2_epi_mean    = np.mean(roi2_epi, 0) 
-roi2_pcas_ncomp  = get_pcas(roi2_epi, num_components=4)
+#roi2_nii         = nib.load(roi2_file)
+#roi2_data        = roi2_nii.get_fdata()
+#roi2_ind         = np.where(roi2_data == 1)
+#roi2_epi         = epi_data[roi2_ind]
+#roi2_epi_mean    = np.mean(roi2_epi, 0) 
+#roi2_pcas_ncomp  = get_pcas(roi2_epi, num_components=4)
 
+roi2_masker     = NiftiMasker(mask_img=roi2_file)
+roi2_epi        = roi2_masker.fit_transform(epi)
+roi2_epi_mean   = np.mean(roi2_epi, 1)
 
 inputs = []
 # for seed_pca in seed_pcas_ncomp: 
@@ -551,6 +575,9 @@ for seed_pca in [seed_epi_mean]:
 '''
 EPIs    = [EPIs[0]]
 inputs  = [inputs[0]]
+
+e_i = 0
+d_i = 0 
 '''
 completed_jobs = [] 
 
@@ -591,7 +618,7 @@ for e_i in range(len(EPIs)):
 
 
 
-        #column_file =layer4EPI + '/warped_rim_columns10000.resample2muncorr.nii'
+        column_file =layer4EPI + '/warped_rim_columns10000.resample2muncorr.nii'
         roi_file    =layer4EPI + '/rois.hcp/1001.L_V1.nii'
         layer_file  =layer4EPI + '/warped_equi_volume_layers_n3.resample2muncorr.nii'
 
@@ -602,44 +629,52 @@ for e_i in range(len(EPIs)):
             save_path = '/home/kleinrl/plots/reports/roi_report_{}.html'.format(layer4EPI_base)
             roi_masker_epi_report.save_as_html(save_path)
             plt.close()
+
+            roi_epi = roi_masker.fit_transform(epi)
+
+
         except Exception as e: 
             print(e)
 
-        #try: 
-        #    column_ids  = get_columns_by_roi(column_file=column_file, roi_file=roi_file)
-        #except Exception as e: 
-        #    print('fix missing ROI')
-        #    print(e)
+        try: 
+           column_ids  = get_columns_by_roi(column_file=column_file, roi_file=roi_file)
+        except Exception as e: 
+           print('fix missing ROI')
+           print(e)
 
         layer_ids   = [3, 2, 1]
 
 
-        #column_nii        = nib.load(column_file)
-        #column_data       = column_nii.get_fdata()
+        column_nii        = nib.load(column_file)
+        column_data       = column_nii.get_fdata()
 
         layer_nii        = nib.load(layer_file)
         layer_data       = layer_nii.get_fdata()
 
-        
+        if np.any(column_nii.affine != layer_nii.affine):
+            print("affines dont match")
 
-        try: 
-            roi_nii         = nib.load(roi_file)
-            roi_data        = roi_nii.get_fdata()
-            roi_ind         = np.where(roi_data == 1)
-            roi_epi         = epi_data[roi_ind]
-            roi_epi_mean    = np.mean(roi_epi, 0) 
-            roi_pcas_ncomp  = get_pcas(roi_epi, num_components=4)
 
-        except: 
-            print('fix this - missing rois')
-            print(roi_file)
-            continue 
+        # try: 
+        #     roi_nii         = nib.load(roi_file)
+        #     roi_data        = roi_nii.get_fdata()
+        #     roi_ind         = np.where(roi_data == 1)
+        #     roi_epi         = epi_data[roi_ind]
+        #     roi_epi_mean    = np.mean(roi_epi, 0) 
+        #     roi_pcas_ncomp  = get_pcas(roi_epi, num_components=4)
+
+        # except: 
+        #     print('fix this - missing rois')
+        #     print(roi_file)
+        #     continue 
 
         #columns_in_roi = column_data[roi_ind]
 
+        #layer_files = glob(layer4EPI + '/rois.leakylayers.l3/*')
 
-        column_ids = np.unique(roi_data)
-        column_data = roi_data 
+        #column_ids = np.unique(roi_data)
+        #column_data = roi_data 
+
 
         ind_jobs = []         
         for c in column_ids: 
@@ -647,6 +682,7 @@ for e_i in range(len(EPIs)):
 
             p = 0 
             for l in layer_ids:
+
                 ind = np.where( (column_data == c) & (layer_data == l) )
                 inds.append(ind)
                 cs.append(c)
@@ -655,6 +691,7 @@ for e_i in range(len(EPIs)):
                     p += 1 
 
             if p < 3: 
+                print('layer column mismatch')
                 continue 
         
             # TODO add d seed, control, glm_input here 
@@ -673,6 +710,8 @@ for e_i in range(len(EPIs)):
 
         '''
         completed_jobs = parallelize(ind_jobs[0:10], regress_across_columns, n_cores=10)
+        completed_jobs = parallelize(ind_jobs, regress_across_columns, n_cores=10)
+
         regress_across_columns(ind_jobs[0])
         '''
 
