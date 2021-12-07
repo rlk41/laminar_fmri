@@ -454,9 +454,9 @@ cd layers
 
 cp ../rim.nii . 
 
-LN2_LAYERS -rim rim.nii -nr_layers 10 -incl_borders -output rim_equidist_n10  #-equal 
+LN2_LAYERS -rim rim.nii -nr_layers 10 -incl_borders -output rim_equidist_n10_equal  -equal_counts 
 
-LN2_LAYERS -rim rim.nii -nr_layers 3 -incl_borders -output rim_equidist_n3 #-equal 
+LN2_LAYERS -rim rim.nii -nr_layers 3 -incl_borders -output rim_equidist_n3_equal -equal_counts 
 
 
 # LN_GROW_LAYERS -rim rim.nii -N 1000 -vinc 60 -threeD
@@ -612,9 +612,9 @@ cd layers
 
 cp ../rim.nii . 
 
-LN2_LAYERS -rim rim.nii -nr_layers 10 -incl_borders -output rim_equidist_n10 #-equal 
+LN2_LAYERS -rim rim.nii -nr_layers 10 -incl_borders -output rim_equidist_n10 -equal_counts
 
-LN2_LAYERS -rim rim.nii -nr_layers 3 -incl_borders -output rim_equidist_n3 #-equal 
+LN2_LAYERS -rim rim.nii -nr_layers 3 -incl_borders -output rim_equidist_n3 -equal_counts 
 
 # equal counts -equal 
 
@@ -830,10 +830,7 @@ roi_paths=( "$rois_thalamic/8109.lh.LGN.nii"
             "$rois_hcp/1013.L_V3A.nii"
             "$rois_hcp/1019.L_V3B.nii"
             "$rois_hcp/1158.L_V3CD.nii"
-            "$rois_hcp/1006.L_V4.nii" ) 
-
-
- roi_paths=( 
+            "$rois_hcp/1006.L_V4.nii" 
             "$rois_hcp/1003.L_V6.nii"
             "$rois_hcp/1152.L_V6A.nii"
             "$rois_hcp/1016.L_V7.nii"
@@ -897,6 +894,37 @@ for dir in ${ds[@]}; do
       L2D.job.sh $dir
 
 done 
+
+
+build_fslfeat_df.py \
+--fslfeat_dir "/data/kleinrl/Wholebrain2.0/fsl_feats"
+
+
+
+
+
+3dTstat -mean -prefix VASO_LN.4dmean.flat.nii VASO_LN.4dmean.nii 
+spm_bias_field_correct -i VASO_LN.4dmean.flat.nii
+
+3dkmeans -f VASO_LN.4dmean.flat.bias.nii -prefix clusts.nii -k 5 -overwrite 
+
+node="cn0858"
+scp -r $node:/data/kleinrl/Wholebrain2.0/VASO_LN.4dmean.flat.nii .
+scp -r $node:/data/kleinrl/Wholebrain2.0/VASO_LN.4dmean.nii .
+scp -r $node:/data/kleinrl/Wholebrain2.0/cluster_segment .
+scp -r $node:/data/kleinrl/Wholebrain2.0/ANAT/ANAT_working_ANTs . 
+scp -r $node:/data/kleinrl/Wholebrain2.0/ANAT/ANAT_working_recon-all/ANAT_mri_make_surf/LAYNII_2 . 
+
+
+
+
+freeview $parc_hcp \
+*000.feat/inv_mean_func.nii \
+*000.feat/smoothed_inv_thresh_zstat1.L2D-columns_ev_1000_borders.downscaled2x_NN.fffb-ratioSub.nii.gz \
+smoothed_inv_thresh_zstat1.L2D-columns_ev_1000_borders.downscaled2x_NN.nii.gz
+
+
+
 
 
 # 3dclust 

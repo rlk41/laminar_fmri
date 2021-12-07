@@ -99,6 +99,17 @@ downsample_2x_Cu.sh inv_thresh_zstat1.L2D-${base_columns}.nii.gz
 
 #downsample_2x_NN.sh smoothed_inv_thresh_zstat1.L2D.fffb.nii.gz
 
+extract_columns_to_df.py \
+--input  smoothed_inv_thresh_zstat1.L2D-${base_columns}.downscaled2x_NN.nii.gz \
+--columns $columns_down2xNN 
+
+extract_columns_to_df.py \
+--input  smoothed_inv_thresh_zstat1.L2D-${base_columns}.downscaled2x_Cu.nii.gz \
+--columns $columns_down2xNN 
+
+
+
+
 
 #echo "AVERAGE ACROSS SUBJECTS "
 

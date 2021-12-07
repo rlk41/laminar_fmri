@@ -49,7 +49,7 @@ if __name__ == "__main__":
 
     path_columns="/data/kleinrl/Wholebrain2.0/ANAT/ANAT_working_recon-all/ANAT_mri_make_surf/LAYNII_2/columns/columns_ev_1000_borders.downscaled2x_NN.nii.gz"
     
-    path_input="/data/kleinrl/Wholebrain2.0/fsl_feats/1001.L_V1/VASO_LN.4dmean.2D.pca_000.feat/smoothed_inv_thresh_zstat1.L2D-columns_ev_1000_borders.downscaled2x_NN.fffb-ratioSub.nii.gz"
+    path_input="/data/kleinrl/Wholebrain2.0/fsl_feats/1090.L_10pp/VASO_LN.4dmean.2D.pca_000.feat/smoothed_inv_thresh_zstat1.L2D-columns_ev_1000_borders.downscaled2x_NN.nii.gz"
 
 
 
@@ -79,8 +79,10 @@ if __name__ == "__main__":
         inds_data        = data_input[inds]
         inds_data_mean   = np.mean(inds_data,0)
         
-        row.append([unq_column_id, inds_data_mean])
-
-    df = pd.DataFrame(row, columns=['id','value'])
+        l = inds_data_mean.tolist()
+        row.append([unq_column_id]+l)
+    
+    header = ['id']+['value_{}'.format(i) for i in range(len(l))]
+    df = pd.DataFrame(row, columns=header)
     
     df.to_csv(output)
