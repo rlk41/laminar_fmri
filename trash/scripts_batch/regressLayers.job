@@ -1,0 +1,47 @@
+#!/bin/bash 
+set -e 
+
+#module load python 
+
+
+
+seed=$1
+target=$2
+cores=$3
+pkl_dir=$4
+
+seed_pca=$5
+control_pca=$6
+
+vert_base=$7 
+
+
+EPI=$seed
+#source /home/kleinrl/projects/laminar_fmri/paths_biowulf 
+
+
+echo "  "
+echo "running regressLayers.job using $EPI"
+echo "  "
+echo "SEED:         $seed"
+echo "Targets:      $target"
+echo "cores:        $cores"
+echo "pkl_dir:      $pkl_dir"
+echo "seed_pca:     $seed_pca"
+echo "control_pca:  $control_pca"
+echo "vert_base:    $vert_base"
+echo "  "
+
+echo "singleROI"
+
+regressLayers.surf.singleROI.py \
+--EPI_seed $seed --EPI_target $target \
+--n_cores $cores --pkl_dir $pkl_dir \
+--seed_pca $seed_pca --control_pca $control_pca \
+--vert_base $vert_base
+
+# echo "normal"
+# regressLayers.surf.py \
+# --EPI_seed $seed --EPI_target $target \
+# --n_cores $cores --pkl_dir $pkl_dir \
+# --seed_pca $seed_pca --control_pca $control_pca

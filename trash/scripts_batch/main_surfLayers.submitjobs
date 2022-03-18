@@ -1,0 +1,57 @@
+#!/bin/bash 
+set -e 
+
+for EPI in $VASO_func_dir/*movie*VASO.nii
+do 
+    echo $EPI 
+    source /home/kleinrl/projects/laminar_fmri/paths_biowulf 
+    log="/home/kleinrl/projects/laminar_fmri/logs/surfLayers-${EPI_base}.log"
+    job_name="surfLayers"
+
+    echo "  "
+    echo "EPI: ${EPI}"
+    echo "  "
+    echo "LOG: ${log}"
+    echo "  "
+
+    sbatch --mem=10g --cpus-per-task=5 \
+    --partition=norm \
+    --output=$log \
+    --time 10:00:00 \
+    --job-name=$job_name \
+    main_surfLayers.sh $EPI
+
+done 
+
+
+
+
+for EPI in $VASO_func_dir/*movie*VASO.nii
+do 
+    echo $EPI 
+    source /home/kleinrl/projects/laminar_fmri/paths_biowulf 
+    log="/home/kleinrl/projects/laminar_fmri/logs/regressLayers-${EPI_base}.log"
+    job_name='regressLayers'
+
+    echo "  "
+    echo "EPI: ${EPI}"
+    echo "scaled_EPI: ${scaled_EPI}"
+    echo "  "
+    echo "LOG: ${log}"
+    echo "  "
+
+    #sbatch --mem=10g --cpus-per-task=20 \
+    sbatch --mem=30g --cpus-per-task=50 \
+    --partition=norm \
+    --output=$log \
+    --time 10:00:00 \
+    --job-name=$job_name \
+    regressLayers.job $EPI
+
+done 
+
+
+ sbatch 
+ 
+ --dependency=afterany:13201,13202 
+

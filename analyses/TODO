@@ -1,0 +1,121 @@
+
+
+for f in *_pca10; do 
+
+IFS='_' read -ra ADDR <<< "$f"
+echo "${ADDR[2]}"
+
+freeview \
+$f/mean/inv_mean_func.nii \
+$f/mean/ratioMean.nii.gz:colormap=heat \
+/data/NIMH_scratch/kleinrl/analyses/movingColumns_vertical/rois/final_${ADDR[2]}.nii.gz:colormap=pet \
+
+
+-ras -0.93, -54.45, 4.74
+
+
+
+done 
+
+freeview *_pca10/mean/ratioMean.nii.gz fsl_feat_11142_pca10/mean/inv_mean_func.nii 
+
+
+
+
+
+
+figure out how to get signal from not task-involved regions 
+    pcas, permute_ALL
+
+build connectivity matrix 
+
+plots
+    surface space 
+    coronal,sag,axial for coordinates -- get coords from ff/fb clusters 
+
+
+    
+
+SUBMIT TE MTL 
+
+
+PROFILES... 
+    THALAMIC PROFILES 
+    rerun profiles 
+
+    surfspace visualization 
+
+    A1 to V4 FF 
+    A1 FB to POI2
+
+
+# BUILD FF/FB matrix 
+
+
+
+
+# TO V4 
+A1 to V4 https://academic.oup.com/cercor/article/24/8/2169/472378
+
+# FEF FB to Motor 
+
+scp cn0850:/data/NIMH_scratch/kleinrl/analyses/FEF/1010.L_FEF_ave/mean/inv_mean_func.nii . 
+scp cn0884:/data/NIMH_scratch/kleinrl/analyses/FEF/1010.L_FEF_ave/mean/meanRatio.nii.gz . 
+scp cn0850:/data/kleinrl/Wholebrain2.0/ANAT/ANAT_working_recon-all/ANAT_mri_make_surf/multiAtlasTT/hcp-mmp-b/hcp-mmp-b_rmap.nii.gz 
+
+
+
+ANALYSES
+
+    major networks 
+        submitted FOP{1..5} _ AVE_diagonal 
+
+        DL-PFC
+        M-PFC
+
+        ACC 
+        PCC 
+
+        SUBMIT: 
+            PCA10_ROIS
+            AVE_ROIS
+            AVE_COLS
+        
+
+
+        check thalamic ??
+
+        col2col
+
+
+
+get column rois, get column/layers, ica medlodic 
+
+
+M1 to S1 analysis 
+
+
+
+METHODS
+
+    Plotting 
+        2D plots 
+
+    Normalize 
+
+    PCA vs AVE ROI vs AVE Cols
+
+
+
+
+Get ROIs for analysis
+Run PCA/ROI/Col variations 
+
+
+
+Work on plotting 
+    afni 
+    freeview -ss 
+melodic 
+
+L2D for each PCA

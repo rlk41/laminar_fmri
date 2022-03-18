@@ -1,0 +1,80 @@
+
+# EV 1 title
+set fmri(evtitle1) "L_LGN1"
+
+# Basic waveform shape (EV 1)
+# 0 : Square
+# 1 : Sinusoid
+# 2 : Custom (1 entry per volume)
+# 3 : Custom (3 column format)
+# 4 : Interaction
+# 10 : Empty (all zeros)
+set fmri(shape1) 2
+
+# Convolution (EV 1)
+# 0 : None
+# 1 : Gaussian
+# 2 : Gamma
+# 3 : Double-Gamma HRF
+# 4 : Gamma basis functions
+# 5 : Sine basis functions
+# 6 : FIR basis functions
+# 8 : Alternate Double-Gamma
+set fmri(convolve1) 0
+
+# Convolve phase (EV 1)
+set fmri(convolve_phase1) 0
+
+# Apply temporal filtering (EV 1)
+set fmri(tempfilt_yn1) 0
+
+# Add temporal derivative (EV 1)
+set fmri(deriv_yn1) 0
+
+# Custom EV file (EV 1)
+set fmri(custom1) "/gpfs/gsfs11/users/kleinrl/ds003216/derivatives/fslFEAT/L_LGN.sub-01_ses-06_task-movie_run-05_VASO.1D"
+
+# Orthogonalise EV 1 wrt EV 0
+set fmri(ortho1.0) 0
+
+# Orthogonalise EV 1 wrt EV 1
+set fmri(ortho1.1) 0
+
+# Orthogonalise EV 1 wrt EV 2
+set fmri(ortho1.2) 0
+
+# Orthogonalise EV 1 wrt EV 3
+set fmri(ortho1.3) 0
+
+# Orthogonalise EV 1 wrt EV 4
+set fmri(ortho1.4) 0
+
+# Orthogonalise EV 1 wrt EV 5
+set fmri(ortho1.5) 0
+
+# Orthogonalise EV 1 wrt EV 6
+set fmri(ortho1.6) 0
+
+# Orthogonalise EV 1 wrt EV 7
+set fmri(ortho1.7) 0
+
+# Orthogonalise EV 1 wrt EV 8
+set fmri(ortho1.8) 0
+
+# Orthogonalise EV 1 wrt EV 9
+set fmri(ortho1.9) 0
+
+# Orthogonalise EV 1 wrt EV 10
+set fmri(ortho1.10) 0
+
+# Orthogonalise EV 1 wrt EV 11
+set fmri(ortho1.11) 0
+
+# Orthogonalise EV 1 wrt EV 12
+set fmri(ortho1.12) 0
+
+# Orthogonalise EV 1 wrt EV 13
+set fmri(ortho1.13) 0
+
+# Orthogonalise EV 1 wrt EV 14
+set fmri(ortho1.14) 0

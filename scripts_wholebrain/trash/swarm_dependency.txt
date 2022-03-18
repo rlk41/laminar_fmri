@@ -1,0 +1,23 @@
+kleinrl  31487758_[0]      feat0_init  quick        PD                              2:00:00             1   20 GB                      
+kleinrl  31487760_[0]      feat0_init  quick        PD                              2:00:00             1   20 GB                      
+kleinrl  31487763_[0]      feat2_pre   norm         PD  Dependency                  2:00:00             1   20 GB  afterany:3          
+kleinrl  31487765_[0]      feat2_pre   norm         PD  Dependency                  2:00:00             1   20 GB  afterany:3          
+kleinrl  31487768_[0]      feat3_film  quick        PD  Dependency                  2:00:00             1   20 GB  afterany:3          
+kleinrl  31487770_[0]      feat3_film  quick        PD  Dependency                  2:00:00             1   20 GB  afterany:3          
+kleinrl  31487773_[0]      feat4_post  quick        PD  Dependency                  2:00:00             1   20 GB  afterany:3          
+kleinrl  31487775_[0]      feat4_post  quick        PD  Dependency                  2:00:00             1   20 GB  afterany:3          
+kleinrl  31487776_[0]      feat5_stop  quick  
+
+
+design_file="/gpfs/gsfs12/users/NIMH_scratch/kleinrl/fsl_feat_permute_1006.L_V4_pca10/DAY1_run1_VASO_LN.2D.pca_001/DAY1_run1_VASO_LN-DAY1_run1_VASO_LN.feat/design.fsf "
+dir="/gpfs/gsfs12/users/NIMH_scratch/kleinrl/fsl_feat_permute_1006.L_V4_pca10/DAY1_run1_VASO_LN.2D.pca_001/DAY1_run1_VASO_LN-DAY1_run1_VASO_LN.feat"
+
+
+#make .feat dir
+
+
+# create design file in feat dir
+
+/usr/local/apps/fsl/6.0.4/bin/feat $design_file -D $dir -I 1 -init ; /usr/local/apps/fsl/6.0.4/bin/feat $design_file -D $dir -I 1 -prestats ; /usr/local/apps/fsl/6.0.4/bin/feat $design_file -D $dir -I 1 -stats ; /usr/local/apps/fsl/6.0.4/bin/feat $design_file -D $dir -poststats 0 ; /usr/local/apps/fsl/6.0.4/bin/feat $design_file -D $dir -stop
+
+

@@ -1,0 +1,14 @@
+#!/bin/bash 
+set -e 
+
+source_laminar_fmri 
+module load python 
+
+log=$logs/regressLayers.log
+
+sbatch --mem=20g --cpus-per-task=20 \
+--partition=norm \
+--output=$log \
+--time 10:00:00 \
+regressLayers.job
+
