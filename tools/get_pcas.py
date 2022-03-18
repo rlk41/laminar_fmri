@@ -30,14 +30,14 @@ if __name__ == "__main__":
     print("LOADING DATA FROM: {}".format(args.file))
 
     # filename = "/data/kleinrl/Wholebrain2.0/fsl_feats/timeseries/both.LGN.dump"
-
+    # filename = "/data/NIMH_scratch/kleinrl/analyses/FEF/1010.L_FEF_pca10/timeseries/DAY1_run1_VASO_LN.2D"
     filename = args.file
-    filename_base = filename.split('/')[-1].rstrip('.dump')
+    filename_base = filename.split('/')[-1] #.rstrip('.dump')
 
     data = np.loadtxt(filename) 
-    data = data.T
+    data_t = data.T
 
-    reduced = get_pcas(data)
+    reduced = get_pcas(data_t)
 
     for col in range(reduced.shape[1]): 
         np.savetxt(

@@ -8,6 +8,8 @@
 #export spm_path='/home/richard/matlab_toolbox'
 module load matlab matlab-spm ANTs afni freesurfer fsl python git
 
+export my_scratch="/data/NIMH_scratch/kleinrl"
+
 
 #export ds_dir='/media/richard/bfb1e328-6d97-4280-8331-5daeb988f70a/bandettini/ds003216-download'
 export ds_dir='/data/kleinrl/Wholebrain2.0'
@@ -20,7 +22,8 @@ if [ -z "$EPI" ] ;
 then
   export EPI="${ds_dir}/DAY3/run5/VASO_LN.nii"
   echo "                         "
-  echo "EPI not set using: ${EPI}"
+  echo "EPI not set using: EPI"
+  echo "set to: ${EPI}"
 else
   echo "                        "
   echo "EPI set using: ${EPI}"
@@ -36,7 +39,7 @@ export EPI_base_path=${EPI_dir}/${EPI_base}
 export EPI_orig=$(dirname $EPI)/$(basename $EPI .nii).orig.nii.gz
 
 
-export EPI_4d="${ds_dir}/VASO_LN.4dmean.WITHOUT_D1R1.nii"
+export EPI_4d="${ds_dir}/VASO_LN.4dmean.nii"
 export fsl_feat_dir="${ds_dir}/fsl_feats"
 export fsl_feat_ts_dir="${fsl_feat_dir}/timeseries"
 export fsl_feat_out="$fsl_feat_dir/feats"
@@ -76,12 +79,12 @@ export atlasBaseDir=$scriptBaseDir/atlas_data
 export VASO_func_dir=$EPI_dir # need to cleanup
 #export EPIs="${VASO_func_dir}/*VASO.nii"
 
-export EPIs=($(find $ds_dir -name "VASO_LN.nii"))
-export EPI_means=($(find $ds_dir -name "VASO_LN.mean.nii"))
+export EPIs=($(find $ds_dir/DAY*/run* -name "VASO_LN.nii"))
+export EPI_means=($(find $ds_dir/DAY*/run* -name "VASO_LN.mean.nii"))
 export EPI_mean_all=$ds_dir/VASO_LN.MEAN.nii
 export EPI_mean_all_bias=$ds_dir/VASO_LN.MEAN.bias.nii
 
-export T1Ws=($(find $ds_dir -name "T1w.nii"))
+export T1Ws=($(find $ds_dir/DAY*/run* -name "T1w.nii"))
 export T1Ws_mean=$ds_dir/T1Ws.mean.nii
 
 
@@ -126,14 +129,15 @@ export ANAT_bias_dir="$(dirname $ANAT)/$(basename $ANAT .nii)_working_bias"
 
 
 export SUBJECTS_DIR="$(dirname $ANAT)/$(basename $ANAT .nii)_working_recon-all"
-export subjid="$(basename $ANAT .nii)"
+#export subjid="$(basename $ANAT .nii)"
+export subjid="ANAT_mri_make_surf"
 export expert="${SUBJECTS_DIR}/expert.opts"
 export recon_dir="${SUBJECTS_DIR}/${subjid}"
 
 export manualedit_log="$recon_dir/mri/manualedit.log"
 
 
-export layer_dir="$recon_dir/LAYNII"
+export layer_dir="$recon_dir/LAYNII_2"
 export suma_dir="$recon_dir/SUMA"
 export scaled_suma_dir="$recon_dir/SUMA_scaled"
 
@@ -267,21 +271,41 @@ export layers_ev_n10="${layer_dir}/equi_volume_layers_n10.nii"
 export layers_ev_n3="${layer_dir}/equi_volume_layers_n3.nii"
 
 
-export columns="${layer_dir}_2/columns/columns_ev_50000_borders.nii"
-export layers="${layer_dir}_2/layers/rim_equidist_n10_layers_equidist.nii"
+
+#export layers="${layer_dir}/layers/rim_equidist_n10_equal_layers_equidist.nii"
+
+export layers="${layer_dir}/layers/grow_leaky_loituma/equi_volume_layers_n10.nii"
 
 
-export columns_1k="${layer_dir}_2/columns/columns_ev_1000_borders.nii"
-export columns_10k="${layer_dir}_2/columns/columns_ev_10000_borders.nii"
-export columns_30k="${layer_dir}_2/columns/columns_ev_30000_borders.nii"
-export columns_50k="${layer_dir}_2/columns/columns_ev_50000_borders.nii"
+export layers_n3="${layer_dir}/layers/rim_equidist_n3_equal_layers_equidist.nii"
+export layers_n10="${layer_dir}/layers/rim_equidist_n10_equal_layers_equidist.nii"
 
-export layers_n3="${layer_dir}_2/layers/rim_equidist_n3_layers_equidist.nii"
-export layers_n10="${layer_dir}_2/layers/rim_equidist_n10_layers_equidist.nii"
 
-export columns_1k_down2xNN="${layer_dir}_2/columns/columns_ev_1000_borders.downscaled2x_NN.nii.gz"
-export columns_10k_down2xNN="${layer_dir}_2/columns/columns_ev_10000_borders.downscaled2x_NN.nii.gz"
-export columns_30k_down2xNN="${layer_dir}_2/columns/columns_ev_30000_borders.downscaled2x_NN.nii.gz"
+export columns_1k="${layer_dir}/columns/columns_ev_1000_borders.nii"
+export columns_10k="${layer_dir}/columns/columns_ev_10000_borders.nii"
+export columns_30k="${layer_dir}/columns/columns_ev_30000_borders.nii"
+export columns_50k="${layer_dir}/columns/columns_ev_50000_borders.nii"
+export columns_70k="${layer_dir}/columns/columns_ev_70000_borders.nii"
+export columns_100k="${layer_dir}/columns/columns_ev_100000_borders.nii"
+
+
+export columns=$columns_50k
+
+#"${layer_dir}/columns/columns_ev_70000_borders.nii"
+
+
+#export columns_1k="${layer_dir}_2/columns/columns_ev_1000_borders.nii"
+#export columns_10k="${layer_dir}_2/columns/columns_ev_10000_borders.nii"
+#export columns_30k="${layer_dir}_2/columns/columns_ev_30000_borders.nii"
+#export columns_50k="${layer_dir}_2/columns/columns_ev_50000_borders.nii"
+
+
+export columns_1k_down2xNN="${layer_dir}/columns/columns_ev_1000_borders.downscaled2x_NN.nii.gz"
+export columns_10k_down2xNN="${layer_dir}/columns/columns_ev_10000_borders.downscaled2x_NN.nii.gz"
+export columns_30k_down2xNN="${layer_dir}/columns/columns_ev_30000_borders.downscaled2x_NN.nii.gz"
+export columns_50k_down2xNN="${layer_dir}/columns/columns_ev_50000_borders.downscaled2x_NN.nii.gz"
+export columns_70k_down2xNN="${layer_dir}/columns/columns_ev_70000_borders.downscaled2x_NN.nii.gz"
+export columns_100k_down2xNN="${layer_dir}/columns/columns_ev_100000_borders.downscaled2x_NN.nii.gz"
 
 
 # export inv_columns_10k="${layer_dir}_2/columns/inv_columns_ev_10000_borders.nii"
@@ -291,12 +315,12 @@ export columns_30k_down2xNN="${layer_dir}_2/columns/columns_ev_30000_borders.dow
 # export inv_layers_n3="${layer_dir}_2/layers/inv_rim_equidist_n3_layers_equidist.nii"
 # export inv_layers_n10="${layer_dir}_2/layers/inv_rim_equidist_n10_layers_equidist.nii"
 
-export warped_columns_10k="${layer_dir}_2/columns/warped_columns_ev_10000_borders.nii"
-export warped_columns_30k="${layer_dir}_2/columns/warped_columns_ev_30000_borders.nii"
-export warped_columns_50k="${layer_dir}_2/columns/warped_columns_ev_50000_borders.nii"
+export warped_columns_10k="${layer_dir}/columns/warped_columns_ev_10000_borders.nii"
+export warped_columns_30k="${layer_dir}/columns/warped_columns_ev_30000_borders.nii"
+export warped_columns_50k="${layer_dir}/columns/warped_columns_ev_50000_borders.nii"
 
-export warped_layers_n3="${layer_dir}_2/layers/warped_rim_equidist_n3_layers_equidist.nii"
-export warped_layers_n10="${layer_dir}_2/layers/warped_rim_equidist_n10_layers_equidist.nii"
+export warped_layers_n3="${layer_dir}/layers/warped_rim_equidist_n3_layers_equidist.nii"
+export warped_layers_n10="${layer_dir}/layers/warped_rim_equidist_n10_layers_equidist.nii"
 
 
 

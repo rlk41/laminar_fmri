@@ -36,7 +36,7 @@ def plot_surf(subid, vol=False, surf='inflated',
     #views=['caudal']
     
     brain = Brain(subid, hemi="split", surf=surf, views=views, 
-    background='black', offscreen=False, size=(8000,2400), cortex='bone')
+    background='black', offscreen=True, size=(8000,2400), cortex='bone')
     
 
     vol_lh = project_volume_data(vol, 'lh', 
@@ -103,6 +103,7 @@ if __name__ == "__main__":
     parser.add_argument('--vol')
     parser.add_argument('--surf', default='inflated')
     parser.add_argument('--outfile', default=None)
+    parser.add_argument('--views', default=None)
 
     parser.add_argument('--seed', default=None)
 
@@ -125,6 +126,7 @@ if __name__ == "__main__":
     subid = args.subid 
     vol = args.vol
     surf = args.surf 
+    views = args.views 
 
     seed = args.seed
     outfile = args.outfile
@@ -134,4 +136,14 @@ if __name__ == "__main__":
     #subid='fsaverage'
     #subid='sub-01_ses-06_task-movie_run-05_VASO'
 
-    plot_surf(subid, vol=vol, surf=surf, seed=seed, outfile=outfile)
+    plot_surf(subid, vol=vol, surf=surf, seed=seed, outfile=outfile, views=views)
+
+
+    '''
+    plot_surf.py \
+    --subid $subjid \
+    --views lat \
+    --vol /data/NIMH_scratch/kleinrl/analyses/allGlasser_pca10/1136.L_TE2p/mean/inv_thresh_zstat1.fwhm8.L2D.columns_ev_30000_borders.downscaled2x_NN.ratio.nii.gz
+
+    
+    '''

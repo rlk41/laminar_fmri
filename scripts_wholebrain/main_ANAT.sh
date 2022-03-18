@@ -434,6 +434,7 @@ build_rim_scaled_renzo.sh
 # https://layerfmri.com/2020/04/24/equivol/
 
 
+# layer_dir and layer_dir_2
 cd $layer_dir 
 
 mkdir -p layers
@@ -605,6 +606,8 @@ mv columns_ev_30000_borders_columns30000.nii columns_ev_30000_borders.nii
 # cd ..
 
 
+
+# scaled 
 cd ${layer_dir}_2
 
 mkdir -p layers
@@ -612,11 +615,35 @@ cd layers
 
 cp ../rim.nii . 
 
-LN2_LAYERS -rim rim.nii -nr_layers 10 -incl_borders -output rim_equidist_n10 -equal_counts
+# we are using this file!!!
+LN2_LAYERS -rim rim.nii -nr_layers 10 -incl_borders -output rim_equidist_n10 
 
-LN2_LAYERS -rim rim.nii -nr_layers 3 -incl_borders -output rim_equidist_n3 -equal_counts 
+LN2_LAYERS -rim rim.nii -nr_layers 3 -incl_borders -output rim_equidist_n3 
+
+
+# equal 
+LN2_LAYERS -rim rim.nii -nr_layers 10 -incl_borders -output rim_equidist_n10_equal -equal_counts
+
+LN2_LAYERS -rim rim.nii -nr_layers 3 -incl_borders -output rim_equidist_n3_equal -equal_counts 
 
 # equal counts -equal 
+
+################
+mkdir grow_leaky_loituma 
+cd grow_leaky_loituma
+
+LN_GROW_LAYERS -rim rim.nii -N 1000 -vinc 60 -threeD
+LN_LEAKY_LAYERS -rim rim.nii -nr_layers 1000 -iterations 100
+
+
+# N10
+LN_LOITUMA -equidist rim_layers.nii -leaky rim_leaky_layers.nii -FWHM 1 -nr_layers 10
+mv equi_distance_layers.nii equi_distance_layers_n10.nii
+mv equi_volume_layers.nii equi_volume_layers_n10.nii
+
+#######################
+
+
 
 cd ..
 mkdir -p columns 
@@ -692,9 +719,9 @@ segmentHA_T1.sh $subjid
 
 
 
-mkdir -p $recon_dir/LAYNII_VASO_LN
+mkdir -p $recon_dir/LAYNII_2_VASO_LN
 
-cd $recon_dir/LAYNII_VASO_LN
+cd $recon_dir/LAYNII_2_VASO_LN
 
 # THALAMIC NUCLEI
 #warp_ANTS_resampleNN.sh "$layer4EPI/ThalamicNuclei.v12.T1.mgz" $EPI_bias
@@ -705,13 +732,23 @@ warp_ANTS_resampleNN.sh $parc_hcp $EPI_mean
 
 cd ${layer_dir}_2/columns 
 
-warp_ANTS_resampleNN.sh $columns_10k $EPI_mean
-warp_ANTS_resampleNN.sh $columns_30k $EPI_mean
-warp_ANTS_resampleNN.sh $columns_50k $EPI_mean
+warp_ANTS_resampleNN.sh $columns $EPI_mean
+downsample_2x_NN.sh $columns
 
+warp_ANTS_resampleNN.sh $columns_30k $EPI_mean
 downsample_2x_NN.sh $columns_30k
-downsample_2x_NN.sh $columns_1k
-downsample_2x_NN.sh $columns_10k
+
+warp_ANTS_resampleNN.sh $columns_50k $EPI_mean
+downsample_2x_NN.sh $columns_50k
+
+
+# warp_ANTS_resampleNN.sh $columns_10k $EPI_mean
+# warp_ANTS_resampleNN.sh $columns_30k $EPI_mean
+# warp_ANTS_resampleNN.sh $columns_50k $EPI_mean
+
+# downsample_2x_NN.sh $columns_30k
+# downsample_2x_NN.sh $columns_1k
+# downsample_2x_NN.sh $columns_10k
 
 
 cd ${layer_dir}_2/layers 
@@ -719,6 +756,7 @@ cd ${layer_dir}_2/layers
 warp_ANTS_resampleNN.sh $layers_n3 $EPI_mean
 warp_ANTS_resampleNN.sh $layers_n10 $EPI_mean
 
+warp_ANTS_resampleNN.sh $layers $EPI_mean
 
 # warp_ANTS_resampleNN.sh $parc_hcp $scaled_EPI_master
 # warp_ANTS_resampleNN.sh $parc_hcp $scaled_EPI_master
@@ -817,62 +855,150 @@ mkdir -p $fsl_feat_ts_dir
 mkdir -p $fsl_feat_out
 
 
-roi_paths=( "$rois_thalamic/8109.lh.LGN.nii" \
-            "$rois_hcp/1023.L_MT.nii" \
-            "$rois_hcp/1001.L_V1.nii" )
 
+# roi_paths=( "$rois_thalamic/8109.lh.LGN.nii" 
+#             "$rois_hcp/1023.L_MT.nii" 
+#             "$rois_hcp/1001.L_V1.nii" 
+#             "$rois_hcp/1004.L_V2.nii" 
+#             "$rois_hcp/1005.L_V3.nii"
+#             "$rois_hcp/1013.L_V3A.nii"
+#             "$rois_hcp/1019.L_V3B.nii"
+#             "$rois_hcp/1158.L_V3CD.nii"
+#             "$rois_hcp/1006.L_V4.nii" 
+#             "$rois_hcp/1003.L_V6.nii"
+#             "$rois_hcp/1152.L_V6A.nii"
+#             "$rois_hcp/1016.L_V7.nii"
+#             "$rois_hcp/1007.L_V8.nii" )
+
+
+# # layer and rhytm specificity for predictive routing 
+# # V4
+# # LIP 
+# # FEF - 1063.L_8BM.nii  1067.L_8Av.nii  1068.L_8Ad.nii  1070.L_8BL.nii  1073.L_8C.nii
+# # PFC - 
+
+
+# roi_paths=(
+# "$rois_hcp/1006.L_V4.nii" 
+
+# "$rois_hcp/1029.L_7Pm.nii"
+# "$rois_hcp/1030.L_7m.nii"
+# "$rois_hcp/1042.L_7AL.nii"
+# "$rois_hcp/1045.L_7Am.nii"
+# "$rois_hcp/1046.L_7PL.nii"
+# "$rois_hcp/1047.L_7PC.nii"
+
+# "$rois_hcp/1010.L_FEF.nii"
+# "$rois_hcp/1063.L_8BM.nii"
+# "$rois_hcp/1067.L_8Av.nii"
+# "$rois_hcp/1068.L_8Ad.nii" 
+# "$rois_hcp/1070.L_8BL.nii" 
+# "$rois_hcp/1073.L_8C.nii"
+
+# "$rois_hcp/1069.L_9m.nii"
+# "$rois_hcp/1071.L_9p.nii"
+# "$rois_hcp/1086.L_9-46d.nii"
+# "$rois_hcp/1087.L_9a.nii"
+
+# "$rois_hcp/1065.L_10r.nii"
+# "$rois_hcp/1072.L_10d.nii"
+# "$rois_hcp/1088.L_10v.nii"
+# "$rois_hcp/1090.L_10pp.nii"
+# )
+
+# roi_paths=(
+# "$rois_hcp/1048.L_LIPv.nii"
+# "$rois_hcp/1095.L_LIPd.nii"
+# "$rois_hcp/2048.R_LIPv.nii"
+# "$rois_hcp/2095.R_LIPd.nii"
+
+# "$rois_hcp/1128.L_STSda.nii"
+# "$rois_hcp/1129.L_STSdp.nii"
+# "$rois_hcp/1130.L_STSvp.nii"
+# "$rois_hcp/1176.L_STSva.nii"
+# "$rois_hcp/2128.R_STSda.nii"
+# "$rois_hcp/2129.R_STSdp.nii"
+# "$rois_hcp/2130.R_STSvp.nii"
+# "$rois_hcp/2176.R_STSva.nii"
+# ) 
+            # "$rois_hcp/1152.L_V6A.nii"
+
+            # "$rois_hcp/1016.L_V7.nii"
+            # "$rois_hcp/1007.L_V8.nii" 
+
+            # "$rois_hcp/1006.L_V4.nii" 
+
+            # "$rois_hcp/1029.L_7Pm.nii"
+            # "$rois_hcp/1030.L_7m.nii"
+            # "$rois_hcp/1042.L_7AL.nii"
+            # "$rois_hcp/1045.L_7Am.nii"
+            # "$rois_hcp/1046.L_7PL.nii"
+            
+            # "$rois_hcp/1067.L_8Av.nii"
+            # "$rois_hcp/1068.L_8Ad.nii" 
+            # "$rois_hcp/1070.L_8BL.nii" 
+            # "$rois_hcp/1073.L_8C.nii"
+            # "$rois_hcp/1069.L_9m.nii"
+            # "$rois_hcp/1071.L_9p.nii"
+            # "$rois_hcp/1086.L_9-46d.nii"
+
+            # "$rois_hcp/1065.L_10r.nii"
+            # "$rois_hcp/1072.L_10d.nii"
+            # "$rois_hcp/1088.L_10v.nii"
+            # "$rois_hcp/1090.L_10pp.nii"
+            # "$rois_hcp/2128.R_STSda.nii"
+            # "$rois_hcp/2129.R_STSdp.nii"
+            # "$rois_hcp/2130.R_STSvp.nii"
+            # "$rois_hcp/2176.R_STSva.nii"
 
 roi_paths=( "$rois_thalamic/8109.lh.LGN.nii" 
-            "$rois_hcp/1023.L_MT.nii" 
             "$rois_hcp/1001.L_V1.nii" 
             "$rois_hcp/1004.L_V2.nii" 
             "$rois_hcp/1005.L_V3.nii"
-            "$rois_hcp/1013.L_V3A.nii"
-            "$rois_hcp/1019.L_V3B.nii"
-            "$rois_hcp/1158.L_V3CD.nii"
             "$rois_hcp/1006.L_V4.nii" 
+            "$rois_hcp/1023.L_MT.nii" 
             "$rois_hcp/1003.L_V6.nii"
-            "$rois_hcp/1152.L_V6A.nii"
-            "$rois_hcp/1016.L_V7.nii"
-            "$rois_hcp/1007.L_V8.nii" )
+            "$rois_hcp/1010.L_FEF.nii"
+            "$rois_hcp/1047.L_7PC.nii"
+            "$rois_hcp/1063.L_8BM.nii"
+            "$rois_hcp/1087.L_9a.nii"
+            "$rois_hcp/1072.L_10d.nii"
 
+            "$rois_hcp/1065.L_10r.nii"
+            "$rois_hcp/1088.L_10v.nii"
+            "$rois_hcp/1089.L_a10p.nii"
+            "$rois_hcp/1090.L_10pp.nii"
+            "$rois_hcp/1170.L_p10p.nii"
 
-# layer and rhytm specificity for predictive routing 
-# V4
-# LIP 
-# FEF - 1063.L_8BM.nii  1067.L_8Av.nii  1068.L_8Ad.nii  1070.L_8BL.nii  1073.L_8C.nii
-# PFC - 
+            "$rois_hcp/1074.L_44.nii"
+            "$rois_hcp/1075.L_45.nii"
 
+            "$rois_hcp/1083.L_p9-46v.nii"
+            "$rois_hcp/1084.L_46.nii"
+            "$rois_hcp/1085.L_a9-46v.nii"
+            "$rois_hcp/1086.L_9-46d.nii"
 
-roi_paths=(
-"$rois_hcp/1006.L_V4.nii" 
+            "$rois_hcp/1048.L_LIPv.nii"
+            "$rois_hcp/1095.L_LIPd.nii"
+            "$rois_hcp/2048.R_LIPv.nii"
+            "$rois_hcp/2095.R_LIPd.nii"
 
-"$rois_hcp/1029.L_7Pm.nii"
-"$rois_hcp/1030.L_7m.nii"
-"$rois_hcp/1042.L_7AL.nii"
-"$rois_hcp/1045.L_7Am.nii"
-"$rois_hcp/1046.L_7PL.nii"
-"$rois_hcp/1047.L_7PC.nii"
+            "$rois_hcp/1024.L_A1.nii"
 
-"$rois_hcp/1010.L_FEF.nii"
-"$rois_hcp/1063.L_8BM.nii"
-"$rois_hcp/1067.L_8Av.nii"
-"$rois_hcp/1068.L_8Ad.nii" 
-"$rois_hcp/1070.L_8BL.nii" 
-"$rois_hcp/1073.L_8C.nii"
+            "$rois_hcp/1128.L_STSda.nii"
+            "$rois_hcp/1129.L_STSdp.nii"
+            "$rois_hcp/1130.L_STSvp.nii"
+            "$rois_hcp/1176.L_STSva.nii"
 
-"$rois_hcp/1069.L_9m.nii"
-"$rois_hcp/1071.L_9p.nii"
-"$rois_hcp/1086.L_9-46d.nii"
-"$rois_hcp/1087.L_9a.nii"
+            "$rois_hcp/1123.L_STGa.nii"
 
-"$rois_hcp/1065.L_10r.nii"
-"$rois_hcp/1072.L_10d.nii"
-"$rois_hcp/1088.L_10v.nii"
-"$rois_hcp/1090.L_10pp.nii"
-)
+            "$rois_hcp/1139.L_TPOJ1.nii"
+            "$rois_hcp/1140.L_TPOJ2.nii"
+            "$rois_hcp/1141.L_TPOJ3.nii"
+            ) 
 
-
+roi_paths=( "$rois_hcp/1008.L_4.nii" )
+#roi_paths=(echo $rois_hcp/*.L_*.nii) 
 
 base_dir="$ds_dir/fsl_feats"
 
@@ -881,6 +1007,7 @@ for roi_path in ${roi_paths[@]}; do
   echo $roi_path $out_dir 
   run_laminar_mean_epi.sh -r $roi_path -p 10 -o $out_dir
 done 
+
 
 
 base_dir="$ds_dir/fsl_feats"
@@ -895,9 +1022,522 @@ for dir in ${ds[@]}; do
 
 done 
 
+#s=( 1 ) #1 2 3 4 5 6 7 8 10)
+#ds=$(echo $base_dir/1010*/*003.feat ) 
+
+s=( 0 1 2 3 4 5 6 7 8 10)
+base_dir="$ds_dir/fsl_feats/"
+ds=$(echo $base_dir/*/*.feat ) 
+for dir in ${ds[@]}; do 
+  for smoothing in ${s[@]};do 
+    echo $dir $smoothing
+    sbatch --mem=20g --cpus-per-task=5 \
+        --job-name=L2D \
+        --output=$dir/logs/L2D_fwhm$smoothing.log \
+        --time 3-0 \
+        L2D.job.sh $dir $smoothing
+  done 
+done 
+
+
+
+
+
+###################################
+#   WE ARE RUNNING ANALYSIS PER RUN 
+
+roi_paths=( "$rois_hcp/1010.L_FEF.nii" )
+roi_paths=( "$rois_hcp/1006.L_V4.nii" )
+base_dir="$ds_dir/fsl_feats_delete"
+
+jobs=()
+
+for roi_path in ${roi_paths[@]}; do 
+for epi in ${EPIs[@]}; do 
+  out_dir=$base_dir/$(basename $roi_path .nii)
+  echo $roi_path $out_dir 
+
+  run_laminar_singleRun.sh -r $roi_path -p 10 -o $out_dir -e $epi
+done 
+done 
+
+
+roi="1010.L_FEF"
+out_dir="$ds_dir/fsl_feat_permute_$roi"
+#mkdir -p $out_dir 
+roi_path="$rois_thalamic/$roi.nii"
+#run_laminar_permute_swarm.sh -r $roi_path -p 1 -o $out_dir
+#run_laminar_permute_post.sh -d $out_dir 
+
+dir=$out_dir/mean 
+smoothing=3
+sbatch --mem=10g --cpus-per-task=5 \
+    --job-name=L2D-c1k-fwhm$smoothing \
+    --output=$dir/logs/L2D_hclust-c1k-fwhm$smoothing.log \
+    --time 3-0 \
+    L2D_hclust.job.sh $dir $smoothing
+
+
+
+
+roi="1010.L_FEF"
+out_dir="$ds_dir/fsl_feat_permute_${roi}_V2"
+mkdir -p $out_dir 
+roi_path="$rois_hcp/$roi.nii"
+run_laminar_permute_swarm.sh -r $roi_path -p 10 -o $out_dir
+
+run_laminar_permute_post.sh -d $out_dir 
+
+#s=( 1 ) #1 2 3 4 5 6 7 8 10)
+
+for smoothing in ${s[@]};do 
+  echo $dir $smoothing
+  sbatch --mem=20g --cpus-per-task=5 \
+      --job-name=L2D \
+      --output=$dir/logs/L2D_fwhm$smoothing.log \
+      --time 3-0 \
+      L2D.job.sh $dir $smoothing
+done 
+
+
+dir=$out_dir/mean 
+smoothing=1
+sbatch --mem=20g --cpus-per-task=5 \
+    --job-name=L2D-c1k-fwhm$smoothing \
+    --output=$dir/logs/L2D_hclust-c1k-fwhm$smoothing.log \
+    --time 3-0 \
+    L2D_hclust.job.sh $dir $smoothing
+
+
+
+#   dashboard_cli jobs --mem-over --since 2022-02-02T14:00:00 --until 2022-02-02T15:00:00
+
+
+
+#submitteed
+roi="1046.L_7PL"
+out_dir="$my_scratch/fsl_feat_permute_${roi}"
+mkdir -p $out_dir 
+roi_path="$rois_hcp/$roi.nii"
+run_laminar_permute_swarm.sh -r $roi_path -p 1 -o $out_dir
+
+#run_laminar_permute_post.sh -d $out_dir 
+
+
+# submitted 
+roi="1020.L_LO1"
+out_dir="$my_scratch/fsl_feat_permute_${roi}"
+mkdir -p $out_dir 
+roi_path="$rois_hcp/$roi.nii"
+run_laminar_permute_swarm.sh -r $roi_path -p 1 -o $out_dir
+
+
+# submitted 
+roi="1001.L_V1"
+out_dir="$my_scratch/fsl_feat_permute_${roi}_pca10"
+mkdir -p $out_dir 
+roi_path="$rois_hcp/$roi.nii"
+run_laminar_permute_swarm.sh -r $roi_path -p 10 -o $out_dir
+
+
+# submitted - post 
+roi="1006.L_V4"
+out_dir="$my_scratch/fsl_feat_permute_${roi}"
+mkdir -p $out_dir 
+roi_path="$rois_hcp/$roi.nii"
+#run_laminar_permute_swarm.sh -r $roi_path -p 1 -o $out_dir
+run_laminar_permute_post.sh -d $out_dir 
+
+# submitted - pca10 
+roi="1006.L_V4"
+out_dir="$my_scratch/fsl_feat_permute_${roi}_pca10"
+mkdir -p $out_dir 
+roi_path="$rois_hcp/$roi.nii"
+run_laminar_permute_swarm.sh -r $roi_path -p 10 -o $out_dir
+#run_laminar_permute_post.sh -d $out_dir 
+
+# submitted -  
+roi="1023.L_MT"
+out_dir="$my_scratch/fsl_feat_permute_${roi}"
+mkdir -p $out_dir 
+roi_path="$rois_hcp/$roi.nii"
+run_laminar_permute_swarm.sh -r $roi_path -p 5 -o $out_dir
+#run_laminar_permute_post.sh -d $out_dir 
+
+
+# submitted 
+roi="1132.L_TE1a"
+out_dir="$my_scratch/fsl_feat_permute_${roi}"
+mkdir -p $out_dir 
+roi_path="$rois_hcp/$roi.nii"
+#run_laminar_permute_swarm.sh -r $roi_path -p 1 -o $out_dir
+#run_laminar_permute_post.sh -d $out_dir 
+
+# submitted
+roi="1177.L_TE1m"
+out_dir="$my_scratch/fsl_feat_permute_${roi}"
+mkdir -p $out_dir 
+roi_path="$rois_hcp/$roi.nii"
+#run_laminar_permute_swarm.sh -r $roi_path -p 1 -o $out_dir
+#run_laminar_permute_post.sh -d $out_dir 
+
+# submitted - incmplete 
+roi="1133.L_TE1p"
+out_dir="$my_scratch/fsl_feat_permute_${roi}"
+mkdir -p $out_dir 
+roi_path="$rois_hcp/$roi.nii"
+#run_laminar_permute_swarm.sh -r $roi_path -p 1 -o $out_dir
+#run_laminar_permute_post.sh -d $out_dir 
+
+
+
+#submitted
+roi="1128.L_STSda"
+out_dir="$my_scratch/fsl_feat_permute_${roi}"
+mkdir -p $out_dir 
+roi_path="$rois_hcp/$roi.nii"
+run_laminar_permute_swarm.sh -r $roi_path -p 2 -o $out_dir
+
+roi="1129.L_STSdp"
+out_dir="$my_scratch/fsl_feat_permute_${roi}"
+mkdir -p $out_dir 
+roi_path="$rois_hcp/$roi.nii"
+run_laminar_permute_swarm.sh -r $roi_path -p 2 -o $out_dir
+
+roi="1130.L_STSvp"
+out_dir="$my_scratch/fsl_feat_permute_${roi}"
+mkdir -p $out_dir 
+roi_path="$rois_hcp/$roi.nii"
+run_laminar_permute_swarm.sh -r $roi_path -p 2 -o $out_dir
+
+roi="1176.L_STSva"
+out_dir="$my_scratch/fsl_feat_permute_${roi}"
+mkdir -p $out_dir 
+roi_path="$rois_hcp/$roi.nii"
+run_laminar_permute_swarm.sh -r $roi_path -p 2 -o $out_dir
+
+
+
+roi="1072.L_10d"
+out_dir="$my_scratch/fsl_feat_permute_${roi}"
+mkdir -p $out_dir 
+roi_path="$rois_hcp/$roi.nii"
+run_laminar_permute_swarm.sh -r $roi_path -p 2 -o $out_dir
+
+roi="1090.L_10pp"
+out_dir="$my_scratch/fsl_feat_permute_${roi}"
+mkdir -p $out_dir 
+roi_path="$rois_hcp/$roi.nii"
+run_laminar_permute_swarm.sh -r $roi_path -p 2 -o $out_dir
+
+
+
+
+
+
+
+
+
+
+
+out_dirs=("$ds_dir/fsl_feat_permute_1001.L_V1"
+          "$ds_dir/fsl_feat_permute_1006.L_V4"
+          "$ds_dir/fsl_feat_permute_1020.L_LO1"
+          "$ds_dir/fsl_feat_permute_1046.L_7PL"
+          "$ds_dir/fsl_feat_permute_1072.L_10d"
+          "$ds_dir/fsl_feat_permute_1090.L_10pp"
+          "$ds_dir/fsl_feat_permute_1128.L_STSda"
+          "$ds_dir/fsl_feat_permute_1129.L_STSdp"
+          "$ds_dir/fsl_feat_permute_1130.L_STSvp"
+          "$ds_dir/fsl_feat_permute_1176.L_STSva"
+          "$ds_dir/fsl_feat_permute_8120.lh.PuA"
+          "$ds_dir/fsl_feat_permute_8121.lh.PuI"
+          "$ds_dir/fsl_feat_permute_8122.lh.PuL"
+          "$ds_dir/fsl_feat_permute_8123.lh.PuM")
+
+
+
+
+# ave column analysis 
+column_ids=( "19275" "26539" "19517" "27054" )
+
+rois=()
+
+
+
+
+
+
+
+# touch swarm.file 
+# for out_dir in ${out_dirs[@]}; do 
+
+#   echo "run_laminar_permute_post.sh -d $out_dir " >> swarm.file 
+
+# done 
+
+
+# s=( 1 3 5 7 8 10)
+
+# for smoothing in ${s[@]};do 
+#   echo $dir $smoothing
+#   sbatch --mem=20g --cpus-per-task=5 \
+#       --job-name=L2D \
+#       --output=$dir/logs/L2D_fwhm$smoothing.log \
+#       --time 3-0 \
+#       L2D.job.sh $dir $smoothing
+# done 
+
+
+# dir=$out_dir/mean 
+# smoothing=1
+# sbatch --mem=20g --cpus-per-task=5 \
+#     --job-name=L2D-c1k-fwhm$smoothing \
+#     --output=$dir/logs/L2D_hclust-c1k-fwhm$smoothing.log \
+#     --time 3-0 \
+#     L2D_hclust.job.sh $dir $smoothing
+
+
+
+
+
+# TODO 
+# swarm dep compltete pileline 
+# per column/layer 
+
+
+
+
+
+
+
+
+# ##############
+# ##############
+# ##############
+# roi="8120.lh.PuA"
+# out_dir="$ds_dir/fsl_feat_permute_$roi"
+# cd $out_dir 
+
+# find . -name "filtered_func_data.nii.gz" -exec rm -rf {} \;
+# find . -name "stats" -exec rm -rf {} \;
+
+# for d in $out_dir/*; do 
+# zstats=($(find $d -name "thresh_zstat1.nii.gz"))
+# 3dMean -prefix $d/thresh_zstat1.mean.nii.gz ${zstats[@]} -overwrite 
+
+# mean_funcs=($(find $d -name "mean_func.nii.gz"))
+# 3dMean -prefix $d/mean_func.mean.nii.gz ${mean_funcs[@]} -overwrite 
+# done 
+
+# # AVERAGED PER ROI 
+# cd $out_dir
+# mkdir -p mean 
+
+# zstats=($(find . -name "thresh_zstat1.mean.nii.gz" -maxdepth 2))
+# 3dMean -prefix $out_dir/mean/thresh_zstat1.nii.gz ${zstats[@]} -overwrite 
+
+# mean_funcs=($(find . -name "mean_func.mean.nii.gz" -maxdepth 2))
+# 3dMean -prefix $out_dir/mean/mean_func.nii.gz ${mean_funcs[@]} -overwrite 
+
+# s=( 1 2 3 4 )
+# dir="$out_dir/mean"
+# mkdir $dir/logs
+
+# for smoothing in ${s[@]};do 
+#   echo $dir $smoothing
+#   sbatch --mem=20g --cpus-per-task=5 \
+#       --job-name=L2D \
+#       --output=$dir/logs/L2D_fwhm$smoothing.log \
+#       --time 3-0 \
+#       L2D.job.sh $dir $smoothing
+# done 
+
+
+
+# ##############
+# ##############
+# ##############
+# roi="8121.lh.PuI"
+# out_dir="$ds_dir/fsl_feat_permute_$roi"
+# cd $out_dir 
+
+# find . -name "filtered_func_data.nii.gz" -exec rm -rf {} \;
+# find . -name "stats" -exec rm -rf {} \;
+
+# for d in $out_dir/*; do 
+# zstats=($(find $d -name "thresh_zstat1.nii.gz"))
+# 3dMean -prefix $d/thresh_zstat1.mean.nii.gz ${zstats[@]} -overwrite 
+
+# mean_funcs=($(find $d -name "mean_func.nii.gz"))
+# 3dMean -prefix $d/mean_func.mean.nii.gz ${mean_funcs[@]} -overwrite 
+# done 
+
+# # AVERAGED PER ROI 
+# cd $out_dir
+# mkdir -p mean 
+
+# zstats=($(find . -name "thresh_zstat1.mean.nii.gz" -maxdepth 2))
+# 3dMean -prefix $out_dir/mean/thresh_zstat1.nii.gz ${zstats[@]} -overwrite 
+
+# mean_funcs=($(find . -name "mean_func.mean.nii.gz" -maxdepth 2))
+# 3dMean -prefix $out_dir/mean/mean_func.nii.gz ${mean_funcs[@]} -overwrite 
+
+# s=( 1 2 3 4 )
+# dir="$out_dir/mean"
+# mkdir $dir/logs
+
+# for smoothing in ${s[@]};do 
+#   echo $dir $smoothing
+#   sbatch --mem=20g --cpus-per-task=5 \
+#       --job-name=L2D \
+#       --output=$dir/logs/L2D_fwhm$smoothing.log \
+#       --time 3-0 \
+#       L2D.job.sh $dir $smoothing
+# done 
+
+# ##############
+# ##############
+# ##############
+# roi="8122.lh.PuL"
+# out_dir="$ds_dir/fsl_feat_permute_$roi"
+
+# run_laminar_permute_post.sh -d $out_dir 
+
+
+
+
+
+
+
+
+
+
+
+
+# cd $out_dir 
+
+# find . -name "filtered_func_data.nii.gz" -exec rm -rf {} \;
+# find . -name "stats" -exec rm -rf {} \;
+
+# for d in $out_dir/*; do 
+# zstats=($(find $d -name "thresh_zstat1.nii.gz"))
+# 3dMean -prefix $d/thresh_zstat1.mean.nii.gz ${zstats[@]} -overwrite 
+
+# mean_funcs=($(find $d -name "mean_func.nii.gz"))
+# 3dMean -prefix $d/mean_func.mean.nii.gz ${mean_funcs[@]} -overwrite 
+# done 
+
+# # AVERAGED PER ROI 
+# cd $out_dir
+# mkdir -p mean 
+
+# zstats=($(find . -name "thresh_zstat1.mean.nii.gz" -maxdepth 2))
+# 3dMean -prefix $out_dir/mean/thresh_zstat1.nii.gz ${zstats[@]} -overwrite 
+
+# mean_funcs=($(find . -name "mean_func.mean.nii.gz" -maxdepth 2))
+# 3dMean -prefix $out_dir/mean/mean_func.nii.gz ${mean_funcs[@]} -overwrite 
+
+# s=( 1 2 3 4 )
+# dir="$out_dir/mean"
+# mkdir $dir/logs
+
+# for smoothing in ${s[@]};do 
+#   echo $dir $smoothing
+#   sbatch --mem=20g --cpus-per-task=5 \
+#       --job-name=L2D \
+#       --output=$dir/logs/L2D_fwhm$smoothing.log \
+#       --time 3-0 \
+#       L2D.job.sh $dir $smoothing
+# done 
+
+# ##############
+# ##############
+# ##############
+# roi="8123.lh.PuM"
+# out_dir="$ds_dir/fsl_feat_permute_$roi"
+# cd $out_dir 
+
+# find . -name "filtered_func_data.nii.gz" -exec rm -rf {} \;
+# find . -name "stats" -exec rm -rf {} \;
+
+# for d in $out_dir/*; do 
+# zstats=($(find $d -name "thresh_zstat1.nii.gz"))
+# 3dMean -prefix $d/thresh_zstat1.mean.nii.gz ${zstats[@]} -overwrite 
+
+# mean_funcs=($(find $d -name "mean_func.nii.gz"))
+# 3dMean -prefix $d/mean_func.mean.nii.gz ${mean_funcs[@]} -overwrite 
+# done 
+
+# # AVERAGED PER ROI 
+# cd $out_dir
+# mkdir -p mean 
+
+# zstats=($(find . -name "thresh_zstat1.mean.nii.gz" -maxdepth 2))
+# 3dMean -prefix $out_dir/mean/thresh_zstat1.nii.gz ${zstats[@]} -overwrite 
+
+# mean_funcs=($(find . -name "mean_func.mean.nii.gz" -maxdepth 2))
+# 3dMean -prefix $out_dir/mean/mean_func.nii.gz ${mean_funcs[@]} -overwrite 
+
+# s=( 1 2 3 4 )
+# dir="$out_dir/mean"
+# mkdir $dir/logs
+
+# for smoothing in ${s[@]};do 
+#   echo $dir $smoothing
+#   sbatch --mem=20g --cpus-per-task=5 \
+#       --job-name=L2D \
+#       --output=$dir/logs/L2D_fwhm$smoothing.log \
+#       --time 3-0 \
+#       L2D.job.sh $dir $smoothing
+# done 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+roi_paths=(echo $rois_thalamic/*.lh.*.nii) 
+base_dir="$ds_dir/fsl_feats_thalamic"
+
+for roi_path in ${roi_paths[@]}; do 
+  out_dir=$base_dir/$(basename $roi_path .nii)
+  echo $roi_path $out_dir 
+  run_laminar_mean_epi.sh -r $roi_path -p 10 -o $out_dir
+done 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 build_fslfeat_df.py \
---fslfeat_dir "/data/kleinrl/Wholebrain2.0/fsl_feats"
+--fslfeat_dir "/data/kleinrl/Wholebrain2.0/fsl_feats" \
+--prefix "smoothed_inv_thresh_zstat1.L2D-columns_ev_1000_borders.downscaled2x_NN" \
+--output "smoothed_inv_thresh_zstat1.L2D-columns_ev_1000_borders.downscaled2x_NN"
 
 
 
